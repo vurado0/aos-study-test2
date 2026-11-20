@@ -1,0 +1,237 @@
+Prozesse	Processes	Procesy
+(+ libraries) → executable →	(+ libraries) → executable →	(+ libraries) → executable →
+(Addition!).	(addition!).	(dodawanie!).
+(Beispielwert)	(example value)	(wartość przykładowa)
+(Konkatenation)	(concatenation)	(konkatenacja)
+(MIPS) → miss = trap ans OS.	(MIPS) → miss = trap to the OS.	(MIPS) → miss = trap do OS.
+(page-table walker). OS	(page-table walker). The OS	(page-table walker). OS
+(sign-extension), sonst	(sign extension), otherwise	(sign extension), inaczej
+(§). PMT[§] = § → PA = §·§ + § =	(§). PMT[§] = § → PA = §·§ + § =	(§). PMT[§] = § → PA = §·§ + § =
+, Overflow-Warnung	, overflow warning	, ostrzeżenie o przepełnieniu
+, Rechte RW-	, rights RW-	, prawa RW-
+, Register	, register	, rejestr
+, Rest = page number	, rest = page number	, reszta = page number
+, Speicherzugriff	, memory access	, dostęp do pamięci
+, Verschnitt § − § =	, waste § − § =	, strata § − § =
+, beide	, both	, oba
+, erstes =	, first =	, pierwszy =
+, fest ⇒	, fixed ⇒	, stałe ⇒
+, genutzt vom	, used by the	, używane przez
+, limit = §, G = § → effektives limit =	, limit = §, G = § → effective limit =	, limit = §, G = § → efektywny limit =
+, limit = §, G = § → effektives limit = (§+§)·§−§ =	, limit = §, G = § → effective limit = (§+§)·§−§ =	, limit = §, G = § → efektywny limit = (§+§)·§−§ =
+, § fehlt, freier Frame §.	, § missing, free frame §.	, brak §, wolna ramka §.
+-stufige Seitentabelle.	-level page table.	-poziomowa tablica stron.
+. Arbeitet	. Works	. Działa
+. Bestimme WS(§, §).	. Determine WS(§, §).	. Wyznacz WS(§, §).
+. Gesteuert vom	. Controlled by the	. Sterowana przez
+. Schleifen, Stack, Unterprogramme.	. Loops, stack, subroutines.	. Pętle, stos, podprogramy.
+. Splits:	. Splits:	. Podziały:
+. VA =	. VA =	. VA =
+: Stack-Basis diesmal	: stack base this time	: baza stosu tym razem
+: counter >> §, R ins	: counter >> §, R into the	: counter >> §, R do
+: immer ~N²	: always ~N²	: zawsze ~N²
+: limit-Check	: limit check	: limit check
+; beim victim presence = §.	; for the victim presence = §.	; dla victim presence = §.
+= beim Prozessstart; dynamic libraries	= at process start; dynamic libraries	= przy starcie procesu; dynamic libraries
+= fett + unterstrichen	= bold + underlined	= pogrubione + podkreślone
+A freigegeben.	A freed.	A zwolniony.
+B freigegeben.	B freed.	B zwolniony.
+C freigegeben.	C freed.	C zwolniony.
+D freigegeben.	D freed.	D zwolniony.
+ASLR hilft?	ASLR helps?	ASLR pomaga?
+Ablauf eines Page Fault	Sequence of a page fault	Przebieg page fault
+Adressformat	Address format	Format adresu
+Adressformat (multilevel)	Address format (multilevel)	Format adresu (multilevel)
+Adressformat herleiten	Derive the address format	Wyprowadzenie formatu adresu
+Aging dez	Aging dec	Aging dec
+Aging: counter >> §, R ins MSB.	Aging: counter >> §, R into the MSB.	Aging: counter >> §, R do MSB.
+Anfangs-	Initial	Początkowy
+Angriff	Attack	Atak
+Ausnahme:	Exception:	Wyjątek:
+Ausnahme: Belady's anomaly	Exception: Belady's anomaly	Wyjątek: Belady's anomaly
+Berechne …	Computing …	Obliczam …
+Bereiche (sparse address space).	areas (sparse address space).	obszarów (sparse address space).
+CPU-Auslastung %	CPU utilization %	Wykorzystanie CPU %
+CPU-Auslastung vs. degree of multiprogramming	CPU utilization vs. degree of multiprogramming	Wykorzystanie CPU vs. degree of multiprogramming
+Canonical? + Indizes PML§ / PDPT / PD / PT	Canonical? + indices PML§ / PDPT / PD / PT	Canonical? + indeksy PML§ / PDPT / PD / PT
+Caller-Frame (args)	Caller frame (args)	Ramka wywołującego (args)
+Dateiabbild (heap, stack)	file image (heap, stack)	obrazu w pliku (heap, stack)
+Direkte Wiederholungen zusammenfassen	Merge direct repetitions	Łącz bezpośrednie powtórzenia
+Durchgezogen = normaler Weg, gestrichelt = soft fault / Nebenweg. Soft fault: Standby/Modified → Active ohne Disk-I/O.	Solid = normal path, dashed = soft fault / side path. Soft fault: Standby/Modified → Active without disk I/O.	Ciągła = normalna ścieżka, przerywana = soft fault / ścieżka boczna. Soft fault: Standby/Modified → Active bez I/O dysku.
+Eigene Trace verwenden	Use a custom trace	Użyj własnego trace
+Element?	element?	element?
+Ersten freien Frame nehmen	Taking the first free frame	Pobranie pierwszej wolnej ramki
+Fallstudie Pentium (IA-§)	Case study Pentium (IA-§)	Studium przypadku Pentium (IA-§)
+Fallstudien	Case studies	Studia przypadków
+Frame gebraucht	frame needed	ramka potrzebna
+Frame-Nummer	frame number	numer ramki
+Funktioniert wegen	Works because of	Działa dzięki
+Genutzte Regionen (sparse)	Used regions (sparse)	Używane regiony (sparse)
+Global: bessere Nutzung, aber Thrashing. Local: deterministischer, mehr overhead.	Global: better usage, but thrashing. Local: more deterministic, more overhead.	Global: lepsze wykorzystanie, ale thrashing. Local: bardziej deterministyczny, więcej overhead.
+Hardware vs. Betriebssystem	Hardware vs. operating system	Hardware vs. system operacyjny
+Kleines WS	Small WS	Mały WS
+Kriterien:	Criteria:	Kryteria:
+Lab-Kern	Lab core	Rdzeń labu
+Lauf	Run	Przebieg
+Limit-Verletzung	Limit violation	Naruszenie limitu
+Long mode: Segmente	Long mode: segments	Long mode: segmenty
+Mehr Frames → relativ weniger Faults.	More frames → relatively fewer faults.	Więcej ramek → relatywnie mniej faultów.
+Mergesort-Grafik	Mergesort graph	Wykres mergesort
+Middle dir	Middle dir	Middle dir
+Multiprogramming reduzieren	reduce multiprogramming	zmniejszyć multiprogramming
+Muster	Pattern	Wzorzec
+Nachbarn	neighbours	sąsiednie
+Objekte	objects	obiekty
+Ohne TLB:	Without TLB:	Bez TLB:
+PF-Prozentsatz minimieren	minimize the PF percentage	minimalizacja odsetka PF
+PF-Rate eines Prozesses:	PF rate of a process:	Współczynnik PF procesu:
+PF-Rate p	PF rate p	Współczynnik PF p
+Page Faults bis hier: §	Page faults so far: §	Page faults do tej pory: §
+Page Faults, Thrashing, Working Set, Policies, Replacement-Algorithmen, Fallstudien.	Page faults, thrashing, working set, policies, replacement algorithms, case studies.	Page faults, thrashing, working set, policies, algorytmy replacement, studia przypadków.
+Page fault Ablauf	Page fault sequence	Przebieg page fault
+Page-Fault-Handler	page-fault handler	page-fault handler
+Page-Fault-Handler (Betriebssystem)	Page-fault handler (operating system)	Page-fault handler (system operacyjny)
+Periodisch	Periodically	Okresowo
+Position referenziert →	Position referenced →	Pozycja referencjonowana →
+Proz.-Code	Proc. code	Kod proc.
+Proz.-Stack	Proc. stack	Stos proc.
+P§: zugegriffen	P§: accessed	P§: użyta
+R lesen	R read	R odczyt
+Randomisiert	Randomizes	Randomizuje
+Rechenweg	Working	Obliczenia
+Rechte	Rights	Prawa
+Rechte §	rights §	prawa §
+Referenzfolge	Reference sequence	Ciąg referencji
+Replacement-Algorithmen	Replacement algorithms	Algorytmy replacement
+Rezept	Recipe	Przepis
+Segment Table (editierbar)	Segment table (editable)	Segment table (edytowalna)
+Segment bestimmen	Determining the segment	Ustalanie segmentu
+Segmentation addiert; Paging konkateniert.	Segmentation adds; paging concatenates.	Segmentation dodaje; paging konkatenuje.
+Segmentation fast weg	Segmentation almost gone	Segmentation prawie zniknęła
+Seitentabelle	page table	tablicę stron
+Selbst rechnen & testen	Calculate & test yourself	Licz i sprawdzaj sam
+Selector → Descriptor → linear → physisch	Selector → descriptor → linear → physical	Selector → descriptor → linear → fizyczny
+Selector → linear → physisch. Canonical addresses.	Selector → linear → physical. Canonical addresses.	Selector → linear → fizyczny. Canonical addresses.
+Simulationen (Knuth):	Simulations (Knuth):	Symulacje (Knuth):
+Tabellen setzen	set the tables	ustaw tabele
+Teufelskreis	Vicious circle	Błędne koło
+Transparente Transfers Disk ⇔ MM	Transparent transfers disk ⇔ MM	Przezroczyste transfery dysk ⇔ MM
+Unterausgelastet	Underutilized	Niedociążony
+Unterbrechbare Instruktionen	Interruptible instructions	Przerywalne instrukcje
+W schreiben	W write	W zapis
+WS (z. B. §)	WS (e.g. §)	WS (np. §)
+Warum zeigt	Why does	Dlaczego
+Was dynamic loading teuer macht	What makes dynamic loading expensive	Co sprawia, że dynamic loading jest drogie
+Working-Set-Verlauf	Working set over time	Przebieg working set
+Working-Set-Verlauf zweier Algorithmen	Working set over time for two algorithms	Przebieg working set dwóch algorytmów
+Zeitpunkt t:	Time t:	Chwila t:
+Zustand	State	Stan
+abwechselnd	alternating	naprzemiennie
+age §, +§ bis max §	age §, +§ up to max §	age §, +§ do maks. §
+age §, ×§	age §, ×§	age §, ×§
+alte Vielnutzer bleiben → aging	old heavy users stay → aging	dawni intensywni użytkownicy zostają → aging
+bald wieder	again soon	wkrótce znowu
+beide	both	oba
+bessere MM-Nutzung	better MM usage	lepsze wykorzystanie MM
+canonical? (ja/nein)	canonical? (ja/nein)	canonical? (ja/nein)
+d. Paging: f	d. Paging: f	d. Paging: f
+eines Programms verursachen	of a program cause	programu powoduje
+einfach.	simple.	prosty.
+einstufige PMT = §²³ · § B	single-level PMT = §²³ · § B	jednopoziomowa PMT = §²³ · § B
+einstufige PMT = §²⁰ · § B	single-level PMT = §²⁰ · § B	jednopoziomowa PMT = §²⁰ · § B
+einstufige PMT = §³⁶ · § B	single-level PMT = §³⁶ · § B	jednopoziomowa PMT = §³⁶ · § B
+einstufige PMT = §⁵² · § B	single-level PMT = §⁵² · § B	jednopoziomowa PMT = §⁵² · § B
+eliminiert	eliminates	eliminuje
+erstes nehmen,	take the first,	weź pierwszą,
+executable file (Disk)	executable file (disk)	executable file (dysk)
+fertig	done	gotowe
+fest § pages	fixed § pages	stałe § pages
+feste Zieladresse	fixed target address	stały adres docelowy
+fett + unterstrichen	bold + underlined	pogrubione + podkreślone
+freie frames	free frames	wolne frames
+gegen format string.	against format string.	przeciw format string.
+geladene	loaded	załadowana
+genutzt.	are used.	są używane.
+genutzte	used	używanych
+gute LRU-Approximation	good LRU approximation	dobra aproksymacja LRU
+hilft gegen buffer overflow,	helps against buffer overflow,	pomaga przeciw buffer overflow,
+hohe Adr.	high addr.	wysokie adr.
+hohe Adressen ↑	high addresses ↑	wysokie adresy ↑
+ideale Untergrenze	ideal lower bound	idealną dolną granicę
+immer	always	zawsze
+innerhalb	inside	wewnątrz
+input = § × 'A' + '\§' → § Byte geschrieben.	input = § × 'A' + '\§' → § bytes written.	input = § × 'A' + '\§' → zapisano § bajtów.
+invalidiert	invalidates	unieważnia
+jede Sekunde	every second	co sekundę
+keinen	none	żadnego
+kleinere PMT	smaller PMT	mniejsza PMT
+kleinster timestamp	smallest timestamp	najmniejszy timestamp
+letzte	last	ostatni
+mehr overhead	more overhead	więcej overhead
+mehrstufig, § getrennte Regionen	multilevel, § separate regions	wielopoziomowo, § oddzielne regiony
+mitigiert	mitigates	łagodzi
+nachbauen: MMU, Page-Fault-Handler, Random, LRU, FIFO, FIFO §nd chance, Optimal.	: MMU, page-fault handler, Random, LRU, FIFO, FIFO §nd chance, Optimal.	: MMU, page-fault handler, Random, LRU, FIFO, FIFO §nd chance, Optimal.
+nachher	after	po
+nichts	nothing	nic
+nie	never	nigdy
+niedrige Adr.	low addr.	niskie adr.
+niedrige Adressen ↓	low addresses ↓	niskie adresy ↓
+niedrigste Rate, Benchmark.	lowest rate, benchmark.	najniższy współczynnik, benchmark.
+occupy_free_frame (OS) · FIFO-Version	occupy_free_frame (OS) · FIFO version	occupy_free_frame (OS) · wersja FIFO
+ohne	without	bez
+ohne TLB	without TLB	bez TLB
+page = vaddr / pagsz, offset = vaddr % pagsz · illegal? → numillegalrefs++, return ~§U · present? sonst Trap · paddr = frame·pagsz + offset	page = vaddr / pagsz, offset = vaddr % pagsz · illegal? → numillegalrefs++, return ~§U · present? otherwise trap · paddr = frame·pagsz + offset	page = vaddr / pagsz, offset = vaddr % pagsz · illegal? → numillegalrefs++, return ~§U · present? inaczej trap · paddr = frame·pagsz + offset
+physisch defekt	physically defective	fizycznie uszkodzona
+reduzieren	reduce	zmniejszyć
+reference_page (Hardware) · LRU + §nd chance	reference_page (hardware) · LRU + §nd chance	reference_page (hardware) · LRU + §nd chance
+referenziert →	referenced →	referencjonowana →
+scheitert	fails	nie powiedzie się
+schlecht,	poor,	słaby,
+schlechte MM-Nutzung	poor MM usage	słabe wykorzystanie MM
+sequentielle Suche: kleinster timestamp	sequential search: smallest timestamp	wyszukiwanie sekwencyjne: najmniejszy timestamp
+sharing einzelner pages	sharing of individual pages	sharing pojedynczych pages
+teile § → § + §	split § → § + §	podziel § → § + §
+trotzdem.	anyway.	mimo to.
+verwenden	use	używać
+viele winzige „sliver“-Fragmente	many tiny "sliver" fragments	wiele drobnych fragmentów „sliver”
+vom Stack ·	from the stack ·	ze stosu ·
+vorher (listfree = F§)	before (listfree = F§)	przed (listfree = F§)
+wartet	waits	czeka
+wartet (metadata)	waits (metadata)	czeka (metadata)
+welche	which	która
+wenig overhead.	little overhead.	mały overhead.
+wurde.	.	.
+zeigt aufs	point to the	wskazuje na
+zeigt darauf →	points to it →	wskazuje na nią →
+§ PFs / § Ref.	§ PFs / § refs	§ PF / § ref.
+§ Speicherzugriffe	§ memory accesses	§ dostępów do pamięci
+§ · Frame finden	§ · Find a frame	§ · Znalezienie ramki
+§ · Neustart	§ · Restart	§ · Restart
+§ · PMT aktualisieren	§ · Update the PMT	§ · Aktualizacja PMT
+§. ASLR mitigiert …	§. ASLR mitigates …	§. ASLR łagodzi …
+§. Dynamic relocation braucht …	§. Dynamic relocation needs …	§. Dynamic relocation potrzebuje …
+§. Welche Fragmentierung verursacht Paging?	§. Which fragmentation does paging cause?	§. Jaką fragmentację powoduje paging?
+· MECHANISMUS	· MECHANISM	· MECHANIZM
+· kswapd-Lauf: unbenutzt	· kswapd run: unused	· przebieg kswapd: nieużywane
+– frame eintragen,	– enter the frame,	– wpisz frame,
+→ evtl.	→ possibly	→ ewentualnie
+→ physisch §·§+§ =	→ physical §·§+§ =	→ fizyczny §·§+§ =
+→ thrashing-Risiko (Unix/Linux);	→ thrashing risk (Unix/Linux);	→ ryzyko thrashingu (Unix/Linux);
+✓ mitigiert	✓ mitigated	✓ łagodzi
+✗ PAGE FAULT / Trap ans OS	✗ PAGE FAULT / trap to the OS	✗ PAGE FAULT / trap do OS
+✗ Reference string eingeben	✗ Enter a reference string	✗ Wpisz reference string
+✗ Referenzfolge eingeben	✗ Enter a reference sequence	✗ Wpisz ciąg referencji
+✗ TRAP: Schutzverletzung	✗ TRAP: protection violation	✗ TRAP: naruszenie ochrony
+✗ nein	✗ no	✗ nie
+✗ TRAP: segmentation fault	✗ TRAP: segmentation fault	✗ TRAP: segmentation fault
+Inhalt	Contents	Spis treści
+Data	Data	Dane
+Code	Code	Kod
+buddy pager	buddy pager	buddy pager
+DE	DE	DE
+Byte	bytes	bajty
+nur Daten	data only	tylko dane
+stack	stack	stos
+heap ↑	heap ↑	heap ↑
+Free	Free	Free
+Zeroed (Empty)	Zeroed (Empty)	Zeroed (Empty)

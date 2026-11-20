@@ -1,0 +1,326 @@
+aber keine memory-safety bugs.	but does not eliminate memory-safety bugs.	ale nie eliminuje memory-safety bugs.
+age §, −§ pro Zugriff	age §, −§ per access	age §, −§ na dostęp
+alle Adressen, die ein Prozess referenzieren kann	all addresses a process can reference	wszystkie adresy, które proces może referencjonować
+alle R-Bits = §	all R bits = §	wszystkie bity R = §
+alle R=§ →	all R=§ →	wszystkie R=§ →
+alle drei	all three	wszystkie trzy
+alle frames	all frames	wszystkie frames
+alle frames frei	all frames free	wszystkie frames wolne
+alle gleich	all the same	wszystkie takie same
+am längsten im MM	has been in MM the longest	jest najdłużej w MM
+am längsten nicht benutzt	has not been used for the longest time	była najdłużej nieużywana
+am längsten nicht mehr	will not be needed	nie będzie potrzebna
+am schlechtesten	worst	najgorsze
+ans OS aus.	to the OS.	do OS.
+arbeiten noch:	still do work:	nadal działają:
+attributes § bit	attributes § bit	attributes § bit
+auch aus Zeroed	also from Zeroed	także z Zeroed
+auf Disk.	to disk.	na dysk.
+auf das	to the	na
+aus WS (clean)	out of WS (clean)	z WS (clean)
+aus WS (dirty)	out of WS (dirty)	z WS (dirty)
+aus den	from the	z
+aus einem	from a	z
+bald auch. Arrays, sequentieller Code.	soon too. Arrays, sequential code.	wkrótce też. Tablice, kod sekwencyjny.
+base § bit	base § bit	base § bit
+bei FIFO.	with FIFO.	przy FIFO.
+bei jedem Write sofort	immediately on every write	natychmiast przy każdym zapisie
+beide vollständig	both completely	oba całkowicie
+belegt = schraffiert	used = hatched	zajęte = kreskowane
+besser als worst-fit	better than worst-fit	lepsze niż worst-fit
+best-fit am schlechtesten	best-fit is worst	best-fit najgorszy
+bis nächster PF ⏩	to next PF ⏩	do następnego PF ⏩
+bit · Ebenen = ⌈(§−§)/§⌉ =	bit · levels = ⌈(§−§)/§⌉ =	bit · poziomy = ⌈(§−§)/§⌉ =
+bit → Format § | § | §	bit → format § | § | §	bit → format § | § | §
+bit → Format § | § | § | §	bit → format § | § | § | §	bit → format § | § | § | §
+bit → Format § | § | § | § | §	bit → format § | § | § | § | §	bit → format § | § | § | § | §
+bit → Format § | § | § | § | § | §	bit → format § | § | § | § | § | §	bit → format § | § | § | § | § | §
+bit → Format § | § | § | § | § | § | §	bit → format § | § | § | § | § | § | §	bit → format § | § | § | § | § | § | §
+braucht ein Zusatzarray gleicher Größe → MER mit § Elementen:	needs an extra array of the same size → MER with § elements:	potrzebuje dodatkowej tablicy tej samej wielkości → MER z § elementami:
+bss (nur Größe)	bss (size only)	bss (tylko rozmiar)
+calculate_ws – Working Set schätzen	calculate_ws – estimating the working set	calculate_ws – szacowanie working set
+das erste Element	the first element	pierwszy element
+das letzte Element (erstes = frt[last].next)	the last element (first = frt[last].next)	ostatni element (pierwszy = frt[last].next)
+das working set	the working set	working set
+degeneriert zu FIFO	degenerates to FIFO	degeneruje do FIFO
+degree of multiprogramming (Prozesse im Speicher)	degree of multiprogramming (processes in memory)	degree of multiprogramming (procesy w pamięci)
+den zuletzt ersetzten Frame	the last replaced frame	ostatnio zastąpioną ramkę
+der Addition: d ≥ limit →	the addition: d ≥ limit →	dodawaniem: d ≥ limit →
+der Addition; base	the addition; base	dodawaniem; base
+der Adresse (wie oben).	of the address (as above).	adresu (jak wyżej).
+der Ausführung.	execution.	wykonaniem.
+der Laufzeit.	run time.	działania.
+der referenzierten Seite	of the referenced page	referencjonowanej strony
+die PMT selbst gepaged	the PMT itself is paged	sama PMT jest stronicowana
+die Seitennummer	the page number	numer strony
+direkte Wiederholungen zählen einmal	direct repetitions count once	bezpośrednie powtórzenia liczą się raz
+dirty → beim Ersetzen auf Disk	dirty → to disk on replacement	dirty → na dysk przy zastępowaniu
+eigene Implementierung · Mechanik wie im Lab, Zählwerte können leicht abweichen	own implementation · same mechanics as the lab, counts may differ slightly	własna implementacja · mechanika jak w labie, liczby mogą się nieco różnić
+ein.	here.	.
+eine	one	jedna
+eine Angriffsklasse,	one class of attacks,	jedną klasę ataków,
+eine MMU	an MMU	MMU
+einer Partition (Partition − Objekt). Bei	a partition (partition − object). Occurs with	partycji (partycja − obiekt). Przy
+einer modifizierten Seite	of a modified page	zmodyfikowanej strony
+entworfen; auf x§-§ middle directory = § → faktisch § Ebenen. Heute §–§ Ebenen auf x§-§.	; on x§-§ middle directory = § → effectively § levels. Today §–§ levels on x§-§.	; na x§-§ middle directory = § → faktycznie § poziomy. Dziś §–§ poziomów na x§-§.
+erhöht Multiprogramming	raises multiprogramming	zwiększa multiprogramming
+ersetzen = replace_page. Nur die Policy ändert sich zwischen den Programmen.	to replace = replace_page. Only the policy changes between the programs.	zastąpić = replace_page. Między programami zmienia się tylko policy.
+erste passende Lücke	first hole that fits	pierwsza pasująca luka
+fallen.	.	.
+feste Partitionsgrößen, beim	fixed partition sizes, created at	stałe rozmiary partycji, tworzone przy
+fifo§ch § § INS DES §	fifo§ch § § INS DES §	fifo§ch § § INS DES §
+first ≈ best, beide besser als worst	first ≈ best, both better than worst	first ≈ best, oba lepsze niż worst
+for(i…) sum += x; ← sum ständig	for(i…) sum += x; ← sum all the time	for(i…) sum += x; ← sum cały czas
+frames (§ bit physisch) · frame-Nr. § bit ✓ passt in Eintrag	frames (§ bit physical) · frame no. § bit ✓ fits in entry	frames (§ bit fizycznie) · nr ramki § bit ✓ mieści się we wpisie
+frames werden weggenommen	frames are taken away	frames są odbierane
+frei	free	wolne
+frei = gestrichelt	free = dashed	wolne = przerywane
+frei, erst nach Nullen vergeben	free, handed out only after zeroing	wolna, przydzielana dopiero po wyzerowaniu
+freie frames; LRU-Approximation mit	free frames; LRU approximation with	wolne frames; aproksymacja LRU z
+für Sicherheit. x§-§: innerhalb des canonical space.	for security. x§-§: within the canonical space.	dla bezpieczeństwa. x§-§: w obrębie canonical space.
+ganz oder gar nicht	all or nothing	w całości albo wcale
+gebraucht wird.	for the longest time.	najdłużej.
+gegeben: lädt die ganze Trace vorab („cheating“), ersetzt die Seite mit der spätesten nächsten Nutzung	given: loads the whole trace in advance ("cheating"), replaces the page whose next use is the latest	dany: wczytuje cały trace z góry („cheating”), zastępuje stronę z najpóźniejszym następnym użyciem
+gemeinsam für alle	shared by all	wspólna dla wszystkich
+gen_trace im Browser	gen_trace in the browser	gen_trace w przeglądarce
+groß, langsam, billig	large, slow, cheap	duże, wolne, tanie
+größer als der MM	larger than MM	większe niż MM
+größte Lücke	largest hole	największa luka
+handle_page_fault wird aufgerufen	handle_page_fault is called	wywoływane jest handle_page_fault
+high-order bits	high-order bits	high-order bits
+höchste User-Adresse	highest user address	najwyższy adres user
+im Speicher – das löst erst demand paging.	in memory – only demand paging solves that.	w pamięci – rozwiązuje to dopiero demand paging.
+immer am besten (Untergrenze).	always the best (lower bound).	zawsze najlepszy (dolna granica).
+in	into	do
+in einem WS oder gesperrt	in a WS or locked	w WS lub zablokowana
+in listoccupied einfügen	insert into listoccupied	wstaw do listoccupied
+in §	in §	za §
+index bits pro Tabelle	index bits per table	bity indeksu na tabelę
+ist bei paging irrelevant.	is irrelevant with paging.	przy paging nie ma znaczenia.
+ist.	.	.
+ja, auch während Ausführung → Basis für	yes, even during execution → basis for	tak, nawet w trakcie wykonania → podstawa dla
+jede Section: offset + size in der Datei	each section: offset + size in the file	każda sekcja: offset + size w pliku
+jede Tabelle belegt genau § page	each table occupies exactly § page	każda tabela zajmuje dokładnie § page
+kein Tuning	no tuning	bez tuningu
+keine	none	żadna
+keine external fragmentation;	no external fragmentation;	brak external fragmentation;
+keine internal fragmentation, Segmente wachsen,	no internal fragmentation, segments grow,	brak internal fragmentation, segmenty rosną,
+keines von beiden	neither	żadne z nich
+klein, schnell, teuer	small, fast, expensive	małe, szybkie, drogie
+kleinste passende Lücke	smallest hole that fits	najmniejsza pasująca luka
+kswapd läuft (§ s)	kswapd runs (§ s)	kswapd działa (§ s)
+kswapd senkt unbenutzte Seiten um §.	kswapd lowers unused pages by §.	kswapd obniża nieużywane strony o §.
+langsam	slow	wolny
+langsam (alle scannen)	slow (scan all)	wolny (skanuje wszystkie)
+langsamer als ohne PFs.	slower than without PFs.	wolniej niż bez PF.
+laufen, ohne vollständig im MM	run without being completely in MM	działają, nie będąc w całości w MM
+leer (−§)	empty (−§)	pusta (−§)
+letzte Referenz (LRU)	last reference (LRU)	ostatnia referencja (LRU)
+liegt in Frame	is in a frame	jest w ramce
+limit § bit	limit § bit	limit § bit
+linear address (§ bit)	linear address (§ bit)	linear address (§ bit)
+lädt nach Vorhersage; gut bei sequentiellem Zugriff	loads by prediction; good for sequential access	ładuje według przewidywania; dobre przy dostępie sekwencyjnym
+lädt nur bei Referenz; minimaler overhead	loads only on reference; minimal overhead	ładuje tylko przy referencji; minimalny overhead
+macht auf x§ die Hardware; OS invalidiert nur.	is done by hardware on x§; the OS only invalidates.	na x§ robi hardware; OS tylko unieważnia.
+mehrstufig, § Region (alle Seiten in einem Bereich)	multilevel, § region (all pages in one area)	wielopoziomowo, § region (wszystkie strony w jednym obszarze)
+meist am nächsten an Optimal;	usually closest to Optimal;	zwykle najbliżej Optimal;
+meist am schlechtesten, bei nur § Frames kaum Unterschied.	usually the worst, with only § frames hardly any difference.	zwykle najgorszy, przy tylko § ramkach prawie bez różnicy.
+memory map (Prozess)	memory map (process)	memory map (proces)
+mit	with	z
+mit TLB ★	with TLB ★	z TLB ★
+mit dem gemappten Objekt erzeugt und zerstört	created and destroyed with the mapped object	tworzona i niszczona razem z mapowanym obiektem
+mit § initialisiert	initialized with §	zainicjowana §
+mit § initialisiert, für PFs	initialized with §, for PFs	zainicjowane §, dla PF
+modified → „Page dump to disc“ · alte Seite present = § · neue eintragen	modified → "Page dump to disc" · old page present = § · enter the new one	modified → „Page dump to disc” · stara strona present = § · wpisz nową
+muss auf Disk gesichert werden	must be saved to disk	musi zostać zapisana na dysk
+nein, nach Start fix	no, fixed after start	nie, stałe po starcie
+neu geladen	newly loaded	nowo załadowane
+neu gestartet	restarted	uruchamiana ponownie
+nicht	not	nie
+nicht benutzte	unused for the longest	nieużywana
+nicht implementierbar.	not implementable.	nie do zaimplementowania.
+nicht mehr im WS, Daten noch da, PMT zeigt drauf	no longer in WS, data still there, PMT points to it	już nie w WS, dane nadal są, PMT na nią wskazuje
+nicht referenzierte Seiten	unreferenced pages	niereferencjonowane strony
+noch kein Tick – alle counter §	no tick yet – all counters §	jeszcze bez ticku – wszystkie countery §
+numpagefaults++ · freier Frame aus listfree? sonst Policy + Mechanismus	numpagefaults++ · free frame from listfree? otherwise policy + mechanism	numpagefaults++ · wolna ramka z listfree? inaczej policy + mechanizm
+nur Daten	data only	tylko dane
+nur bei FIFO / FIFO §nd chance	only for FIFO / FIFO §nd chance	tylko przy FIFO / FIFO §nd chance
+nur bei FIFO, nicht bei OPT/LRU (stack algorithms).	only with FIFO, not with OPT/LRU (stack algorithms).	tylko przy FIFO, nie przy OPT/LRU (stack algorithms).
+nur bei segmentation	only with segmentation	tylko przy segmentation
+nur den Compiler	only the compiler	tylko kompilatora
+nur den Linker	only the linker	tylko linkera
+nur frames des PF-Prozesses	only frames of the PF process	tylko frames procesu z PF
+nur modifizierte Seiten	only modified pages	tylko zmodyfikowane strony
+nur virtual addresses	only virtual addresses	tylko virtual addresses
+nur § bit genutzt	only § bits used	używane tylko § bity
+nur: context switch,	only: context switch,	tylko: context switch,
+nächste Nutzung	next use	następne użycie
+nächster Frame in der zirkulären Liste	next frame in the circular list	następna ramka na liście cyklicznej
+oder	or	lub
+offset = log₂(§) = § bit → p = ⌊§ / §⌋ =	offset = log₂(§) = § bit → p = ⌊§ / §⌋ =	offset = log₂(§) = § bit → p = ⌊§ / §⌋ =
+offset bits	offset bits	bity offsetu
+offset bits = log₂(page size)	offset bits = log₂(page size)	bity offsetu = log₂(page size)
+offset bits = log₂(§) =	offset bits = log₂(§) =	bity offsetu = log₂(§) =
+pgt: present, frame, modified = § · frt.page · FIFO: in listoccupied einfügen	pgt: present, frame, modified = § · frt.page · FIFO: insert into listoccupied	pgt: present, frame, modified = § · frt.page · FIFO: wstaw do listoccupied
+presence bit = §	presence bit = §	presence bit = §
+presence bit?	presence bit?	presence bit?
+pro Prozess unabhängig	independent per process	niezależna dla każdego procesu
+pro Prozess, auch wenn er nur § KiB nutzt. Zweistufig: § KiB Directory + § bis § · § KiB =	per process, even if it uses only § KiB. Two-level: § KiB directory + § to § · § KiB =	na proces, nawet jeśli używa tylko § KiB. Dwupoziomowo: § KiB directory + § do § · § KiB =
+pro Referenz.	per reference.	na referencję.
+prüft	checks	sprawdza
+referenziert Seite	references a page	odwołuje się do strony
+referenziert wurden. Basiert auf locality, erlaubt hohe degrees of multiprogramming. Regel:	. Based on locality, allows high degrees of multiprogramming. Rule:	były referencjonowane. Opiera się na locality, pozwala na wysokie degrees of multiprogramming. Reguła:
+relativ zum laufenden Stack	relative to the running stack	względem bieżącego stosu
+schnell	fast	szybki
+sein, sind	; they are	; są
+sein. Entkoppelt virtual/physical address space, Disk = Erweiterung des MM. Basis:	. Decouples virtual/physical address space, disk = extension of MM. Basis:	. Rozdziela virtual/physical address space, dysk = rozszerzenie MM. Podstawa:
+setzen: der Ring dreht sich, das Opfer ist jetzt „letztes“ und bekommt die neue Seite.	: the ring rotates, the victim is now "last" and receives the new page.	: pierścień się obraca, ofiara jest teraz „ostatnia” i dostaje nową stronę.
+setzt ein rotierender Zeiger R←§. PF: R=§ → ersetzen, R=§ → R←§, weiter.	a rotating hand sets R←§. PF: R=§ → replace, R=§ → R←§, move on.	obracający się wskaźnik ustawia R←§. PF: R=§ → zastąp, R=§ → R←§, dalej.
+sframe · S->frt[] (nur OS)	sframe · S->frt[] (OS only)	sframe · S->frt[] (tylko OS)
+sim_mmu, handle_page_fault, zirkuläre Listen, Policy vs. Mechanism.	sim_mmu, handle_page_fault, circular lists, policy vs. mechanism.	sim_mmu, handle_page_fault, listy cykliczne, policy vs. mechanism.
+springt die CPU dorthin. Angreifer setzt hier eine	the CPU jumps there. The attacker puts a	CPU skacze tam. Atakujący wstawia tu
+stack(s) pro Thread ↓	stack(s) per thread ↓	stos(y) na wątek ↓
+teuer (Zeitstempel bei jedem Zugriff).	expensive (timestamp on every access).	drogi (znacznik czasu przy każdym dostępie).
+t§: Treffer, § liegt in Frame §.	t§: hit, § is in frame §.	t§: trafienie, § jest w ramce §.
+unbrauchbare Lücken zwischen	unusable gaps between	bezużyteczne luki między
+und	and	i
+unter lower threshold → frames werden weggenommen	below lower threshold → frames are taken away	poniżej lower threshold → frames są odbierane
+untere § bit	lower § bits	dolne § bity
+variable Größen, bei Bedarf →	variable sizes, on demand →	zmienne rozmiary, na żądanie →
+verbraucht große Lücken am schnellsten →	uses up large holes fastest →	najszybciej zużywa duże luki →
+verschiedene Seiten	distinct pages	różne strony
+verschiedenen referenzierten Seiten	distinct referenced pages	różnych referencjonowanych stron
+verwendet. Nachteil: komplexere Hardware.	used. Drawback: more complex hardware.	używane. Wada: bardziej złożony hardware.
+vor	before	przed
+vorher (listoccupied = F§), neu: F§	before (listoccupied = F§), new: F§	przed (listoccupied = F§), nowa: F§
+welcher Frame raus? Random / LRU / FIFO / §nd chance / Optimal	which frame goes? Random / LRU / FIFO / §nd chance / Optimal	która ramka wylatuje? Random / LRU / FIFO / §nd chance / Optimal
+wenn modified = §	when modified = §	gdy modified = §
+wenn referenced = §	when referenced = §	gdy referenced = §
+wie	like	jak
+wie fifo	like fifo	jak fifo
+wie first, ab letzter Position	like first, from the last position	jak first, od ostatniej pozycji
+wie random	like random	jak random
+wird in der Praxis	is in practice	w praktyce
+wird von Disk befüllt (collided PFs)	being filled from disk (collided PFs)	wypełniana z dysku (collided PFs)
+worst-fit am besten	worst-fit is best	worst-fit najlepszy
+wählt ein victim. Ist es	picks a victim. If it is	wybiera victim. Jeśli jest
+während	during	w trakcie
+x§-§: Größe §	x§-§: size §	x§-§: rozmiar §
+zu sein, und dürfen	, and may be	, i mogą być
+zu viele PFs → global clock	too many PFs → global clock	za dużo PF → global clock
+zu wenige frames → ständig PFs → CPU wartet → OS sieht niedrige Auslastung →	too few frames → constant PFs → CPU waits → OS sees low utilization →	za mało frames → ciągłe PF → CPU czeka → OS widzi niskie wykorzystanie →
+zum Vergleich.	for comparison.	do porównania.
+zwischen FIFO und LRU (Approximation).	between FIFO and LRU (approximation).	między FIFO a LRU (aproksymacja).
+zählt pro Intervall die	counts per interval the	liczy na interwał
+~§U (alle Bits §)	~§U (all bits §)	~§U (wszystkie bity §)
+§ GiB (PS-Bit im PDPT)	§ GiB (PS bit in PDPT)	§ GiB (bit PS w PDPT)
+§ KiB, Blöcke §ᵏ, Mindestgröße § KiB	§ KiB, blocks §ᵏ, minimum size § KiB	§ KiB, bloki §ᵏ, minimalny rozmiar § KiB
+§ KiB, ein freier Block.	§ KiB, one free block.	§ KiB, jeden wolny blok.
+§ MiB (PS-Bit im PD)	§ MiB (PS bit in PD)	§ MiB (bit PS w PD)
+§ Programm → Prozess	§ Program → process	§ Program → proces
+§ Replacement-Simulator	§ Replacement simulator	§ Symulator replacement
+§ Zugriffe	§ accesses	§ dostępy
+§ bit	§ bit	§ bit
+§ bit = § index + § TI + § RPL.	§ bit = § index + § TI + § RPL.	§ bit = § index + § TI + § RPL.
+§ § HEA DES §	§ § HEA DES §	§ § HEA DES §
+§ § MER DES §	§ § MER DES §	§ § MER DES §
+§ · Gültigkeit prüfen	§ · Check validity	§ · Sprawdzenie poprawności
+§ · Page in	§ · Page in	§ · Page in
+§ · Referenz & Trap	§ · Reference & trap	§ · Referencja i trap
+§ ← Opfer	§ ← victim	§ ← ofiara
+§-bit Adresse (hex)	§-bit address (hex)	§-bitowy adres (hex)
+§-bit Adresse: § Bit Segment | § Bit Offset	§-bit address: § bit segment | § bit offset	§-bitowy adres: § bit segment | § bit offset
+§-bit virtuelle Adressen, page size	§-bit virtual addresses, page size	§-bitowe adresy wirtualne, page size
+§. FIFO §nd chance degeneriert zu FIFO, wenn …	§. FIFO §nd chance degenerates to FIFO when …	§. FIFO §nd chance degeneruje do FIFO, gdy …
+§. Free space management in Linux?	§. Free space management in Linux?	§. Free space management w Linuksie?
+§. Lab: Rückgabe von sim_mmu bei illegaler Adresse?	§. Lab: return value of sim_mmu for an illegal address?	§. Lab: co zwraca sim_mmu przy nielegalnym adresie?
+§. Lab: choose_page_to_be_replaced bei FIFO?	§. Lab: choose_page_to_be_replaced for FIFO?	§. Lab: choose_page_to_be_replaced przy FIFO?
+§. Lab: listfree zeigt auf …	§. Lab: listfree points to …	§. Lab: listfree wskazuje na …
+§. Lab: wann wird beim Ersetzen auf Disk geschrieben?	§. Lab: when is a page written to disk on replacement?	§. Lab: kiedy przy zastępowaniu następuje zapis na dysk?
+§. Lab: welche Funktion ist Hardware?	§. Lab: which function is hardware?	§. Lab: która funkcja to hardware?
+§. Linux page aging: Start und Zugriff	§. Linux page aging: start and access	§. Linux page aging: start i dostęp
+§. Mach §: active pages queue enthält …	§. Mach §: the active pages queue holds …	§. Mach §: kolejka active pages zawiera …
+§. Nachteil von global replacement?	§. Drawback of global replacement?	§. Wada global replacement?
+§. PFF: PF-Rate über dem upper threshold →	§. PFF: PF rate above the upper threshold →	§. PFF: współczynnik PF powyżej upper threshold →
+§. Pager für heap und stack?	§. Pager for heap and stack?	§. Pager dla heap i stack?
+§. Physical address bei Segmentation =	§. Physical address with segmentation =	§. Physical address przy segmentation =
+§. Placement policy bei Paging?	§. Placement policy with paging?	§. Placement policy przy paging?
+§. Problem von NFU und Lösung?	§. Problem of NFU and its fix?	§. Problem NFU i rozwiązanie?
+§. Reference string § § § § § § zählt als …	§. Reference string § § § § § § counts as …	§. Reference string § § § § § § liczy się jako …
+§. Register für die Segment Table im RAM?	§. Register for the segment table in RAM?	§. Rejestr dla segment table w RAM?
+§. Simulationsergebnis zu Gap-Allocation?	§. Simulation result for gap allocation?	§. Wynik symulacji gap allocation?
+§. Was ist KEINE Lösung gegen Thrashing?	§. What is NOT a fix for thrashing?	§. Co NIE jest rozwiązaniem thrashingu?
+§. Welchen replacement scope nutzt Windows (laut Folien)?	§. Which replacement scope does Windows use (per the slides)?	§. Jaki replacement scope ma Windows (wg slajdów)?
+§. Welcher Algorithmus kann Belady's anomaly zeigen?	§. Which algorithm can show Belady's anomaly?	§. Który algorytm może wykazać Belady's anomaly?
+§. Wer verdrängt TLB-Einträge auf x§?	§. Who evicts TLB entries on x§?	§. Kto usuwa wpisy TLB na x§?
+§. Wie viele Index-Bits hat ein Pentium-Selector?	§. How many index bits does a Pentium selector have?	§. Ile bitów indeksu ma selector Pentium?
+§. W§K working set Größe (laut Folien)?	§. W§K working set size (per the slides)?	§. Rozmiar working set W§K (wg slajdów)?
+§. W§K: Frame nicht mehr im WS, Daten noch da, PMT zeigt drauf	§. W§K: frame no longer in WS, data still there, PMT points to it	§. W§K: ramka już nie w WS, dane nadal są, PMT na nią wskazuje
+§. Zwei-stufiges Paging IA-§, § Seiten in § getrennten Bereichen: Tabellenspeicher?	§. Two-level paging IA-§, § pages in § separate areas: table memory?	§. Dwupoziomowy paging IA-§, § strony w § oddzielnych obszarach: pamięć na tabele?
+§. x§-§-Adresse ist canonical, wenn …	§. An x§-§ address is canonical if …	§. Adres x§-§ jest canonical, gdy …
+§/§ richtig	§/§ correct	§/§ poprawnie
+§nd chance: R=§ beim Laden (wie im Lab)	§nd chance: R=§ on load (as in the lab)	§nd chance: R=§ przy ładowaniu (jak w labie)
+· Befehle in Datei,	· commands in a file,	· polecenia w pliku,
+· EPS mit	· EPS with	· EPS przez
+· Einträge = §/§ = § →	· entries = §/§ = § →	· wpisy = §/§ = § →
+· Opfer = niedrigstes age.	· victim = lowest age.	· ofiara = najniższe age.
+· Schrittmodus bis § Referenzen, darüber nur Report.	· step mode up to § references, above that report only.	· tryb krokowy do § referencji, powyżej tylko raport.
+· Zugriff	· access	· dostęp
+· oberste Ebene = § − §·§ =	· top level = § − §·§ =	· najwyższy poziom = § − §·§ =
+· oberste Ebene nur	· top level only	· najwyższy poziom tylko
+· § bit = GDT	· § bit = GDT	· § bit = GDT
+· § bit = LDT	· § bit = LDT	· § bit = LDT
+· § bit = §	· § bit = §	· § bit = §
+Überblick & Lernweg	Overview & study path	Przegląd i ścieżka nauki
+Überlauf → §-bit counter	overflow → §-bit counter	przepełnienie → §-bitowy counter
+Übersetzen	Translate	Przetłumacz adres
+Übersetzung zur Laufzeit in Hardware.	Translation at run time in hardware.	Translacja w czasie działania w hardware.
+Übung: § bit, § KiB, § B	Exercise: § bit, § KiB, § B	Ćwiczenie: § bit, § KiB, § B
+Σ WS > frames ⇒ Prozess suspendieren	Σ WS > frames ⇒ suspend a process	Σ WS > frames ⇒ zawieś proces
+– Frame-Pointer kaputt (off-by-one schon bei §).	– frame pointer broken (off-by-one already at §).	– frame pointer zepsuty (off-by-one już przy §).
+– Lösung ansehen?	– view the solution?	– zobaczyć rozwiązanie?
+– OS prüft, ob die Adresse zum Prozess gehört. Nein → Prozess beenden (segfault). Ja → Seite muss nachgeladen werden.	– the OS checks whether the address belongs to the process. No → terminate the process (segfault). Yes → the page must be loaded.	– OS sprawdza, czy adres należy do procesu. Nie → zakończ proces (segfault). Tak → stronę trzeba doładować.
+– Prozess greift auf eine Seite zu. Die MMU liest den PMT-Eintrag:	– the process accesses a page. The MMU reads the PMT entry:	– proces odwołuje się do strony. MMU czyta wpis PMT:
+– die unterbrochene Instruktion wird	– the interrupted instruction is	– przerwana instrukcja jest
+– freien Frame suchen. Keiner frei →	– look for a free frame. None free →	– szukaj wolnej ramki. Brak wolnej →
+– gewünschte Seite von Disk in den Frame laden. Der Prozess ist	– load the requested page from disk into the frame. The process is	– załaduj żądaną stronę z dysku do ramki. Proces jest
+→ Bits §–§ müssen	→ bits §–§ must be	→ bity §–§ muszą być
+→ Hardware löst einen	→ hardware raises a	→ hardware zgłasza
+→ Prozess	→ suspend a	→ zawieś
+→ Seiten bleiben im RAM → wenige Faults.	→ pages stay in RAM → few faults.	→ strony zostają w RAM → mało faultów.
+→ Seiten werden verdrängt und wieder gebraucht → viele PFs.	→ pages get evicted and needed again → many PFs.	→ strony są wypierane i znów potrzebne → dużo PF.
+→ frame f (+ valid/present bit)	→ frame f (+ valid/present bit)	→ frame f (+ valid/present bit)
+→ höchstens § PF pro	→ at most § PF per	→ najwyżej § PF na
+→ kein Belady.	→ no Belady.	→ brak Belady.
+→ noch mehr PFs.	→ even more PFs.	→ jeszcze więcej PF.
+→ Übersetzung virtual → physical,	→ translation virtual → physical,	→ translacja virtual → physical,
+◀ Schritt	◀ Step	◀ Krok
+◀ Zurück	◀ Back	◀ Wstecz
+☰ Inhalt ausblenden	☰ Hide contents	☰ Ukryj spis
+☰ Inhalt einblenden	☰ Show contents	☰ Pokaż spis
+✓ P§ = § K → Lücke § K	✓ P§ = § K → hole § K	✓ P§ = § K → luka § K
+✓ Treffer	✓ hit	✓ trafienie
+✓ canonical · obere Hälfte (Kernel)	✓ canonical · upper half (kernel)	✓ canonical · górna połowa (kernel)
+✓ canonical · untere Hälfte (User)	✓ canonical · lower half (user)	✓ canonical · dolna połowa (user)
+✓ passt in buf	✓ fits in buf	✓ mieści się w buf
+✓ zwischen den Schwellen → frames bleiben	✓ between the thresholds → frames stay	✓ między progami → frames zostają
+✓ §/§ richtig	✓ §/§ correct	✓ §/§ poprawnie
+✗ Adressbits müssen größer als die Offset-Bits (§) sein	✗ Address bits must be larger than the offset bits (§)	✗ Bity adresu muszą być większe niż bity offsetu (§)
+✗ Adresse muss in § … § liegen (§ bit)	✗ Address must be in § … § (§ bit)	✗ Adres musi być w § … § (§ bit)
+✗ Anfrage §–§ KiB	✗ Request §–§ KiB	✗ Żądanie §–§ KiB
+✗ Belady's anomaly bei FIFO	✗ Belady's anomaly with FIFO	✗ Belady's anomaly przy FIFO
+✗ Bis zu § Hex-Ziffern eingeben	✗ Enter up to § hex digits	✗ Wpisz do § cyfr hex
+✗ C = § KiB: kein freier Block ≥ § KiB	✗ C = § KiB: no free block ≥ § KiB	✗ C = § KiB: brak wolnego bloku ≥ § KiB
+✗ GDT[§] existiert nicht (null descriptor) → General Protection Fault	✗ GDT[§] does not exist (null descriptor) → General Protection Fault	✗ GDT[§] nie istnieje (null descriptor) → General Protection Fault
+✗ Hex-Adresse §–§ eingeben	✗ Enter a hex address §–§	✗ Wpisz adres hex §–§
+✗ LDT[§] existiert nicht → General Protection Fault	✗ LDT[§] does not exist → General Protection Fault	✗ LDT[§] nie istnieje → General Protection Fault
+✗ Offset passt nicht in § bit (max §)	✗ Offset does not fit in § bit (max §)	✗ Offset nie mieści się w § bit (maks. §)
+✗ P§ = § K passt in keine Lücke → muss warten	✗ P§ = § K fits in no hole → must wait	✗ P§ = § K nie mieści się w żadnej luce → musi czekać
+✗ R §: illegale Adresse (Seite § ≥ numpags) → return ~§U	✗ R §: illegal address (page § ≥ numpags) → return ~§U	✗ R §: nielegalny adres (strona § ≥ numpags) → return ~§U
+✗ Selector ≤ § und Offset ≤ § (hex) eingeben	✗ Enter selector ≤ § and offset ≤ § (hex)	✗ Wpisz selector ≤ § i offset ≤ § (hex)
+✗ Virtual bits müssen größer als offset sein	✗ Virtual bits must be larger than offset	✗ Virtual bits muszą być większe niż offset
+✗ p zwischen § und § (z. B. § oder §/§)	✗ p between § and § (e.g. § or §/§)	✗ p między § a § (np. § lub §/§)
+✗ return address überschrieben	✗ return address overwritten	✗ return address nadpisany
+✗ saved RBP überschrieben	✗ saved RBP overwritten	✗ saved RBP nadpisany
+✗ §/§ richtig	✗ §/§ correct	✗ §/§ poprawnie
+✗ über upper threshold → Prozess bekommt mehr frames	✗ above upper threshold → process gets more frames	✗ powyżej upper threshold → proces dostaje więcej frames

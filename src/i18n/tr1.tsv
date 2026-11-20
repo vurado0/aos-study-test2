@@ -1,0 +1,438 @@
+(+ Rechte). Große ST im RAM, Register	(+ rights). Large ST in RAM, register	(+ prawa). Duża ST w RAM, rejestr
+(HW muss das unterstützen). Diesmal Treffer.	(HW must support this). This time it is a hit.	(HW musi to wspierać). Tym razem trafienie.
+(MMU kennt sie nicht).	(the MMU does not know it).	(MMU jej nie zna).
+(PMT + Daten), bei n Ebenen	(PMT + data), with n levels	(PMT + dane), przy n poziomach
+(Pentium: CS, DS …), unabhängig von den Adressbits.	(Pentium: CS, DS …), independent of the address bits.	(Pentium: CS, DS …), niezależnie od bitów adresu.
+(Ring §)	(ring §)	(pierścień §)
+(Ring §–§). Register:	(ring §–§). Registers:	(pierścień §–§). Rejestry:
+(UD§: Seite nachladen)	(UD§: load the page)	(UD§: doładować stronę)
+(alle Bits §),	(all bits §),	(wszystkie bity §),
+(anfangs leer), Algorithmus	(initially empty), algorithm	(początkowo puste), algorytm
+(base §). Nur	(base §). Only	(base §). Tylko
+(feiner als Segmente).	(finer than segments).	(drobniejsze niż segmenty).
+(ganzes Array ins Temp kopieren) → klein (Paare, §er) → wächst → letzter Merge greift aufs ganze Array → wieder Peak-Niveau.	(copy the whole array into temp) → small (pairs, groups of §) → grows → last merge touches the whole array → back at peak level.	(kopiowanie całej tablicy do temp) → mały (pary, czwórki §) → rośnie → ostatni merge obejmuje całą tablicę → znów poziom szczytu.
+(gehen an andere Prozesse)	(go to other processes)	(trafiają do innych procesów)
+(gewollt).	(intended).	(zamierzone).
+(gleich groß).	(same size).	(tej samej wielkości).
+(hier: Intervall = Anzahl R/W-Zugriffe).	(here: interval = number of R/W accesses).	(tutaj: interwał = liczba dostępów R/W).
+(laut Lab-Anleitung, mit dem Original-gen_trace).	(according to the lab handout, with the original gen_trace).	(według instrukcji labu, z oryginalnym gen_trace).
+(letzte Seite halb leer).	(last page half empty).	(ostatnia strona w połowie pusta).
+(libc: gleiche base in beiden STs, read-only/execute).	(libc: same base in both STs, read-only/execute).	(libc: ta sama base w obu ST, read-only/execute).
+(nur mit	(only with	(tylko z
+(siehe Simulator §).	(see simulator §).	(zob. symulator §).
+(swap / Datei)	(swap / file)	(swap / plik)
+(~§ Prozesse): jeder Prozess hat genug frames für sein working set.	(~§ processes): every process has enough frames for its working set.	(~§ procesów): każdy proces ma dość frames na swój working set.
+(§ % der letzten Seite leer)	(§ % of the last page empty)	(§ % ostatniej strony puste)
+(§ Einträge, Tabelle nicht voll)	(§ entries, table not full)	(§ wpisów, tabela niepełna)
+(Ø ½ Seite); PMT kostet selbst frames.	(avg. ½ page); the PMT itself costs frames.	(śr. ½ strony); sama PMT zajmuje frames.
+) und O(§) Anhängen am Ende.	) and O(§) appending at the end.	) i O(§) dopisanie na końcu.
++ Info zur Wiederherstellung, frame in free list. Unmodifiziert → einfach frei. Genug gewonnen → Daemon schläft.	+ info for restoring, frame into free list. Unmodified → simply free. Enough reclaimed → daemon sleeps.	+ info do odtworzenia, frame do free list. Niezmodyfikowana → po prostu wolna. Dość odzyskane → daemon śpi.
+, Eintrag	, entry	, wpis
+, NFU wählt	, NFU picks	, NFU wybiera
+, Rest § K. Best-fit: kleinste passende · geprüft:	, remainder § K. Best-fit: smallest that fits · checked:	, reszta § K. Best-fit: najmniejsza pasująca · sprawdzone:
+, Rest § K. First-fit: erste passende · geprüft:	, remainder § K. First-fit: first that fits · checked:	, reszta § K. First-fit: pierwsza pasująca · sprawdzone:
+, Rest § K. Next-fit: erste passende ab Zeiger · geprüft:	, remainder § K. Next-fit: first that fits from the pointer · checked:	, reszta § K. Next-fit: pierwsza pasująca od wskaźnika · sprawdzone:
+, Rest § K. Worst-fit: größte · geprüft:	, remainder § K. Worst-fit: largest · checked:	, reszta § K. Worst-fit: największa · sprawdzone:
+, TLB-Zugriff	, TLB access	, dostęp do TLB
+, bei minimalem overhead und maximaler MM-Nutzung.	, with minimal overhead and maximal MM usage.	, przy minimalnym overhead i maksymalnym wykorzystaniu MM.
+, d = Bits §–§ =	, d = bits §–§ =	, d = bity §–§ =
+, die CPU führt andere Prozesse aus.	, the CPU runs other processes.	, CPU wykonuje inne procesy.
+, jede Tabelle = § page. Für	, each table = § page. Designed for	, każda tabela = § page. Zaprojektowana dla
+, jede Tabelle passt in eine page.	, each table fits into one page.	, każda tabela mieści się w jednej page.
+, nicht aus den PC-Bits → PC ist reiner offset.	, not from the PC bits → PC is a pure offset.	, nie z bitów PC → PC to czysty offset.
+, page bits = § − § =	, page bits = § − § =	, bity page = § − § =
+, virtueller in	, virtual memory into	, wirtualna na
+, § Zugriffe statt §. PS-Bit:	, § accesses instead of §. PS bit:	, § dostępy zamiast §. Bit PS:
+. Bei jedem Start anders → eine feste Zieladresse trifft nicht mehr.	. Different on every start → a fixed target address no longer hits.	. Przy każdym starcie inna → stały adres docelowy już nie trafia.
+. Fenster Δ =	. Window Δ =	. Okno Δ =
+. Frei insgesamt § K (external fragmentation). Geprüft:	. Free in total § K (external fragmentation). Checked:	. Wolne łącznie § K (external fragmentation). Sprawdzone:
+. Freigeben: ist der Buddy (Adresse XOR Größe) frei und gleich groß →	. Freeing: if the buddy (address XOR size) is free and the same size →	. Zwalnianie: jeśli buddy (adres XOR rozmiar) jest wolny i tej samej wielkości →
+. GDT/LDT je bis §¹³ = § Einträge.	. GDT/LDT up to §¹³ = § entries each.	. GDT/LDT każda do §¹³ = § wpisów.
+. Hier gleiche Wahl. Pro Tick: counter >> §, R ins MSB, dann alle R ← §.	. Same choice here. Per tick: counter >> §, R into the MSB, then all R ← §.	. Tu ten sam wybór. Na tick: counter >> §, R do MSB, potem wszystkie R ← §.
+. LRU: § am längsten nicht benutzt (zuletzt t§) → raus.	. LRU: § unused for the longest time (last at t§) → out.	. LRU: § najdłużej nieużywana (ostatnio t§) → wylatuje.
+. PML§ = Bits §–§ =	. PML§ = bits §–§ =	. PML§ = bity §–§ =
+. Paging macht praktisch alles.	. Paging does practically everything.	. Paging robi praktycznie wszystko.
+. Second-level tables existieren nur für	. Second-level tables exist only for	. Second-level tables istnieją tylko dla
+. Segment ist	. A segment is	. Segment jest
+. Tabelle =	. Table =	. Tabela =
+. Worst-fit klingt gut, ist es nicht.	. Worst-fit sounds good, but it is not.	. Worst-fit brzmi dobrze, ale nie jest.
+. §nd chance: Erste mit R=§: § → raus.	. §nd chance: first with R=§: § → out.	. §nd chance: pierwsza z R=§: § → wylatuje.
+: ASC trivial, DES sehr schlecht	: ASC trivial, DES very bad	: ASC trywialne, DES bardzo złe
+: ASC, DES, RAN	: ASC, DES, RAN	: ASC, DES, RAN
+: Adressübersetzung, Gültigkeitsprüfung, Present-Check, Modified/Referenced/Timestamp setzen, Page-Fault-Trap.	: address translation, validity check, present check, setting modified/referenced/timestamp, page-fault trap.	: translacja adresu, kontrola poprawności, present check, ustawianie modified/referenced/timestamp, trap page fault.
+: Fault behandeln, freie Frames (Frame-Tabelle), Opfer wählen, Seite laden, dirty Seite zurückschreiben.	: handle the fault, free frames (frame table), choose the victim, load the page, write back the dirty page.	: obsługa faultu, wolne ramki (tablica ramek), wybór ofiary, ładowanie strony, zapis dirty strony.
+: G=§ limit in Byte (max § MiB), G=§ in §-KiB-pages (max § GiB).	: G=§ limit in bytes (max § MiB), G=§ in §-KiB pages (max § GiB).	: G=§ limit w bajtach (maks. § MiB), G=§ w stronach §-KiB (maks. § GiB).
+: Neustart nach PF	: restart after PF	: restart po PF
+: Summe der working sets > frames. Prozesse warten nur noch auf Paging, die Auslastung bricht ein. Lösung:	: sum of the working sets > frames. Processes only wait for paging, utilization collapses. Fix:	: suma working sets > frames. Procesy tylko czekają na paging, wykorzystanie się załamuje. Rozwiązanie:
+: aufeinanderfolgende Zugriffe auf dieselbe Seite =	: consecutive accesses to the same page =	: kolejne dostępy do tej samej strony =
+: bei PF mehrere zusammenhängende Seiten. Desktop:	: on a PF several contiguous pages. Desktop:	: przy PF kilka sąsiednich stron. Desktop:
+: frames beim initial loading nach Prozesstyp.	: frames at initial loading by process type.	: frames przy initial loading wg typu procesu.
+: gleicher Code, jeder Prozess hat eigene Datenkopie.	: same code, every process has its own copy of the data.	: ten sam kod, każdy proces ma własną kopię danych.
+: mehr Prozesse → CPU hat mehr zu tun, Auslastung steigt.	: more processes → CPU has more to do, utilization rises.	: więcej procesów → CPU ma więcej pracy, wykorzystanie rośnie.
+: schnell bei RAN, sehr langsam bei ASC/DES (erstes Element als Pivot)	: fast on RAN, very slow on ASC/DES (first element as pivot)	: szybki przy RAN, bardzo wolny przy ASC/DES (pierwszy element jako pivot)
+: selector § bit (§ + § + §), offset § bit; linear ≠ physical.	: selector § bit (§ + § + §), offset § bit; linear ≠ physical.	: selector § bit (§ + § + §), offset § bit; linear ≠ physical.
+: verschiebt active → inactive, wenn freie frames unter einen	: moves active → inactive when free frames drop below a	: przenosi active → inactive, gdy wolne frames spadną poniżej
+: § Zugriffe = § Intervalle · max WS § von § Seiten · Ø §	: § accesses = § intervals · max WS § of § pages · avg §	: § dostępów = § interwałów · maks. WS § z § stron · śr. §
+: § bit genutzt, Bits §–§ = Bit §.	: § bits used, bits §–§ = bit §.	: § bitów używanych, bity §–§ = bit §.
+: ändert sich, über	: changes, via	: zmienia się, przez
+: überall schnell	: fast everywhere	: wszędzie szybki
+; Start mit minimum WS; WS	; starts with minimum WS; WS	; start z minimum WS; WS
+; WS wächst bei PFs.	; WS grows with PFs.	; WS rośnie przy PF.
+; alles andere OS.	; everything else is OS.	; cała reszta to OS.
+; bei paging	; with paging	; przy paging
+; leer =	; empty =	; pusta =
+= Belady's anomaly. OPT §/§, LRU §/§. FIFO = älteste	= Belady's anomaly. OPT §/§, LRU §/§. FIFO = oldest	= Belady's anomaly. OPT §/§, LRU §/§. FIFO = najstarsza
+= Page Fault / Fehler	= page fault / error	= page fault / błąd
+= aktuelle Zeile	= current row	= bieżący wiersz
+= erstes nehmen und	= take the first one and	= weź pierwszą i
+= ok / Treffer	= ok / hit	= ok / trafienie
+= segments made of pages: Segmenteintrag zeigt auf eine page table. Pionier	= segments made of pages: the segment entry points to a page table. Pioneer	= segments made of pages: wpis segmentu wskazuje na page table. Pionier
+A freigeben	free A	zwolnij A
+AOS Speicher-Trainer	AOS Memory Trainer	AOS Trener pamięci
+AOS · Speicher	AOS · Memory	AOS · Pamięć
+Abweichungen kommen vom nachgebauten gen_trace; die Reihenfolge der Algorithmen ist die Aussage.	Differences come from the rebuilt gen_trace; the ranking of the algorithms is what matters.	Różnice wynikają z odtworzonego gen_trace; liczy się kolejność algorytmów.
+Access rights in translation tables	Access rights in translation tables	Access rights in translation tables
+Adresse	Address	Adres
+Adresse (hex, § bit)	Address (hex, § bit)	Adres (hex, § bit)
+Adresse (s, d) =	Address (s, d) =	Adres (s, d) =
+Aging wählt	Aging picks	Aging wybiera
+Aktuelle Referenz	Current reference	Bieżąca referencja
+Algorithmus	Algorithm	Algorytm
+Alle bekommen eine §. Chance, dann wieder die älteste.	Everyone gets a §nd chance, then the oldest goes again.	Wszystkie dostają §. szansę, potem znów najstarsza.
+Alle § Anfragen erledigt	All § requests done	Wszystkie § żądania obsłużone
+Alle § vergleichen	Compare all §	Porównaj wszystkie §
+Alles ausführen ⏭	Run all ⏭	Wykonaj wszystko ⏭
+Alles ⏭	All ⏭	Wszystko ⏭
+Alpha § bit	Alpha § bit	Alpha § bit
+Anfordern	Request	Przydziel
+Anfrage (KiB)	Request (KiB)	Żądanie (KiB)
+Animation	Animation	Animacja
+Ansicht	View	Widok
+Anzahl Frames	Number of frames	Liczba ramek
+Anzahl Page Faults	Number of page faults	Liczba page faults
+Aufgabe: BUB vs. INS	Task: BUB vs. INS	Zadanie: BUB vs. INS
+Aufrunden auf §ᵏ →	Rounding up to §ᵏ →	Zaokrąglenie do §ᵏ →
+Aufrunden auf §ᵏ:	Round up to §ᵏ:	Zaokrąglenie do §ᵏ:
+Ausgabe (Modus D)	Output (mode D)	Wyjście (tryb D)
+Außerdem numillegalrefs++.	Also numillegalrefs++.	Dodatkowo numillegalrefs++.
+B freigeben	free B	zwolnij B
+BUB durchläuft pro Pass den ganzen unsortierten Teil → großes WS, schrumpft mit jedem Pass und braucht mehr Intervalle. INS arbeitet nur am Ende des sortierten Teils → braucht insgesamt weniger Zugriffe.	BUB scans the whole unsorted part on every pass → large WS that shrinks with each pass and needs more intervals. INS only works at the end of the sorted part → needs fewer accesses overall.	BUB w każdym przebiegu przechodzi całą nieposortowaną część → duży WS, który maleje z każdym przebiegiem i potrzebuje więcej interwałów. INS pracuje tylko na końcu posortowanej części → potrzebuje łącznie mniej dostępów.
+Balken pro Zeile relativ zum Maximum; Minimum der Zeile	Bars relative to the row maximum; row minimum	Paski względem maksimum wiersza; minimum wiersza
+Bedeutung	Meaning	Znaczenie
+Begriff	Term	Pojęcie
+Bei	On	Przy
+Beispiel	Example	Przykład
+Beispiel Schritt ▶	Example step ▶	Przykład krok ▶
+Beispiel externe Fragmentierung	Example of external fragmentation	Przykład fragmentacji zewnętrznej
+Beispiel fertig	Example finished	Przykład zakończony
+Beispiel: A = § KiB anfordern ▶	Example: request A = § KiB ▶	Przykład: przydziel A = § KiB ▶
+Beispiel: A freigeben ▶	Example: free A ▶	Przykład: zwolnij A ▶
+Beispiel: B = § KiB anfordern ▶	Example: request B = § KiB ▶	Przykład: przydziel B = § KiB ▶
+Beispiel: B freigeben ▶	Example: free B ▶	Przykład: zwolnij B ▶
+Beispiel: C = § KiB anfordern ▶	Example: request C = § KiB ▶	Przykład: przydziel C = § KiB ▶
+Beispiel: C freigeben ▶	Example: free C ▶	Przykład: zwolnij C ▶
+Beispiel: D = § KiB anfordern ▶	Example: request D = § KiB ▶	Przykład: przydziel D = § KiB ▶
+Beispiel: D freigeben ▶	Example: free D ▶	Przykład: zwolnij D ▶
+Berechnen	Compute	Oblicz
+Bewertung	Assessment	Ocena
+Bit § =	Bit § =	Bit § =
+Bit § = §	Bit § = §	Bit § = §
+Bit § = §, Bits §–§ = § →	Bit § = §, bits §–§ = § →	Bit § = §, bity §–§ = § →
+Bits oberste Ebene	Bits of top level	Bity najwyższego poziomu
+Bits zerlegen, PA berechnen, Ebenen bestimmen. Kommt fast sicher.	Split the bits, compute the PA, determine the levels. Almost certainly in the exam.	Rozłóż bity, oblicz PA, ustal poziomy. Prawie na pewno na egzaminie.
+Bits §–§ = Bit §	Bits §–§ = bit §	Bity §–§ = bit §
+Bits §–§ = Kopie von Bit §	Bits §–§ = copy of bit §	Bity §–§ = kopia bitu §
+Bits §–§ = §	Bits §–§ = §	Bity §–§ = §
+Bits §–§ ≠ §	Bits §–§ ≠ §	Bity §–§ ≠ §
+Bits:	Bits:	Bity:
+Blockgröße (KiB)	Block size (KiB)	Rozmiar bloku (KiB)
+Braucht die Zukunft. Simulator lädt die ganze Trace vorab („cheating“) und liefert die	Needs the future. The simulator loads the whole trace in advance ("cheating") and provides the	Wymaga przyszłości. Symulator wczytuje cały trace z góry („cheating”) i daje
+Braucht feste Adresse?	Needs a fixed address?	Wymaga stałego adresu?
+Buddy @§ frei → verschmelze zu § @§	Buddy @§ free → merge into § @§	Buddy @§ wolny → scal do § @§
+Buddy belegt → kein Verschmelzen.	Buddy in use → no merging.	Buddy zajęty → brak scalania.
+Buddy system mit § KiB, Mindestblock § KiB. Anfrage:	Buddy system with § KiB, minimum block § KiB. Request:	Buddy system z § KiB, minimalny blok § KiB. Żądanie:
+Buffer nicht referenzierter Seiten	Buffer of unreferenced pages	Bufor niereferencjonowanych stron
+C freigeben	free C	zwolnij C
+CPU / Prozess	CPU / process	CPU / proces
+Canonical wäre:	Canonical would be:	Canonical byłby:
+Circular list + R-Bit. Laden: R←§. Referenz: R←§.	Circular list + R bit. Load: R←§. Reference: R←§.	Circular list + bit R. Ładowanie: R←§. Referencja: R←§.
+Code-Lückentext	Code fill-in	Kod z lukami
+D freigeben	free D	zwolnij D
+DES	DES	DES
+Darstellungs-Kodierung	Visual encoding	Kodowanie wizualne
+Das OS invalidiert nur (context switch, INVLPG). Software-managed TLB: MIPS.	The OS only invalidates (context switch, INVLPG). Software-managed TLB: MIPS.	OS tylko unieważnia (context switch, INVLPG). Software-managed TLB: MIPS.
+Datenstrukturen & zirkuläre Listen	Data structures & circular lists	Struktury danych i listy cykliczne
+Definitionen + Gegenüberstellungen global/local.	Definitions + global/local comparisons.	Definicje + porównania global/local.
+Degree of multiprogramming erhöhen	Increase the degree of multiprogramming	Zwiększyć degree of multiprogramming
+Den Simulator	Rebuild the simulator	Odtworzyć symulator
+Descriptor-Tabellen (Beispiel)	Descriptor tables (example)	Tablice deskryptorów (przykład)
+Direkt aufeinanderfolgende Zugriffe auf dieselbe Seite = eine Referenz.	Directly consecutive accesses to the same page = one reference.	Bezpośrednio kolejne dostępy do tej samej strony = jedna referencja.
+EAT in ns	EAT in ns	EAT w ns
+EAT mit Page Faults	EAT with page faults	EAT z page faults
+EAT mit TLB	EAT with TLB	EAT z TLB
+Ebene §	Level §	Poziom §
+Ebenen	Levels	Poziomy
+Ebenen n	Levels n	Poziomy n
+Eigene Anfrage (K)	Custom request (K)	Własne żądanie (K)
+Eintrag	Entry	Wpis
+Einträge pro Tabelle = page size / entry size = § / § =	Entries per table = page size / entry size = § / § =	Wpisy na tabelę = page size / entry size = § / § =
+Ende: Sorted / Out of order	End: Sorted / Out of order	Koniec: Sorted / Out of order
+Erst zur Laufzeit entstehen:	Created only at run time:	Powstają dopiero w czasie działania:
+Erstes nehmen, Ring weiterdrehen.	Take the first, rotate the ring.	Weź pierwszą, obróć pierścień.
+Eviction macht die Hardware	Eviction is done by hardware	Eviction robi hardware
+Executable file und Memory map	Executable file and memory map	Executable file i memory map
+FIFO, LRU, OPT, §nd Chance in der Tabelle. Belady's anomaly.	FIFO, LRU, OPT, §nd chance in the table. Belady's anomaly.	FIFO, LRU, OPT, §nd chance w tabeli. Belady's anomaly.
+FIFO-Queue: R=§ → R←§, ans Ende; R=§ → ersetzen.	FIFO queue: R=§ → R←§, to the end; R=§ → replace.	Kolejka FIFO: R=§ → R←§, na koniec; R=§ → zastąp.
+FIFO: Frame in listoccupied einfügen	FIFO: insert a frame into listoccupied	FIFO: wstawienie ramki do listoccupied
+Fenster = die letzten Δ = § Referenzen bis t = § (markiert).	Window = the last Δ = § references up to t = § (marked).	Okno = ostatnie Δ = § referencji do t = § (zaznaczone).
+Fenster Δ	Window Δ	Okno Δ
+Folien-Beispiel	Slide example	Przykład ze slajdów
+Folien-Beispiel (… § § § § § § § § §, Δ=§)	Slide example (… § § § § § § § § §, Δ=§)	Przykład ze slajdów (… § § § § § § § § §, Δ=§)
+Folien-String mit FIFO:	Slide string with FIFO:	String ze slajdów z FIFO:
+Format string arbeitet relativ zum Stack und braucht keine festen Adressen.	Format string works relative to the stack and needs no fixed addresses.	Format string działa względem stosu i nie potrzebuje stałych adresów.
+Frage	Question	Pytanie
+Fragmente häufen sich am Anfang · in der Praxis am häufigsten	fragments pile up at the start · most common in practice	fragmenty gromadzą się na początku · najczęstszy w praktyce
+Fragmentierung gleichmäßig verteilt	fragmentation spread evenly	fragmentacja rozłożona równomiernie
+Frame-Tabelle	frame table	tablica ramek
+Frame/Opfer	Frame/victim	Frame/ofiara
+Frei: §K gesamt – eine Anfrage über §K	Free: §K in total – a request above §K	Wolne: §K łącznie – żądanie powyżej §K
+Freie Frames schnell finden und Frame → Seite zuordnen, ohne die ganze Seitentabelle zu durchsuchen.	Find free frames quickly and map frame → page without scanning the whole page table.	Szybko znaleźć wolne ramki i przypisać ramka → strona bez przeszukiwania całej tablicy stron.
+Freier Speicher in	Free memory split into	Wolna pamięć podzielona na
+Für	For	Dla
+Für max. § % Verlangsamung: p ≤ §·§ / (§ − §) =	For at most § % slowdown: p ≤ §·§ / (§ − §) =	Dla maks. § % spowolnienia: p ≤ §·§ / (§ − §) =
+G-Bit	G bit	Bit G
+G=§ letztes gültiges Byte	G=§ last valid byte	G=§ ostatni poprawny bajt
+Gerätespeicher (nicht Disk)	device memory (not disk)	pamięć urządzenia (nie dysk)
+Gesamtgröße des Arrays (einmal)	total size of the array (once)	całkowity rozmiar tablicy (raz)
+Großes WS	Large WS	Duży WS
+Grundlage: deine Zusammenfassung UD§/UD§ und das Lab-§-Cheatsheet (UAH, ATC-SOL). gen_trace und calculate_ws sind im Browser nachgebaut; ihre Zählwerte können vom Original abweichen, Table § zeigt die Originalwerte.	Based on: your UD§/UD§ summary and the Lab § cheat sheet (UAH, ATC-SOL). gen_trace and calculate_ws are rebuilt in the browser; their counts may differ from the original, Table § shows the original values.	Podstawa: twoje streszczenie UD§/UD§ i ściągawka do Lab § (UAH, ATC-SOL). gen_trace i calculate_ws odtworzono w przeglądarce; ich liczby mogą się różnić od oryginału, Table § pokazuje oryginalne wartości.
+Größere pages → mehr internal frag.,	Larger pages → more internal frag.,	Większe pages → więcej internal frag.,
+Hell / Dunkel	Light / Dark	Jasny / Ciemny
+Höherer	Higher	Wyższy
+IA-§ mit § KiB pages: einstufige PMT = §²⁰ · § B =	IA-§ with § KiB pages: single-level PMT = §²⁰ · § B =	IA-§ z § KiB pages: jednopoziomowa PMT = §²⁰ · § B =
+Inactive = Buffer unbenutzter Seiten; pageout daemon schiebt active → inactive.	Inactive = buffer of unused pages; the pageout daemon moves active → inactive.	Inactive = bufor nieużywanych stron; pageout daemon przenosi active → inactive.
+Inhalt	Contents	Spis treści
+Instruktion neu starten	restart the instruction	restart instrukcji
+Intervall (je § Zugriffe)	Interval (§ accesses each)	Interwał (po § dostępów)
+Ja (Ziel für return address)	Yes (target for the return address)	Tak (cel dla return address)
+Jede Aufgabe wird neu gewürfelt. Antwort eintragen, prüfen, Lösung mit Rechenweg ansehen.	Every task is randomly generated. Enter your answer, check it, view the solution with the working.	Każde zadanie jest losowane. Wpisz odpowiedź, sprawdź, zobacz rozwiązanie z obliczeniami.
+Jedem Prozess so viele frames, wie er braucht:	Give every process as many frames as it needs:	Każdemu procesowi tyle frames, ile potrzebuje:
+Jeder Durchlauf löscht R-Bits. Spätestens nach einer Runde sind alle § → verhält sich wie FIFO.	Every pass clears R bits. After one round at the latest all are § → behaves like FIFO.	Każdy przebieg kasuje bity R. Najpóźniej po jednej rundzie wszystkie są § → zachowuje się jak FIFO.
+Jeder freie Frame ist gleich gut.	Every free frame is equally good.	Każda wolna ramka jest równie dobra.
+Kandidaten	Candidates	Kandydaci
+Kann per soft fault billig zurückgeholt werden.	Can be brought back cheaply via a soft fault.	Można tanio odzyskać przez soft fault.
+Kein Dateiabbild → swap area.	No file image → swap area.	Brak obrazu w pliku → swap area.
+Keine belegten Blöcke.	No allocated blocks.	Brak zajętych bloków.
+Kennt nur die	Knows only the	Zna tylko
+Kernel-Daten	Kernel data	Dane jądra
+Kette und Zeitpunkte	Chain and points in time	Łańcuch i momenty
+Klassiker: Lücken §, §, §, §, § K · Anfragen §, §, §, § K	Classic: holes §, §, §, §, § K · requests §, §, §, § K	Klasyk: luki §, §, §, §, § K · żądania §, §, §, § K
+Klick auf eine PMT-Zeile setzt die Seite	Clicking a PMT row selects that page	Kliknięcie wiersza PMT ustawia stronę
+Kodierung (ohne Farbe lesbar):	Encoding (readable without colour):	Kodowanie (czytelne bez koloru):
+Konzept-Quiz	Concept quiz	Quiz z pojęć
+Kurve A	Curve A	Krzywa A
+Kurve B	Curve B	Krzywa B
+LRU und OPT sind stack algorithms – mehr Frames nie mehr PFs.	LRU and OPT are stack algorithms – more frames never means more PFs.	LRU i OPT to stack algorithms – więcej ramek nigdy nie daje więcej PF.
+Lab § · Simulator	Lab § · simulator	Lab § · symulator
+Lab-Test: random § § HEA DES §	Lab test: random § § HEA DES §	Test labu: random § § HEA DES §
+Laden / Reset	Load / reset	Wczytaj / reset
+Leeren	Clear	Wyczyść
+Lernweg nach Priorität	Study path by priority	Ścieżka nauki wg priorytetu
+Letzte Seite eines Prozesses ist im Schnitt halb leer. External tritt bei Segmentation/MVT auf.	The last page of a process is half empty on average. External occurs with segmentation/MVT.	Ostatnia strona procesu jest średnio w połowie pusta. External występuje przy segmentation/MVT.
+Letzte § Referenzen:	Last § references:	Ostatnie § referencje:
+Limit-Check vor	limit check before	Limit check przed
+Liste der belegten Frames	List of occupied frames	Lista zajętych ramek
+Listen	Lists	Listy
+Logical address = selector (§ bit) : offset (§ bit)	Logical address = selector (§ bit) : offset (§ bit)	Logical address = selector (§ bit) : offset (§ bit)
+L§ Code-Lückentext	L§ Code fill-in	L§ Kod z lukami
+L§ Datenstrukturen & Listen	L§ Data structures & lists	L§ Struktury danych i listy
+L§ Paging-Simulator	L§ Paging simulator	L§ Symulator paging
+L§ Testfragen	L§ Exam questions	L§ Pytania testowe
+Länge von input:	Length of input:	Długość input:
+Lösung	Solution	Rozwiązanie
+Lösung einsetzen	Insert solution	Wstaw rozwiązanie
+Lücke	gap	luka
+Lücken ausfüllen, dann prüfen. Leerzeichen sind egal.	Fill in the gaps, then check. Spaces don't matter.	Uzupełnij luki, potem sprawdź. Spacje nie mają znaczenia.
+Lückentext	Fill-in	Luki
+Mach § · FIFO §nd chance mit drei Queues	Mach § · FIFO §nd chance with three queues	Mach § · FIFO §nd chance z trzema kolejkami
+Mach, W§K-Zustände, Linux kswapd, Buffer Overflow vs. Format String.	Mach, W§K states, Linux kswapd, buffer overflow vs. format string.	Mach, stany W§K, Linux kswapd, buffer overflow vs. format string.
+Max. Prozessgröße = virtual address space + Disk	Max. process size = virtual address space + disk	Maks. rozmiar procesu = virtual address space + dysk
+Mehr Prozesse verschärfen das Problem.	More processes make the problem worse.	Więcej procesów pogarsza problem.
+Mehrstufig: oberste Tabelle § B + je Region § Tabelle(n) à § KiB.	Multilevel: top table § B + per region § table(s) of § KiB.	Wielopoziomowo: górna tabela § B + na region § tabel(a) po § KiB.
+Mehrstufig: oberste Tabelle § KiB + je Region § Tabelle(n) à § KiB.	Multilevel: top table § KiB + per region § table(s) of § KiB.	Wielopoziomowo: górna tabela § KiB + na region § tabel(a) po § KiB.
+Memory protection bits	Memory protection bits	Memory protection bits
+Menge der Seiten, die im Fenster	Set of pages that were referenced in the window	Zbiór stron, które w oknie
+Mergesort braucht ein Zusatzarray gleicher Größe.	Mergesort needs an extra array of the same size.	Mergesort potrzebuje dodatkowej tablicy tej samej wielkości.
+Modifizierte Seite → Disk, PMT-Eintrag	Modified page → disk, PMT entry	Zmodyfikowana strona → dysk, wpis PMT
+Multilevel paging & Format der virtual address	Multilevel paging & format of the virtual address	Multilevel paging i format virtual address
+NFU vs. Aging (§-bit counter)	NFU vs. aging (§-bit counter)	NFU vs. aging (§-bitowy counter)
+NULL, wenn voll	NULL when full	NULL, gdy pełna
+Nachbau	Rebuild	Odtworzenie
+Nachteil	Disadvantage	Wada
+Nein (relativ zum Stack)	No (relative to the stack)	Nie (względem stosu)
+Neu mischen	Shuffle	Przetasuj
+Neue Aufgabe	New task	Nowe zadanie
+Neue PMT würfeln	Randomize PMT	Losuj nową PMT
+Noch keine Referenz verarbeitet. „Schritt ▶“ drücken.	No reference processed yet. Press "Step ▶".	Nie przetworzono jeszcze referencji. Naciśnij „Krok ▶”.
+Nur	Only	Tylko
+Nur dirty Seiten müssen beim Ersetzen auf Disk geschrieben werden („page dumps“).	Only dirty pages must be written to disk on replacement ("page dumps").	Tylko dirty strony trzeba przy zastępowaniu zapisać na dysk („page dumps”).
+Nur dirty Seiten → „Page dumps to disc“.	Only dirty pages → "Page dumps to disc".	Tylko dirty strony → „Page dumps to disc”.
+Nächste Anfrage	Next request	Następne żądanie
+Nächste Anfrage (§ K)	Next request (§ K)	Następne żądanie (§ K)
+O(§) Anhängen am Ende. Leer =	O(§) appending at the end. Empty =	O(§) dopisywanie na końcu. Pusta =
+O(§) Zugriff aufs erste (	O(§) access to the first (	O(§) dostęp do pierwszego (
+Objekte mit Abbild im Dateisystem	objects with an image in the file system	obiekty z obrazem w systemie plików
+Offset (hex, § bit)	Offset (hex, § bit)	Offset (hex, § bit)
+Offset-Bits bleiben gleich, nur p wird durch f ersetzt (Konkatenation f ‖ d).	Offset bits stay the same, only p is replaced by f (concatenation f ‖ d).	Bity offsetu zostają, tylko p zastępuje się przez f (konkatenacja f ‖ d).
+Ohne frt müsste das OS die ganze Seitentabelle durchsuchen.	Without frt the OS would have to scan the whole page table.	Bez frt OS musiałby przeszukiwać całą tablicę stron.
+Opfer	Victim	Ofiara
+Opfer wählen	choose victim	wybór ofiary
+Ops-Tabelle N=§ berechnen	Compute ops table N=§	Oblicz tabelę operacji N=§
+Optionen	Options	Opcje
+Overhead gegenüber m: § % · ohne TLB: § %	Overhead vs. m: § % · without TLB: § %	Overhead względem m: § % · bez TLB: § %
+PA (dez) oder trap	PA (dec) or trap	PA (dec) lub trap
+PA (hex) oder PF	PA (hex) or PF	PA (hex) lub PF
+PF-Anzahl deterministischer	more deterministic PF count	bardziej deterministyczna liczba PF
+PF-Rate sinkt normalerweise mit mehr frames –	The PF rate usually drops with more frames –	Współczynnik PF zwykle spada przy większej liczbie frames –
+PFs in Abhängigkeit der Frame-Anzahl (gleicher String)	PFs depending on the number of frames (same string)	PF w zależności od liczby ramek (ten sam string)
+Page Fault in § Schritten	Page fault in § steps	Page fault w § krokach
+Page Faults bis hier: § von § Referenzen (§ %)	Page faults so far: § of § references (§ %)	Page faults do tej pory: § z § referencji (§ %)
+Page Faults je Frame-Anzahl	Page faults per number of frames	Page faults wg liczby ramek
+Page in	Page in	Page in
+Page-In startet (PF)	page-in starts (PF)	page-in startuje (PF)
+Paging-Simulator (sim_paging)	Paging simulator (sim_paging)	Symulator paging (sim_paging)
+Paging-Übersetzung	Paging translation	Translacja paging
+Paging-Übersetzung Schritt für Schritt	Paging translation step by step	Translacja paging krok po kroku
+Partitionen zerstückelt. Bei	partitions. Occurs with	partycjami. Przy
+Physical address bits	Physical address bits	Physical address bits
+Physical bits	Physical bits	Physical bits
+Physischer Speicher (§ KiB)	Physical memory (§ KiB)	Pamięć fizyczna (§ KiB)
+Physischer Speicher in	Physical memory into	Pamięć fizyczna na
+Position bei	Position at	Pozycja w
+Probleme von LRU?	Problems of LRU?	Problemy LRU?
+Programm	Program	Program
+Programm neu starten (ASLR)	Restart program (ASLR)	Uruchom ponownie (ASLR)
+Prozess auf mehrere Partitionen verteilt: variabel ⇒	process spread over several partitions: variable ⇒	proces rozłożony na kilka partycji: zmienne ⇒
+Prozess bekommt mehr frames	process gets more frames	proces dostaje więcej frames
+Prozess nutzt	A process uses	Proces używa
+Prozess wird beendet	process is terminated	proces jest kończony
+Prozesse	processes	procesy
+Prozessgröße (Byte)	Process size (bytes)	Rozmiar procesu (bajty)
+Prüfen	Check	Sprawdź
+Prüfer	Checker	Sprawdzarka
+Prüfungstrainer	Exam trainer	Trener egzaminu
+P§: nicht benutzt	P§: not used	P§: nieużywana
+Queue alt → neu	Queue old → new	Kolejka stara → nowa
+R-Bit (§nd chance)	R bit (§nd chance)	Bit R (§nd chance)
+R-Bit je Frame	R bit per frame	Bit R na ramkę
+R-Bits der Seiten setzen, dann Clock-Tick. Oder das Tanenbaum-Beispiel abspielen.	Set the pages' R bits, then clock tick. Or play the Tanenbaum example.	Ustaw bity R stron, potem clock tick. Albo odtwórz przykład Tanenbauma.
+R-Bits setzen und „Clock-Tick“ drücken.	Set R bits and press "Clock tick".	Ustaw bity R i naciśnij „Clock-Tick”.
+R/W zählen · W → modified = § · LRU: timestamp = clock++ · §nd chance: referenced = §	count R/W · W → modified = § · LRU: timestamp = clock++ · §nd chance: referenced = §	licz R/W · W → modified = § · LRU: timestamp = clock++ · §nd chance: referenced = §
+R/W zählen, W → modified	count R/W, W → modified	licz R/W, W → modified
+R=§ → R=§, weiterrücken; erste mit R=§	R=§ → R=§, advance; first with R=§	R=§ → R=§, przesuń; pierwsza z R=§
+Read / Write auf Array-Position n	read / write at array position n	read / write na pozycji n tablicy
+Rechenaufgaben	Calculation tasks	Zadania obliczeniowe
+Rechner	Calculator	Kalkulator
+Rechte-Check: R in „RW-“ →	Rights check: R in "RW-" →	Kontrola praw: R w „RW-” →
+Rechte-Check: W in „RW-“ →	Rights check: W in "RW-" →	Kontrola praw: W w „RW-” →
+Rechte-Check: X in „RW-“ →	Rights check: X in "RW-" →	Kontrola praw: X w „RW-” →
+Reference string Schritt für Schritt	Reference string step by step	Reference string krok po kroku
+Referenz	Reference	Referencja
+Referenz § / §	Reference § / §	Referencja § / §
+Referenz.	reference.	referencja.
+Referenzen t = §…§:	References t = §…§:	Referencje t = §…§:
+Regel	Rule	Reguła
+Regeln	Rules	Reguły
+Regler	Slider	Suwak
+Replacement von Hand	Replacement by hand	Replacement ręcznie
+Restbits = § − § = § → Ebenen = ⌈§ / §⌉ =	Remaining bits = § − § = § → levels = ⌈§ / §⌉ =	Pozostałe bity = § − § = § → poziomy = ⌈§ / §⌉ =
+Rückgabe bei illegaler Adresse?	Return value for an illegal address?	Wartość zwracana przy nielegalnym adresie?
+Schritt § / §	Step § / §	Krok § / §
+Schritt ▶	Step ▶	Krok ▶
+Schutz OS ↔ user und Prozess ↔ Prozess. Gegenstück:	Protection OS ↔ user and process ↔ process. Counterpart:	Ochrona OS ↔ user i proces ↔ proces. Przeciwieństwo:
+Segment kommt aus	The segment comes from	Segment pochodzi z
+Segment-Übersetzung	Segment translation	Translacja segmentu
+Seite im Frame	page in the frame	strona w ramce
+Seite raus = choose_page_to_be_replaced;	page goes out = choose_page_to_be_replaced;	strona wylatuje = choose_page_to_be_replaced;
+Seite raus, die	Evicts the page that	Wylatuje strona, która
+Seite, LRU = am längsten	page, LRU = the one	strona, LRU = najdłużej
+Seiten (T=§, pagsz=§)	pages (T=§, pagsz=§)	strony (T=§, pagsz=§)
+Selector (hex, z. B. in CS/DS)	Selector (hex, e.g. in CS/DS)	Selector (hex, np. w CS/DS)
+Selector (§ bit)	Selector (§ bit)	Selector (§ bit)
+Sign-extension von Bit §; sonst fault.	Sign extension of bit §; otherwise fault.	Sign extension bitu §; inaczej fault.
+Simulator	Simulator	Symulator
+Spalte clock − timestamp, min/max timestamp	column clock − timestamp, min/max timestamp	kolumna clock − timestamp, min/max timestamp
+Spalte § / §	Column § / §	Kolumna § / §
+Speicherzugriffe R+W für N = § (Nachbau). Muster wie im Lab: SEL immer ~N², QUI bei ASC/DES ~N², BUB/INS bei ASC trivial.	Memory accesses R+W for N = § (rebuild). Same pattern as in the lab: SEL always ~N², QUI on ASC/DES ~N², BUB/INS trivial on ASC.	Dostępy do pamięci R+W dla N = § (odtworzenie). Wzorzec jak w labie: SEL zawsze ~N², QUI przy ASC/DES ~N², BUB/INS przy ASC trywialne.
+Sprache	Language	Język
+Stack wächst nach unten, strcpy schreibt nach oben	stack grows downwards, strcpy writes upwards	stos rośnie w dół, strcpy pisze w górę
+Stand:	Score:	Wynik:
+Start	Start	Start
+Start: Lücken §, §, §, §, § K. Algorithmus wählen, dann „Nächste Anfrage“.	Start: holes §, §, §, §, § K. Choose an algorithm, then "Next request".	Start: luki §, §, §, §, § K. Wybierz algorytm, potem „Następne żądanie”.
+Start: alle Frames leer. „Schritt ▶“ füllt die nächste Spalte.	Start: all frames empty. "Step ▶" fills the next column.	Start: wszystkie ramki puste. „Krok ▶” wypełnia następną kolumnę.
+TLB = kleiner Cache für page-table entries; dank locality meist	TLB = small cache for page-table entries; thanks to locality mostly	TLB = mały cache dla page-table entries; dzięki locality zwykle
+Table § – Page Faults (Referenzwerte aus dem Lab)	Table § – page faults (reference values from the lab)	Table § – page faults (wartości referencyjne z labu)
+Table §: § § HEA DES §	Table §: § § HEA DES §	Table §: § § HEA DES §
+Tanenbaum-Beispiel Tick § (R=§) ▶	Tanenbaum example tick § (R=§) ▶	Przykład Tanenbauma tick § (R=§) ▶
+Tanenbaum-Beispiel Tick ▶	Tanenbaum example tick ▶	Przykład Tanenbauma tick ▶
+Teil des OS, der Seiten Disk ⇔ MM bewegt; wird	Part of the OS that moves pages disk ⇔ MM; it is	Część OS, która przenosi strony dysk ⇔ MM; jest
+Theorie UD§ + UD§ und Lab § zum Durchklicken. Jede Formel hat einen Rechner, jeder Algorithmus einen Simulator, am Ende prüft dich ein Trainer.	Theory UD§ + UD§ and Lab § to click through. Every formula has a calculator, every algorithm a simulator, and a trainer tests you at the end.	Teoria UD§ + UD§ i Lab § do przeklikania. Każdy wzór ma kalkulator, każdy algorytm symulator, a na końcu sprawdza cię trener.
+Theorie UD§ · Memory Mgmt	Theory UD§ · Memory Mgmt	Teoria UD§ · Memory Mgmt
+Theorie UD§ · Virtual Memory	Theory UD§ · Virtual Memory	Teoria UD§ · Virtual Memory
+Theorie · UD§	Theory · UD§	Teoria · UD§
+Thrashing-Kurve	Thrashing curve	Krzywa thrashingu
+Timer-Interrupt: R=§ → counter++, dann alle R←§. PF: kleinster counter raus. Problem: alte Vielnutzer bleiben.	Timer interrupt: R=§ → counter++, then all R←§. PF: smallest counter goes. Problem: old heavy users stay.	Przerwanie timera: R=§ → counter++, potem wszystkie R←§. PF: najmniejszy counter wylatuje. Problem: dawni intensywni użytkownicy zostają.
+Top-Fallen	Top pitfalls	Główne pułapki
+Top-Fallen vor der Prüfung	Top pitfalls before the exam	Główne pułapki przed egzaminem
+Trace hat § Referenzen → nur Report-Modus (Schrittmodus bis §).	Trace has § references → report mode only (step mode up to §).	Trace ma § referencji → tylko tryb raportu (tryb krokowy do §).
+Typische Testfragen zum Lab	Typical lab exam questions	Typowe pytania testowe do labu
+Uhr-Überlauf, teure Suche O(frames), Hardware-Aufwand pro Zugriff → Approximation durch §nd chance.	Clock overflow, expensive search O(frames), hardware cost per access → approximation via §nd chance.	Przepełnienie zegara, kosztowne szukanie O(frames), koszt sprzętowy na dostęp → aproksymacja przez §nd chance.
+Unter lower threshold werden frames weggenommen.	Below the lower threshold frames are taken away.	Poniżej lower threshold frames są odbierane.
+Unterschied zum clock: R-Bits nur beim PF-Durchlauf gelöscht, nicht periodisch.	Difference from clock: R bits are only cleared during the PF scan, not periodically.	Różnica względem clock: bity R kasowane tylko przy przebiegu PF, nie okresowo.
+VMS und Windows local; Unix/Linux global.	VMS and Windows local; Unix/Linux global.	VMS i Windows local; Unix/Linux global.
+Vergleich auf derselben Trace (§ § HEA DES §)	Comparison on the same trace (§ § HEA DES §)	Porównanie na tym samym trace (§ § HEA DES §)
+Vergleich auf derselben Trace (§ § MER DES §)	Comparison on the same trace (§ § MER DES §)	Porównanie na tym samym trace (§ § MER DES §)
+Vergleich, kein Speicherzugriff	comparison, no memory access	porównanie, bez dostępu do pamięci
+Verschiebbar?	Relocatable?	Przesuwalny?
+Verwaltet zusätzlich die	Additionally manages the	Dodatkowo zarządza
+Virtual address bits	Virtual address bits	Virtual address bits
+Virtual bits	Virtual bits	Virtual bits
+Virtuelle Adresse (hex §x… oder dezimal)	Virtual address (hex §x… or decimal)	Adres wirtualny (hex §x… lub dziesiętnie)
+Virtuelle Adressen § bit, physisch § bit, page size	Virtual addresses § bit, physical § bit, page size	Adresy wirtualne § bit, fizyczne § bit, page size
+Visualisierung	Visualization	Wizualizacja
+Vom Programm zum Prozess	From program to process	Od programu do procesu
+Vom executable zum Prozess, Fragmentation, Segmentation, Paging, Multilevel, Pentium, x§-§, Memory Safety.	From executable to process, fragmentation, segmentation, paging, multilevel, Pentium, x§-§, memory safety.	Od executable do procesu, fragmentation, segmentation, paging, multilevel, Pentium, x§-§, memory safety.
+Vorteil	Advantage	Zaleta
+Walk: PML§ → PDPT → PD → PT (§ Zugriffe)	Walk: PML§ → PDPT → PD → PT (§ accesses)	Walk: PML§ → PDPT → PD → PT (§ dostępy)
+Wann	When	Kiedy
+Wann/welche Seiten laden?	When/which pages to load?	Kiedy/które strony ładować?
+Warum T§ bei MER mit § Elementen?	Why T§ for MER with § elements?	Dlaczego T§ dla MER z § elementami?
+Warum ist Optimal nicht realisierbar und trotzdem im Lab?	Why is Optimal not implementable and still in the lab?	Dlaczego Optimal jest nierealizowalny, a mimo to jest w labie?
+Warum terminiert die §nd-chance-Schleife immer?	Why does the §nd chance loop always terminate?	Dlaczego pętla §nd chance zawsze się kończy?
+Warum zirkuläre Liste mit Zeiger aufs letzte Element?	Why a circular list with a pointer to the last element?	Dlaczego lista cykliczna ze wskaźnikiem na ostatni element?
+Was erwartet der Random-Test § § HEA DES § D?	What does the random test § § HEA DES § D expect?	Czego oczekuje test random § § HEA DES § D?
+Was ist Virtual Memory?	What is virtual memory?	Czym jest virtual memory?
+Was jedes Programm ändert (Lab-Aufgaben)	What each program changes (lab tasks)	Co zmienia każdy program (zadania labu)
+Was macht die Hardware, was das OS?	What does the hardware do, what does the OS do?	Co robi hardware, a co OS?
+Weiter ▶	Next ▶	Dalej ▶
+Welche Seite raus?	Which page goes out?	Która strona wylatuje?
+Weniger I/O (nur Benötigtes)	Less I/O (only what is needed)	Mniej I/O (tylko potrzebne)
+Werkzeug gen_trace	Tool gen_trace	Narzędzie gen_trace
+Wie viel MM pro Prozess?	How much MM per process?	Ile MM na proces?
+Wird die PMT zu groß, wird	If the PMT gets too large,	Gdy PMT robi się za duża,
+Wo im MM?	Where in MM?	Gdzie w MM?
+Worst-fit verbraucht große Lücken am schnellsten.	Worst-fit uses up large holes fastest.	Worst-fit najszybciej zużywa duże luki.
+Wozu das modified-Bit?	What is the modified bit for?	Po co bit modified?
+Wozu die Frame-Tabelle?	What is the frame table for?	Po co tablica ramek?
+W§K Frame-Zustände	W§K frame states	Stany ramek W§K
+Währenddessen ist der Prozess	Meanwhile the process is	W tym czasie proces jest
+X ausführen	X execute	X wykonanie
+Zeiger auf das letzte gibt	A pointer to the last one gives	Wskaźnik na ostatni daje
+Zeiger aufs letzte gibt O(§) auf erstes und Ende. Leer = −§.	A pointer to the last gives O(§) to the first and the end. Empty = −§.	Wskaźnik na ostatni daje O(§) do pierwszego i końca. Pusta = −§.
+Zerlegen: s = Bits §–§ =	Split: s = bits §–§ =	Rozkład: s = bity §–§ =
+Ziel:	Goal:	Cel:
+Zufällig	Random	Losowo
+Zugriff	Access	Dostęp
+Zugriff auf das erste (	access to the first (	dostęp do pierwszego (
+Zugriffe.	accesses.	dostępów.
+Zurücksetzen	Reset	Resetuj

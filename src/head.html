@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AOS Speicher-Trainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Plan: Werkbank-Look. Linke Navigationsleiste + eine Lesespalte, Widgets als Instrumententafeln. */
+  --bg:#f3f5f8; --surface:#ffffff; --surface2:#eaeef4; --ink:#141d2b; --muted:#566275; --line:#cfd6e1;
+  --accent:#1c5bcc; --accent-ink:#ffffff; --accent-soft:#dfe9fb;
+  --warm:#a85a00; --warm-soft:#f9ebd8;
+  --ok:#11734a; --bad:#b3261e;
+  --code-bg:#0f1724; --code-ink:#e3eaf5; --code-cur:#22314a;
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e131b; --surface:#151c27; --surface2:#1c2533; --ink:#e6ebf2; --muted:#9aa6b8; --line:#2c3748;
+    --accent:#72a3ff; --accent-ink:#0a1120; --accent-soft:#1b2a45;
+    --warm:#f2a540; --warm-soft:#33240f;
+    --ok:#4fc58e; --bad:#ff8074;
+    --code-bg:#0a0f17; --code-ink:#dfe7f3; --code-cur:#1f2d45;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e131b; --surface:#151c27; --surface2:#1c2533; --ink:#e6ebf2; --muted:#9aa6b8; --line:#2c3748;
+  --accent:#72a3ff; --accent-ink:#0a1120; --accent-soft:#1b2a45;
+  --warm:#f2a540; --warm-soft:#33240f;
+  --ok:#4fc58e; --bad:#ff8074;
+  --code-bg:#0a0f17; --code-ink:#dfe7f3; --code-cur:#1f2d45;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:12px;height:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--f-body)}
+a{color:var(--accent)}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-.01em}
+h2{font-size:26px;font-weight:800;margin-top:0}
+h3{font-size:19px;font-weight:700;margin-top:1.4em}
+h4{font-size:15px;font-weight:700;margin-top:1em}
+p,li{max-width:72ch}
+code,.mono{font-family:var(--f-mono);font-size:.92em}
+p code, li code, td code{background:var(--surface2);padding:1px 5px;border-radius:4px}
+b,strong{font-weight:700}
+.layout{display:grid;grid-template-columns:268px minmax(0,1fr);min-height:100%}
+nav.side{position:sticky;top:0;height:100vh;overflow:auto;border-right:1px solid var(--line);background:var(--surface);padding:18px 14px 40px;font-size:14px}
+nav.side .brand{font:800 18px var(--f-display);margin:0 0 12px;display:block;color:var(--ink);text-decoration:none}
+nav.side summary{cursor:pointer;font-weight:700;padding:4px 0}
+nav.side .grp{font:700 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 0 4px}
+nav.side ul{list-style:none;margin:0;padding:0}
+nav.side li a{display:block;padding:3px 8px;border-radius:5px;color:var(--ink);text-decoration:none;border-left:3px solid transparent}
+nav.side li a:hover{background:var(--surface2)}
+nav.side li a.active{background:var(--accent-soft);border-left-color:var(--accent);font-weight:700}
+main{padding:28px clamp(16px,4vw,48px) 90px;max-width:1180px;min-width:0}
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr}
+  nav.side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}
+  nav.side .navlists{columns:2;column-gap:20px}
+}
+@media (max-width:480px){nav.side .navlists{columns:1}}
+.hero{padding:6px 0 18px;border-bottom:1px solid var(--line);margin-bottom:34px}
+.lead{font-size:18px;color:var(--muted);max-width:66ch}
+.part{margin:56px 0 24px;padding:16px 18px;border-radius:10px;background:var(--ink);color:var(--bg)}
+.part h2{margin:0;color:var(--bg)}
+.part p{margin:.3em 0 0;color:var(--bg);opacity:.85}
+.part .kicker{font:700 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+section.topic{margin:0 0 48px;scroll-margin-top:12px}
+section.topic>h2 .num{font-family:var(--f-mono);font-size:.7em;color:var(--muted);margin-right:8px;font-weight:600}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card h4{margin-top:0}
+.card ul{padding-left:18px;margin:.3em 0}
+.note{border-left:5px solid var(--warm);background:var(--warm-soft);padding:9px 13px;border-radius:0 8px 8px 0;margin:12px 0;max-width:80ch}
+.note::before{content:var(--lbl-trap,"⚠ Falle: ");font-weight:800}
+.tip{border-left:5px dotted var(--accent);background:var(--accent-soft);padding:9px 13px;border-radius:0 8px 8px 0;margin:12px 0;max-width:80ch}
+.tip::before{content:var(--lbl-tip,"➕ Merke: ");font-weight:800}
+.legend-enc{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;margin-top:10px}
+.legend-enc span{display:inline-flex;gap:6px;align-items:center}
+.sw{display:inline-block;width:26px;height:16px;border:1px solid var(--ink);border-radius:3px;vertical-align:middle}
+.sw.used{background:repeating-linear-gradient(135deg,var(--surface2) 0 5px,var(--muted) 5px 7px)}
+.sw.hole{background:var(--surface);border-style:dashed}
+.sw.new{background:var(--accent-soft);border-width:2px}
+ol.path{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;padding:0;list-style:none;counter-reset:p;margin:16px 0}
+ol.path li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px 12px 50px;position:relative;counter-increment:p}
+ol.path li::before{content:counter(p);position:absolute;left:12px;top:10px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:700 14px var(--f-mono)}
+ol.path li b{display:block}
+ol.path li small{color:var(--muted)}
+/* Widgets */
+.widget{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:18px 0;overflow:hidden}
+.widget>header{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--surface2);font-weight:700}
+.widget>header .tag{font:700 10.5px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 7px;border-radius:4px;background:var(--accent);color:var(--accent-ink)}
+.widget>header .sub{font-weight:400;color:var(--muted);font-size:14px}
+.widget .body{padding:14px 16px}
+.controls{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;margin-bottom:12px}
+.field{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:var(--muted);font-weight:600}
+.field.inline{flex-direction:row;align-items:center;gap:6px}
+input,select,textarea{font:14px var(--f-body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0}
+input[type=number]{width:96px}
+input.w-s{width:70px} input.w-m{width:130px} input.w-l{width:220px}
+textarea{font-family:var(--f-mono);width:100%;min-height:60px}
+input[type=range]{padding:0;width:180px}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.btn{font:600 14px var(--f-body);padding:7px 12px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--accent);background:var(--accent-soft)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.small{padding:4px 8px;font-size:13px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px}
+.out{margin-top:10px}
+.result{font:600 16px var(--f-mono);padding:8px 12px;background:var(--surface2);border-radius:8px;display:inline-block;margin:4px 0}
+.ok{color:var(--ok);font-weight:700}
+.bad{color:var(--bad);font-weight:700;text-decoration:underline}
+.muted{color:var(--muted)}
+ol.steps{padding-left:22px;margin:8px 0}
+ol.steps li{margin:4px 0}
+.formula{font:15px/1.6 var(--f-mono);background:var(--surface2);padding:8px 12px;border-radius:8px;overflow-x:auto;white-space:nowrap}
+.tablewrap{overflow-x:auto;max-width:100%}
+table.t{border-collapse:collapse;font-size:14px;margin:6px 0}
+table.t th,table.t td{border:1px solid var(--line);padding:5px 9px;text-align:left;vertical-align:top}
+table.t th{background:var(--surface2);font-weight:700}
+table.t td.num,table.t th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono)}
+table.t tr.hl td{background:var(--accent-soft);font-weight:700}
+table.t tr.hl td:first-child::before{content:"▶ "}
+table.t.compact td,table.t.compact th{padding:3px 7px;font-size:13px}
+pre.code{background:var(--code-bg);color:var(--code-ink);padding:14px 16px;border-radius:10px;overflow-x:auto;font:13px/1.6 var(--f-mono);margin:10px 0}
+pre.code .c{color:#8fa3bf;font-style:italic}
+pre.code input.blank{background:#1a2638;color:#fff;border:1px dashed #7aa7ff;font:13px var(--f-mono);padding:0 4px;border-radius:3px;margin:0 1px}
+pre.code input.blank.right{border:2px solid #4fc58e}
+pre.code input.blank.wrong{border:3px double #ff8074;text-decoration:underline}
+.blankmark{font-weight:800;margin-left:2px}
+/* Memory bars */
+.membar{display:flex;height:66px;border:2px solid var(--ink);border-radius:5px;overflow:hidden;margin:22px 0 6px;position:relative}
+.blk{display:flex;flex-direction:column;align-items:center;justify-content:center;font:11.5px/1.2 var(--f-mono);text-align:center;border-right:1px solid var(--ink);min-width:30px;padding:2px;overflow:hidden}
+.blk:last-child{border-right:0}
+.blk.used{background:repeating-linear-gradient(135deg,var(--surface2) 0 6px,var(--line) 6px 9px)}
+.blk.hole{background:var(--surface);border-right-style:dashed;font-style:italic}
+.blk.new{background:var(--accent);color:var(--accent-ink);font-weight:700}
+.blk.new b{text-decoration:underline}
+.blk.chosen{outline:3px solid var(--warm);outline-offset:-4px}
+.memwrap{position:relative}
+.ptr{position:absolute;top:-2px;font:700 11px var(--f-mono);transform:translateX(-50%);white-space:nowrap}
+.physbar{position:relative;height:56px;border:2px solid var(--ink);border-radius:5px;background:var(--surface);margin:26px 0 22px}
+.physbar .seg{position:absolute;top:0;bottom:0;border-left:1px solid var(--ink);border-right:1px solid var(--ink);background:repeating-linear-gradient(135deg,var(--surface2) 0 6px,var(--line) 6px 9px);font:11px/1.2 var(--f-mono);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.physbar .seg.sel{background:var(--accent-soft);border:2px solid var(--accent);font-weight:700}
+.physbar .mark{position:absolute;top:-22px;bottom:-4px;border-left:3px solid var(--bad);font:700 11px var(--f-mono);white-space:nowrap}
+.physbar .mark span{position:absolute;top:0;left:4px;color:var(--bad)}
+.physbar .ticks{position:absolute;left:0;right:0;bottom:-20px;font:10.5px var(--f-mono);color:var(--muted)}
+/* Bit bars */
+.bitbar{display:flex;gap:6px;overflow-x:auto;padding:4px 0 6px;max-width:100%}
+.bitgrp{flex:none}
+.bitgrp .bits{display:flex}
+.bitgrp .bits span{width:17px;height:26px;display:grid;place-items:center;font:12.5px var(--f-mono);border:1px solid var(--line);margin-left:-1px;background:var(--surface)}
+.bitlbl{font-size:11.5px;text-align:center;margin-top:3px;border-top:2px solid var(--ink);padding-top:2px;white-space:nowrap}
+.g0 .bits span{background:var(--accent-soft);border-color:var(--accent)}
+.g1 .bits span{background:var(--warm-soft);border:1px dashed var(--warm)}
+.g2 .bits span{background:var(--surface2);border:1px dotted var(--muted)}
+.g3 .bits span{background:repeating-linear-gradient(135deg,var(--surface) 0 4px,var(--line) 4px 6px)}
+.g4 .bits span{background:var(--surface);border:1px solid var(--ink);font-weight:700}
+.g1 .bitlbl{border-top-style:dashed}.g2 .bitlbl{border-top-style:dotted}.g3 .bitlbl{border-top-style:double;border-top-width:4px}
+.fieldbar{display:flex;border:2px solid var(--ink);border-radius:5px;overflow:hidden;font:12.5px var(--f-mono);margin:8px 0;min-width:520px}
+.fieldbar>div{padding:9px 4px;text-align:center;border-right:1px solid var(--ink);min-width:44px}
+.fieldbar>div:last-child{border-right:0}
+.fieldbar .f0{background:var(--accent-soft)} .fieldbar .f1{background:var(--warm-soft)} .fieldbar .f2{background:var(--surface2)} .fieldbar .f3{background:repeating-linear-gradient(135deg,var(--surface) 0 5px,var(--line) 5px 7px)} .fieldbar .f4{background:var(--surface)}
+.fieldbar b{display:block}
+/* Replacement table */
+table.rep{border-collapse:collapse;font:14px var(--f-mono);margin:8px 0}
+table.rep th,table.rep td{border:1px solid var(--line);min-width:32px;height:30px;text-align:center;padding:2px 4px}
+table.rep th{background:var(--surface2)}
+table.rep th.rowh{text-align:left;padding:2px 8px;min-width:70px;font-family:var(--f-body);font-size:12.5px}
+table.rep td.new{background:var(--accent-soft);font-weight:800;text-decoration:underline}
+table.rep td.hide{color:transparent;background:var(--surface)}
+table.rep .cur{outline:3px solid var(--warm);outline-offset:-3px}
+table.rep tr.pfrow td{font-weight:800}
+table.rep td.x{color:var(--bad)}
+table.rep td.small{font-size:11px;color:var(--muted)}
+table.rep sup{font-size:9px;color:var(--muted);margin-left:1px}
+.explain{background:var(--surface2);border-radius:8px;padding:9px 12px;margin:8px 0;min-height:44px}
+/* Lists / chains */
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:4px 3px;font:13px var(--f-mono);min-height:44px;padding-top:14px}
+.node{border:2px solid var(--ink);border-radius:6px;padding:4px 8px;position:relative;background:var(--surface)}
+.node.first{border-style:double;border-width:4px}
+.node.last{background:var(--accent-soft)}
+.node .badge{position:absolute;top:-16px;left:0;font:700 10px var(--f-mono);white-space:nowrap;color:var(--muted)}
+.arrowtxt{color:var(--muted)}
+.log{background:var(--code-bg);color:var(--code-ink);font:12.5px/1.55 var(--f-mono);height:230px;overflow:auto;padding:10px 12px;border-radius:9px;white-space:pre}
+.log .cur{background:var(--code-cur);font-weight:700;display:block}
+.report{font:13px/1.6 var(--f-mono);white-space:pre;background:var(--surface2);padding:10px 12px;border-radius:8px;overflow-x:auto}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:8px 0}
+.kv div{background:var(--surface2);border-radius:8px;padding:8px 10px}
+.kv b{display:block;font:700 20px var(--f-mono);font-variant-numeric:tabular-nums}
+.kv span{font-size:12px;color:var(--muted)}
+.hbars .row{display:grid;grid-template-columns:110px minmax(0,1fr) 90px;gap:8px;align-items:center;margin:4px 0;font-size:14px}
+.hbars .bar{height:20px;background:var(--accent-soft);border:1px solid var(--accent);border-radius:3px}
+.hbars .row.best .bar{background:var(--accent)}
+.hbars .row.best .lbl,.hbars .row.best .val{font-weight:800;text-decoration:underline}
+.hbars .val{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.cellbar{display:flex;align-items:center;gap:6px;justify-content:flex-end}
+.cellbar i{display:inline-block;height:10px;background:var(--muted);border-radius:2px;opacity:.45}
+.cellbar.best{font-weight:800;text-decoration:underline}
+.cellbar.best i{background:var(--accent);opacity:1}
+/* SVG */
+svg{max-width:100%;height:auto;display:block}
+.svgfig text{fill:var(--ink);font:13px var(--f-body)}
+.svgfig text.small{font-size:11px;fill:var(--muted)}
+.svgfig text.lbl{font:600 11.5px var(--f-mono);fill:var(--muted)}
+.svgfig .box rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.5}
+.svgfig .box.on rect{fill:var(--accent-soft);stroke:var(--accent);stroke-width:3.5}
+.svgfig .box.on text{font-weight:700}
+.svgfig .box.dim rect{stroke-dasharray:4 3}
+.svgfig .arr{stroke:var(--muted);stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.svgfig .arr.on{stroke:var(--accent);stroke-width:3.5;stroke-dasharray:none}
+.svgfig .arr.solid{stroke-dasharray:none}
+.svgfig marker path{fill:var(--muted)}
+.svgfig marker.on path{fill:var(--accent)}
+.svgfig .alabel.on{font-weight:700;fill:var(--accent)}
+.chart .grid line{stroke:var(--line)}
+.chart .axis{stroke:var(--muted)}
+.chart text{fill:var(--muted);font:11px var(--f-mono)}
+.chart .s0{stroke:var(--accent);fill:var(--accent)}
+.chart .s1{stroke:var(--warm);fill:var(--warm)}
+.chart .s2{stroke:var(--ink);fill:var(--ink)}
+.chart .s3{stroke:var(--ok);fill:var(--ok)}
+.chart .s4{stroke:var(--bad);fill:var(--bad)}
+.chart path.line{fill:none;stroke-width:2.2}
+.chart .area{stroke:none;opacity:.12}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;margin:6px 0}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend svg{display:inline-block;width:40px;height:14px}
+/* toggles */
+.rbtn{font:700 13px var(--f-mono);padding:5px 9px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.rbtn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);text-decoration:underline}
+/* Quiz */
+.mcq{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--surface);margin:10px 0}
+.mcq .q{font-weight:700;margin-bottom:8px}
+.mcq .opts{display:grid;gap:6px}
+.mcq .opt{text-align:left;font:14px var(--f-body);padding:7px 10px;border-radius:7px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt.correct{border:2px solid var(--ok);font-weight:700}
+.mcq .opt.correct::before{content:var(--lbl-ok,"✓ richtig · ");color:var(--ok)}
+.mcq .opt.wrong{border:2px dashed var(--bad);text-decoration:line-through}
+.mcq .opt.wrong::before{content:"✗ ";color:var(--bad);font-weight:800}
+.mcq .why{margin-top:8px;font-size:14px;color:var(--muted);display:none}
+.mcq.done .why{display:block}
+.ex{border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.ex>header{padding:9px 14px;background:var(--surface2);font-weight:700;display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.ex .body{padding:12px 14px}
+.ex .fields{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.ex .verdict{font-weight:700;margin:6px 0}
+.ex .sol{display:none;border-top:1px dashed var(--line);margin-top:10px;padding-top:10px}
+.ex.showsol .sol{display:block}
+details.qa{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:6px 0}
+details.qa summary{cursor:pointer;font-weight:700}
+details.qa[open] summary{margin-bottom:6px}
+.pill{display:inline-block;font:700 11px var(--f-mono);padding:3px 7px;border-radius:999px;border:1px solid var(--ink);margin-right:4px}
+.pill.hw{background:var(--accent-soft)}
+.pill.os{background:var(--warm-soft);border-style:dashed}
+.split2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.split2{grid-template-columns:1fr}}
+.hwos{display:grid;grid-template-columns:1fr 56px 1fr;gap:0;align-items:stretch}
+.hwos .col{border:2px solid var(--ink);border-radius:10px;padding:12px}
+.hwos .col.os{border-style:dashed}
+.hwos .col h4{margin:0 0 8px}
+.hwos .fn{font:13px var(--f-mono);background:var(--surface2);border-radius:6px;padding:6px 8px;margin:6px 0}
+.hwos .fn small{display:block;font-family:var(--f-body);color:var(--muted)}
+.hwos .mid{display:flex;flex-direction:column;justify-content:center;align-items:center;font:700 11px var(--f-mono);text-align:center;color:var(--muted)}
+@media (max-width:700px){.hwos{grid-template-columns:1fr}.hwos .mid{padding:6px 0}}
+.stack{display:flex;flex-direction:column;border:2px solid var(--ink);border-radius:5px;overflow:hidden;font:12px var(--f-mono);max-width:520px}
+.stack .row{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--line)}
+.stack .row:last-child{border-bottom:0}
+.stack .row>div{padding:6px 8px}
+.stack .row>div:first-child{background:var(--surface2);font-family:var(--f-body);font-weight:600}
+.stack .cells{display:flex;flex-wrap:wrap;gap:2px}
+.stack .cells span{width:18px;height:20px;display:grid;place-items:center;border:1px solid var(--line)}
+.stack .cells span.f{background:var(--accent-soft);border-color:var(--accent);font-weight:700}
+.stack .cells span.over{background:var(--warm-soft);border:2px solid var(--bad);font-weight:800;text-decoration:underline}
+.lanes{display:grid;gap:8px}
+.lane{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center}
+.lane .q{display:flex;gap:4px;flex-wrap:wrap;border:2px solid var(--ink);border-radius:8px;padding:6px;min-height:40px}
+.lane .q span{border:1px solid var(--ink);border-radius:4px;padding:2px 7px;font:12px var(--f-mono);background:var(--surface2)}
+.lane:nth-child(2) .q{border-style:dashed}
+.lane:nth-child(3) .q{border-style:dotted}
+table.rep td.win{background:var(--accent-soft);border-top:3px solid var(--accent);border-bottom:3px solid var(--accent)}
+table.rep td.tcur{font-weight:800;text-decoration:underline}
+.pffbar{position:relative;display:flex;height:56px;border:2px solid var(--ink);border-radius:5px;margin:26px 0 10px;font-size:12px}
+.pffbar .z{display:flex;align-items:center;justify-content:center;text-align:center;border-right:1px solid var(--ink);padding:2px}
+.pffbar .z1{background:repeating-linear-gradient(135deg,var(--surface) 0 5px,var(--line) 5px 7px)}
+.pffbar .z2{background:var(--surface)}
+.pffbar .z3{background:var(--warm-soft);border-right:0;font-weight:700}
+.pffmark{position:absolute;top:-22px;transform:translateX(-50%);font:700 12px var(--f-mono);white-space:nowrap}
+.pffmark::after{content:"";position:absolute;left:50%;top:17px;height:58px;border-left:3px solid var(--ink)}
+.topbar{position:fixed;top:10px;right:12px;z-index:50;display:flex;gap:6px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:5px;box-shadow:0 2px 12px rgba(0,0,0,.10)}
+.topbar .seg{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.topbar .seg button{border:0;border-right:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 12px var(--f-mono);padding:6px 9px;cursor:pointer}
+.topbar .seg button:last-child{border-right:0}
+.topbar .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);text-decoration:underline}
+main{padding-top:64px}
+body.nav-collapsed .layout{grid-template-columns:minmax(0,1fr)}
+body.nav-collapsed nav.side{display:none}
+body.nav-collapsed main{max-width:1640px;margin:0 auto;width:100%}
+@media (max-width:900px){.topbar{top:auto;bottom:10px;right:10px}main{padding-top:24px}}
+footer{margin-top:60px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side" aria-label="Inhalt">
+  <a class="brand" href="#start">AOS · Speicher</a>
+  <details id="navdetails">
+  <summary>Inhalt</summary>
+  <div class="navlists">
+  <div class="grp">Start</div>
+  <ul><li><a href="#start">Überblick &amp; Lernweg</a></li></ul>
+  <div class="grp">Theorie UD1 · Memory Mgmt</div>
+  <ul>
+    <li><a href="#t-prozess">1.1 Programm → Prozess</a></li>
+    <li><a href="#t-prinzipien">1.2 Locality &amp; Fragmentation</a></li>
+    <li><a href="#t-gap">1.3 Gap-Allocation (MVT)</a></li>
+    <li><a href="#t-reloc">1.4 Relocation &amp; Protection</a></li>
+    <li><a href="#t-seg">1.5 Segmentation</a></li>
+    <li><a href="#t-paging">1.6 Paging</a></li>
+    <li><a href="#t-multi">1.7 Multilevel &amp; Adressformat</a></li>
+    <li><a href="#t-tlb">1.8 TLB &amp; EAT</a></li>
+    <li><a href="#t-pentium">1.9 Pentium (IA-32)</a></li>
+    <li><a href="#t-x64">1.10 x86-64</a></li>
+    <li><a href="#t-safety">1.11 Memory Safety &amp; ASLR</a></li>
+  </ul>
+  <div class="grp">Theorie UD2 · Virtual Memory</div>
+  <ul>
+    <li><a href="#v-vm">2.1 VM &amp; Hardware</a></li>
+    <li><a href="#v-pf">2.2 Page Fault &amp; EAT</a></li>
+    <li><a href="#v-pager">2.3 Pagers</a></li>
+    <li><a href="#v-thrash">2.4 Thrashing, WS, PFF</a></li>
+    <li><a href="#v-policy">2.5 Policies &amp; Buddy</a></li>
+    <li><a href="#v-repl">2.6 Replacement-Simulator</a></li>
+    <li><a href="#v-approx">2.7 LRU-Approximationen</a></li>
+    <li><a href="#v-cases">2.8 Mach · W2K · Linux</a></li>
+  </ul>
+  <div class="grp">Lab 2 · Simulator</div>
+  <ul>
+    <li><a href="#l-hwos">L1 Hardware vs. OS</a></li>
+    <li><a href="#l-data">L2 Datenstrukturen &amp; Listen</a></li>
+    <li><a href="#l-trace">L3 gen_trace</a></li>
+    <li><a href="#l-sim">L4 Paging-Simulator</a></li>
+    <li><a href="#l-code">L5 Code-Lückentext</a></li>
+    <li><a href="#l-ws">L6 calculate_ws</a></li>
+    <li><a href="#l-table">L7 Table 1</a></li>
+    <li><a href="#l-qa">L8 Testfragen</a></li>
+  </ul>
+  <div class="grp">Prüfungstrainer</div>
+  <ul>
+    <li><a href="#p-rechnen">Rechenaufgaben</a></li>
+    <li><a href="#p-quiz">Konzept-Quiz</a></li>
+    <li><a href="#p-fallen">Top-Fallen</a></li>
+  </ul>
+  </div>
+  </details>
+</nav>
+<div class="topbar" role="toolbar" aria-label="Ansicht">
+  <button class="btn small" id="navToggle" type="button" aria-expanded="true">☰ Inhalt ausblenden</button>
+  <div class="seg" role="group" aria-label="Sprache">
+    <button type="button" data-lang="de" aria-pressed="true">DE</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="pl" aria-pressed="false">PL</button>
+  </div>
+  <button class="btn small" id="themeBtn" type="button" aria-label="Hell / Dunkel">◐</button>
+</div>
+<main>
+
+<header class="hero" id="start">
+  <h1>AOS · Speicherverwaltung &amp; Virtual Memory</h1>
+  <p class="lead">Theorie UD1 + UD2 und Lab 2 zum Durchklicken. Jede Formel hat einen Rechner, jeder Algorithmus einen Simulator, am Ende prüft dich ein Trainer.</p>
+  <h3>Lernweg nach Priorität</h3>
+  <ol class="path">
+    <li><b><a href="#t-paging">Paging-Übersetzung</a> + <a href="#t-multi">Adressformat</a></b><small>Bits zerlegen, PA berechnen, Ebenen bestimmen. Kommt fast sicher.</small></li>
+    <li><b><a href="#v-repl">Replacement von Hand</a></b><small>FIFO, LRU, OPT, 2nd Chance in der Tabelle. Belady's anomaly.</small></li>
+    <li><b><a href="#l-hwos">Lab-Kern</a></b><small>sim_mmu, handle_page_fault, zirkuläre Listen, Policy vs. Mechanism.</small></li>
+    <li><b><a href="#t-pentium">Pentium</a> &amp; <a href="#t-x64">x86-64</a></b><small>Selector → linear → physisch. Canonical addresses.</small></li>
+    <li><b><a href="#v-thrash">Thrashing, WS, PFF</a> &amp; <a href="#v-policy">Policies</a></b><small>Definitionen + Gegenüberstellungen global/local.</small></li>
+    <li><b><a href="#v-cases">Fallstudien</a> &amp; <a href="#t-safety">ASLR</a></b><small>Mach, W2K-Zustände, Linux kswapd, Buffer Overflow vs. Format String.</small></li>
+  </ol>
+  <div class="legend-enc" aria-label="Darstellungs-Kodierung">
+    <b>Kodierung (ohne Farbe lesbar):</b>
+    <span><i class="sw used"></i> belegt = schraffiert</span>
+    <span><i class="sw hole"></i> frei = gestrichelt</span>
+    <span><i class="sw new"></i> <b><u>neu geladen</u></b> = fett + unterstrichen</span>
+    <span><b>✗</b> = Page Fault / Fehler</span>
+    <span><b>✓</b> = ok / Treffer</span>
+    <span><b>▶</b> = aktuelle Zeile</span>
+  </div>
+</header>
+
+<!-- ======================= UD1 ======================= -->
+<div class="part"><div class="kicker">Theorie · UD1</div><h2>Memory Management</h2><p>Vom executable zum Prozess, Fragmentation, Segmentation, Paging, Multilevel, Pentium, x86-64, Memory Safety.</p></div>
+
+<section class="topic" id="t-prozess">
+  <h2><span class="num">1.1</span>Vom Programm zum Prozess</h2>
+  <div class="split2">
+    <div>
+      <figure class="svgfig" aria-label="Executable file und Memory map">
+        <svg viewBox="0 0 520 330" role="img">
+          <text x="10" y="18" font-weight="700">executable file (Disk)</text>
+          <g class="box"><rect x="10" y="28" width="170" height="40"/><text x="20" y="44">Header</text><text x="20" y="60" class="small">magic number · initial PC · sections table</text></g>
+          <g class="box"><rect x="10" y="68" width="170" height="34"/><text x="20" y="90">code</text></g>
+          <g class="box"><rect x="10" y="102" width="170" height="34"/><text x="20" y="124">initialized data</text></g>
+          <g class="box dim"><rect x="10" y="136" width="170" height="34"/><text x="20" y="158">bss (nur Größe)</text></g>
+          <g class="box"><rect x="10" y="170" width="170" height="34"/><text x="20" y="192">symbol table</text></g>
+          <text x="10" y="226" class="small">jede Section: offset + size in der Datei</text>
+          <path class="arr solid" d="M190 110 H300" marker-end="url(#ahm)"/>
+          <text x="205" y="102" class="lbl">loader</text>
+          <text x="310" y="18" font-weight="700">memory map (Prozess)</text>
+          <text x="440" y="34" class="small">hohe Adr.</text>
+          <g class="box"><rect x="310" y="40" width="200" height="34"/><text x="320" y="62">stack(s) pro Thread ↓</text></g>
+          <g class="box dim"><rect x="310" y="74" width="200" height="40"/><text x="320" y="92" class="small">frei</text></g>
+          <g class="box"><rect x="310" y="114" width="200" height="34"/><text x="320" y="136">dyn. libraries · mmap · shared</text></g>
+          <g class="box dim"><rect x="310" y="148" width="200" height="30"/><text x="320" y="167" class="small">frei</text></g>
+          <g class="box"><rect x="310" y="178" width="200" height="30"/><text x="320" y="198">heap ↑</text></g>
+          <g class="box"><rect x="310" y="208" width="200" height="30"/><text x="320" y="228">bss</text></g>
+          <g class="box"><rect x="310" y="238" width="200" height="30"/><text x="320" y="258">initialized data</text></g>
+          <g class="box"><rect x="310" y="268" width="200" height="30"/><text x="320" y="288">code</text></g>
+          <text x="440" y="316" class="small">niedrige Adr.</text>
+          <defs><marker id="ahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z"/></marker></defs>
+        </svg>
+      </figure>
+    </div>
+    <div>
+      <h4>Kette und Zeitpunkte</h4>
+      <p class="mono">source → <b>compiler</b> → object module → <b>linker</b> (+ libraries) → executable → <b>loader</b> → Prozess</p>
+      <ul>
+        <li><b>linking</b> = <i>vor</i> der Ausführung.</li>
+        <li><b>loading</b> = beim Prozessstart; dynamic libraries <i>während</i> der Laufzeit.</li>
+        <li>Erst zur Laufzeit entstehen: <b>heap</b>, <b>memory-mapped files</b>, <b>shared zone</b>, <b>dynamic libs</b>, <b>stacks</b>.</li>
+        <li><b>Program vs. process</b>: gleicher Code, jeder Prozess hat eigene Datenkopie.</li>
+      </ul>
+      <table class="t compact"><tr><th>Begriff</th><th>Bedeutung</th></tr>
+        <tr><td><b>Address space</b></td><td>alle Adressen, die ein Prozess referenzieren kann</td></tr>
+        <tr><td><b>Virtual address space</b></td><td>pro Prozess unabhängig</td></tr>
+        <tr><td><b>Physical address space</b></td><td>gemeinsam für alle</td></tr></table>
+      <p>Prozess nutzt <b>nur virtual addresses</b> → Übersetzung virtual → physical, <i>transparent</i>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="t-prinzipien">
+  <h2><span class="num">1.2</span>Memory hierarchy, Locality, Fragmentation</h2>
+  <div class="grid3">
+    <div class="card"><h4>Memory hierarchy</h4><p><b>klein, schnell, teuer</b>: registers, on-chip cache<br><b>groß, langsam, billig</b>: main memory, disk, tape<br>Funktioniert wegen <b>locality</b>.</p></div>
+    <div class="card"><h4>Spatial locality</h4><p>Position referenziert → <i>Nachbarn</i> bald auch. Arrays, sequentieller Code.</p><div class="chain" aria-hidden="true"><span class="node">a[3]</span><span class="node last"><b>a[4]</b></span><span class="node">a[5]</span><span class="node">a[6]</span></div></div>
+    <div class="card"><h4>Temporal locality</h4><p>Position bei <i>t</i> referenziert → <i>bald wieder</i>. Schleifen, Stack, Unterprogramme.</p><p class="mono">for(i…) sum += x; ← sum ständig</p></div>
+    <div class="card"><h4>Knuth (1971)</h4><p><b>&lt; 4 %</b> eines Programms verursachen <b>&gt; 50 %</b> der Laufzeit.</p></div>
+  </div>
+  <h3>Fragmentation</h3>
+  <div class="split2">
+    <div class="card"><h4>Internal fragmentation</h4><p>Lücke <b>innerhalb</b> einer Partition (Partition − Objekt). Bei <b>MFT</b> und <b>Paging</b> (letzte Seite halb leer).</p>
+      <div class="controls">
+        <label class="field">Prozessgröße (Byte)<input id="if-size" type="number" value="10300" min="1"></label>
+        <label class="field">Page size<select id="if-ps"><option>1024</option><option>2048</option><option selected>4096</option><option>8192</option></select></label>
+      </div>
+      <div id="if-out"></div>
+    </div>
+    <div class="card"><h4>External fragmentation</h4><p>Freier Speicher in <b>unbrauchbare Lücken zwischen</b> Partitionen zerstückelt. Bei <b>MVT</b> und <b>Segmentation</b> → evtl. <b>compaction</b>.</p>
+      <div class="membar" style="height:48px;margin-top:10px" aria-label="Beispiel externe Fragmentierung">
+        <div class="blk used" style="flex:3">P1</div><div class="blk hole" style="flex:1">40K</div><div class="blk used" style="flex:2">P2</div><div class="blk hole" style="flex:1">50K</div><div class="blk used" style="flex:3">P3</div><div class="blk hole" style="flex:1">30K</div>
+      </div>
+      <p>Frei: 120K gesamt – eine Anfrage über 60K <b>scheitert</b> trotzdem.</p></div>
+  </div>
+</section>
+
+<section class="topic" id="t-gap">
+  <h2><span class="num">1.3</span>Contiguous partitioning &amp; Gap-Allocation</h2>
+  <div class="grid3">
+    <div class="card"><h4>MFT</h4><p>feste Partitionsgrößen, beim <b>Boot</b> → <i>internal</i> fragmentation.</p></div>
+    <div class="card"><h4>MVT</h4><p>variable Größen, bei Bedarf → <i>external</i> fragmentation, <b>compaction</b>.</p></div>
+    <div class="card"><h4>Non-contiguous</h4><p>Prozess auf mehrere Partitionen verteilt: variabel ⇒ <b>segments</b>, fest ⇒ <b>frames</b>.</p></div>
+  </div>
+  <div class="widget">
+    <header><span class="tag">Simulator</span>First / Best / Worst / Next fit <span class="sub">Klassiker: Lücken 100, 500, 200, 300, 600 K · Anfragen 212, 417, 112, 426 K</span></header>
+    <div class="body">
+      <div class="controls">
+        <label class="field">Algorithmus<select id="gap-alg"><option value="first">First-fit</option><option value="best">Best-fit</option><option value="worst">Worst-fit</option><option value="next">Next-fit</option></select></label>
+        <button class="btn primary" id="gap-next" type="button">Nächste Anfrage</button>
+        <label class="field">Eigene Anfrage (K)<input id="gap-size" type="number" value="150" min="1"></label>
+        <button class="btn" id="gap-custom" type="button">Anfordern</button>
+        <button class="btn" id="gap-reset" type="button">Zurücksetzen</button>
+      </div>
+      <div class="memwrap" id="gap-bar"></div>
+      <div class="explain" id="gap-log"></div>
+      <table class="t compact"><tr><th>Algorithmus</th><th>Regel</th><th>Speed</th><th>Muster</th></tr>
+        <tr><td><b>First-fit</b></td><td>erste passende Lücke</td><td>schnell</td><td>Fragmente häufen sich am Anfang · in der Praxis am häufigsten</td></tr>
+        <tr><td><b>Best-fit</b></td><td>kleinste passende Lücke</td><td>langsam (alle scannen)</td><td>viele winzige „sliver“-Fragmente</td></tr>
+        <tr><td><b>Worst-fit</b></td><td>größte Lücke</td><td>langsam</td><td>verbraucht große Lücken am schnellsten → <b>am schlechtesten</b></td></tr>
+        <tr><td><b>Next-fit</b></td><td>wie first, ab letzter Position</td><td>schnell</td><td>Fragmentierung gleichmäßig verteilt</td></tr></table>
+      <p class="note">Simulationen (Knuth): <b>first-fit ≈ best-fit</b>, beide <b>besser als worst-fit</b>. Worst-fit klingt gut, ist es nicht.</p>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="t-reloc">
+  <h2><span class="num">1.4</span>Relocation &amp; Protection</h2>
+  <div class="split2">
+    <table class="t"><tr><th></th><th>Static relocation</th><th>Dynamic relocation</th></tr>
+      <tr><td><b>Wann</b></td><td>compile / load time</td><td>execution time</td></tr>
+      <tr><td><b>Hardware</b></td><td>keine</td><td><b>MMU</b></td></tr>
+      <tr><td><b>Verschiebbar?</b></td><td>nein, nach Start fix</td><td>ja, auch während Ausführung → Basis für <b>ASLR</b></td></tr></table>
+    <div class="card"><h4>Protection methods</h4><ol><li><b>Limit registers</b></li><li><b>Base + limit registers</b></li><li><b>Memory protection bits</b></li><li><b>Access rights in translation tables</b> (R/W/X)</li></ol><p>Schutz OS ↔ user und Prozess ↔ Prozess. Gegenstück: <b>sharing</b> (gewollt).</p></div>
+  </div>
+</section>
+
+<section class="topic" id="t-seg">
+  <h2><span class="num">1.5</span>Segmentation</h2>
+  <p><b>Virtual address = segment number s + offset d</b>. Tabelle = <b>Segment Table (ST)</b> mit <b>base + limit</b> (+ Rechte). Große ST im RAM, Register <b>STBPR</b> zeigt darauf → <b>2 Speicherzugriffe</b> pro Referenz.</p>
+  <div class="widget">
+    <header><span class="tag">Rechner</span>Segment-Übersetzung <span class="sub">16-bit Adresse: 2 Bit Segment | 14 Bit Offset</span></header>
+    <div class="body">
+      <div class="controls">
+        <label class="field">Adresse (hex, 16 bit)<input id="seg-va" class="w-m" value="0x4123"></label>
+        <span class="muted">oder</span>
+        <label class="field">Segment s<select id="seg-s"><option>0</option><option>1</option><option>2</option><option>3</option></select></label>
+        <label class="field">Offset d (hex)<input id="seg-d" class="w-m" value="0x0123"></label>
+        <label class="field">Zugriff<select id="seg-acc"><option value="R">R lesen</option><option value="W">W schreiben</option><option value="X">X ausführen</option></select></label>
+        <button class="btn primary" id="seg-go" type="button">Übersetzen</button>
+      </div>
+      <div class="split2">
+        <div><h4>Segment Table (editierbar)</h4><div class="tablewrap" id="seg-table"></div></div>
+        <div><h4>Rechenweg</h4><div id="seg-steps"></div></div>
+      </div>
+      <h4>Physischer Speicher (64 KiB)</h4>
+      <div id="seg-phys"></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Segment bestimmen</h4><p><b>(a)</b> aus den <b>high-order bits</b> der Adresse (wie oben).<br><b>(b)</b> aus einem <b>segment-selector register</b> (Pentium: CS, DS …), unabhängig von den Adressbits.</p></div>
+    <div class="card"><h4>Bewertung</h4><p><span class="ok">✓</span> keine internal fragmentation, Segmente wachsen, <b>sharing</b> (libc: gleiche base in beiden STs, read-only/execute).<br><span class="bad">✗</span> <b>external fragmentation</b>, compaction.</p></div>
+  </div>
+  <p class="note">Physical = <b>base + d</b> (Addition!). <b>Limit-Check vor</b> der Addition: d ≥ limit → <b>trap / segmentation fault</b>. Segment ist <b>ganz oder gar nicht</b> im Speicher – das löst erst demand paging.</p>
+</section>
+
+<section class="topic" id="t-paging">
+  <h2><span class="num">1.6</span>Paging</h2>
+  <p>Physischer Speicher in <b>frames</b>, virtueller in <b>pages</b> (gleich groß). <b>Virtual address = page number p + offset d</b>. Tabelle = <b>Page Map Table (PMT)</b>, Register <b>PTBPR</b>.</p>
+  <div class="widget">
+    <header><span class="tag">Rechner</span>Paging-Übersetzung Schritt für Schritt <span class="sub">Klick auf eine PMT-Zeile setzt die Seite</span></header>
+    <div class="body">
+      <div class="controls">
+        <label class="field">Virtual address bits<input id="pg-va-bits" type="number" value="16" min="8" max="30"></label>
+        <label class="field">Physical address bits<input id="pg-pa-bits" type="number" value="15" min="8" max="30"></label>
+        <label class="field">Page size (Byte)<select id="pg-ps"><option>256</option><option>512</option><option>1024</option><option>2048</option><option selected>4096</option><option>8192</option></select></label>
+        <button class="btn" id="pg-new" type="button">Neue PMT würfeln</button>
+      </div>
+      <div class="controls">
+        <label class="field">Virtuelle Adresse (hex 0x… oder dezimal)<input id="pg-va" class="w-m" value="0x3A7C"></label>
+        <button class="btn primary" id="pg-go" type="button">Übersetzen</button>
+      </div>
+      <div class="split2">
+        <div><h4>Page Map Table</h4><div class="tablewrap" id="pg-table" style="max-height:340px;overflow:auto"></div></div>
+        <div><h4>Rechenweg</h4><div id="pg-steps"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Rezept</h4><ol><li><b>offset bits = log₂(page size)</b>, Rest = page number</li><li><b>PMT[p]</b> → frame f (+ valid/present bit)</li><li><b>PA = f · page size + d</b> = <b>f ‖ d</b> (Konkatenation)</li></ol></div>
+    <div class="card"><h4>Bewertung</h4><p><span class="ok">✓</span> keine external fragmentation; <b>sharing einzelner pages</b> (feiner als Segmente).<br><span class="bad">✗</span> <b>internal fragmentation</b> (Ø ½ Seite); PMT kostet selbst frames.</p><p>Größere pages → mehr internal frag., <b>kleinere PMT</b>.</p></div>
+  </div>
+</section>
+
+<section class="topic" id="t-multi">
+  <h2><span class="num">1.7</span>Multilevel paging &amp; Format der virtual address</h2>
+  <p>Wird die PMT zu groß, wird <b>die PMT selbst gepaged</b>: <b>table | page | offset</b>. Second-level tables existieren nur für <b>genutzte</b> Bereiche (sparse address space).</p>
+  <div class="widget">
+    <header><span class="tag">Rechner</span>Adressformat herleiten <span class="sub">jede Tabelle belegt genau 1 page</span></header>
+    <div class="body">
+      <div class="controls">
+        <label class="field">Virtual bits<input id="mf-va" type="number" value="32" min="10" max="64"></label>
+        <label class="field">Page size<select id="mf-ps"><option value="1024">1 KiB</option><option value="2048">2 KiB</option><option value="4096" selected>4 KiB</option><option value="8192">8 KiB</option><option value="16384">16 KiB</option><option value="65536">64 KiB</option></select></label>
+        <label class="field">Entry size (Byte)<select id="mf-es"><option>2</option><option selected>4</option><option>8</option></select></label>
+        <label class="field">Physical bits<input id="mf-pa" type="number" value="32" min="10" max="64"></label>
+        <label class="field">Genutzte Regionen (sparse)<input id="mf-reg" type="number" value="3" min="1" max="64"></label>
+      </div>
+      <div class="btnrow" style="margin-bottom:10px">
+        <button class="btn small" type="button" data-mf="32,4096,4,32,3">IA-32 (10|10|12)</button>
+        <button class="btn small" type="button" data-mf="48,4096,8,52,3">x86-64 (9|9|9|9|12)</button>
+        <button class="btn small" type="button" data-mf="36,8192,4,32,2">Übung: 36 bit, 8 KiB, 4 B</button>
+        <button class="btn small" type="button" data-mf="64,4096,8,48,3">Alpha 64 bit</button>
+      </div>
+      <div id="mf-out"></div>
+    </div>
+  </div>
+  <div class="tip">IA-32 mit 4 KiB pages: einstufige PMT = 2²⁰ · 4 B = <b>4 MiB</b> pro Prozess, auch wenn er nur 12 KiB nutzt. Zweistufig: 4 KiB Directory + 1 bis 3 · 4 KiB = <b>8–16 KiB</b>.</div>
+  <h3>Paged segmentation vs. segmented paging</h3>
+  <p><b>Paged segmentation</b> = segments made of pages: Segmenteintrag zeigt auf eine page table. Pionier <b>Multics</b>, genutzt vom <b>Pentium</b>. <b>Segmented paging</b> wird in der Praxis <b>nicht</b> verwendet. Nachteil: komplexere Hardware.</p>
+</section>
+
+<section class="topic" id="t-tlb">
+  <h2><span class="num">1.8</span>TLB – Translation Lookaside Buffer</h2>
+  <div class="split2">
+    <div>
+      <ul>
+        <li>Ohne TLB: <b>2 Zugriffe</b> (PMT + Daten), bei n Ebenen <b>n+1</b>.</li>
+        <li>TLB = kleiner Cache für page-table entries; dank locality meist <b>hits</b>.</li>
+        <li>Skylake: L1 DTLB <b>64</b>, L1 ITLB <b>128</b>, L2 ~<b>1536</b> entries.</li>
+        <li><b>Eviction macht die Hardware</b> (page-table walker). OS <b>invalidiert</b> nur: context switch, <b>INVLPG</b>.</li>
+        <li>Ausnahme: <b>software-managed TLB</b> (MIPS) → miss = trap ans OS.</li>
+      </ul>
+    </div>
+    <div class="widget" style="margin:0">
+      <header><span class="tag">Rechner</span>Effective Access Time</header>
+      <div class="body">
+        <div class="controls">
+          <label class="field">Hit-Rate h: <span id="tlb-hv">90 %</span><input id="tlb-h" type="range" min="0" max="100" value="90"></label>
+          <label class="field">ε TLB (ns)<input id="tlb-e" type="number" value="20" min="0"></label>
+          <label class="field">m RAM (ns)<input id="tlb-m" type="number" value="100" min="1"></label>
+          <label class="field">Ebenen n<input id="tlb-n" type="number" value="1" min="1" max="5"></label>
+        </div>
+        <div id="tlb-out"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="t-pentium">
+  <h2><span class="num">1.9</span>Fallstudie Pentium (IA-32)</h2>
+  <p><b>Logical address = selector (16 bit) : offset (32 bit)</b> → <b>segmentation stage</b> → <b>linear address (32 bit)</b> → <b>paging stage</b> (10 | 10 | 12) → physical address.</p>
+  <div class="widget">
+    <header><span class="tag">Rechner</span>Selector → Descriptor → linear → physisch</header>
+    <div class="body">
+      <div class="controls">
+        <label class="field">Selector (hex, z. B. in CS/DS)<input id="pt-sel" class="w-m" value="0x0010"></label>
+        <label class="field">Offset (hex, 32 bit)<input id="pt-off" class="w-m" value="0x00012ABC"></label>
+        <button class="btn primary" id="pt-go" type="button">Übersetzen</button>
+      </div>
+      <div class="btnrow" style="margin-bottom:10px">
+        <button class="btn small" type="button" data-pt="0x0008,0x00401234">CS=0x0008 (Code, flat)</button>
+        <button class="btn small" type="button" data-pt="0x0010,0x00012ABC">DS=0x0010 (Data)</button>
+        <button class="btn small" type="button" data-pt="0x000F,0x00000FFF">0x000F (LDT, RPL 3)</button>
+        <button class="btn small" type="button" data-pt="0x0010,0x00050000">Limit-Verletzung</button>
+        <button class="btn small" type="button" data-pt="0x0018,0x003FFFFF">G=1 letztes gültiges Byte</button>
+      </div>
+      <div class="split2">
+        <div><h4>Descriptor-Tabellen (Beispiel)</h4><div class="tablewrap" id="pt-tables"></div></div>
+        <div><h4>Rechenweg</h4><div id="pt-steps"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Selector (16 bit)</h4><p><b>13 bit index</b> · <b>1 bit TI</b> (0 = GDT, 1 = LDT) · <b>2 bit RPL</b> (Ring 0–3). Register: <b>CS, DS, ES, SS, FS, GS</b>.</p></div>
+    <div class="card"><h4>Descriptor (8 Byte)</h4><p><b>base 32 bit</b> · <b>limit 20 bit</b> · <b>attributes 12 bit</b>. GDT/LDT je bis 2¹³ = 8192 Einträge. <b>G-Bit</b>: G=0 limit in Byte (max 1 MiB), G=1 in 4-KiB-pages (max 4 GiB).</p></div>
+  </div>
+  <p class="note">Segment kommt aus <b>CS</b>, nicht aus den PC-Bits → PC ist reiner offset. <b>Linear address ≠ physical address.</b></p>
+</section>
+
+<section class="topic" id="t-x64">
+  <h2><span class="num">1.10</span>x86-64: canonical addresses &amp; four-level paging</h2>
+  <div class="widget">
+    <header><span class="tag">Prüfer</span>Canonical? + Indizes PML4 / PDPT / PD / PT</header>
+    <div class="body">
+      <div class="controls">
+        <label class="field">64-bit Adresse (hex)<input id="x64-va" class="w-l" value="0x00007F3A12345678"></label>
+        <label class="field">Page size<select id="x64-ps"><option value="4K">4 KiB</option><option value="2M">2 MiB (PS-Bit im PD)</option><option value="1G">1 GiB (PS-Bit im PDPT)</option></select></label>
+        <button class="btn primary" id="x64-go" type="button">Prüfen</button>
+      </div>
+      <div class="btnrow" style="margin-bottom:10px">
+        <button class="btn small" type="button" data-x64="0x00007FFFFFFFFFFF">höchste User-Adresse</button>
+        <button class="btn small" type="button" data-x64="0xFFFF800000000000">Kernel (canonical)</button>
+        <button class="btn small" type="button" data-x64="0x0000800000000000">non-canonical</button>
+        <button class="btn small" type="button" data-x64="0x12345678ABCD0000">Bits 63–48 ≠ 0</button>
+      </div>
+      <div id="x64-out"></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Regeln</h4><p>Nur <b>untere 48 bit</b> genutzt. <b>Bits 48–63 = Kopie von Bit 47</b> (sign-extension), sonst <b>fault</b>. <b>PML4 → PDPT → PD → PT</b>, 4 Zugriffe statt 2. PS-Bit: <b>2 MiB</b> (PD) / <b>1 GiB</b> (PDPT) huge pages.</p></div>
+    <div class="card"><h4>Segmentation fast weg</h4><p>Long mode: Segmente <b>flat</b> (base 0). Nur <b>FS/GS</b> arbeiten noch: <b>thread-local storage</b>. Paging macht praktisch alles.</p></div>
+  </div>
+</section>
+
+<section class="topic" id="t-safety">
+  <h2><span class="num">1.11</span>Memory Safety &amp; ASLR</h2>
+  <div class="widget">
+    <header><span class="tag">Visualisierung</span>Stack buffer overflow <span class="sub">char buf[16]; strcpy(buf, input);</span></header>
+    <div class="body">
+      <div class="controls">
+        <label class="field">Länge von input: <span id="bo-lv">12</span> Byte<input id="bo-len" type="range" min="0" max="40" value="12"></label>
+        <button class="btn" id="bo-aslr" type="button">Programm neu starten (ASLR)</button>
+      </div>
+      <div class="split2">
+        <div id="bo-stack"></div>
+        <div id="bo-info"></div>
+      </div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Format string</h4><pre class="code">printf(buffer);        <span class="c">// ✗ verwundbar</span>
+printf("%s", buffer);  <span class="c">// ✓ sicher</span></pre><p><b>%x / %p</b> → arbitrary <b>read</b> vom Stack · <b>%n</b> → arbitrary <b>write</b>. Arbeitet <b>relativ zum laufenden Stack</b>.</p></div>
+    <div class="card"><h4>ASLR</h4><p>Randomisiert <b>stack</b>, <b>heap</b>, <b>mmap/libs</b>, <b>executable</b> (nur mit <b>PIE</b>). ASLR = <b>dynamic relocation</b> für Sicherheit. x86-64: innerhalb des canonical space.</p></div>
+  </div>
+  <table class="t"><tr><th>Angriff</th><th>Braucht feste Adresse?</th><th>ASLR hilft?</th></tr>
+    <tr><td><b>Buffer overflow</b></td><td>Ja (Ziel für return address)</td><td><span class="ok">✓ mitigiert</span></td></tr>
+    <tr><td><b>Format string</b></td><td>Nein (relativ zum Stack)</td><td><span class="bad">✗ nein</span></td></tr></table>
+  <p class="tip">ASLR <b>mitigiert</b> eine Angriffsklasse, <b>eliminiert</b> aber keine memory-safety bugs.</p>
+</section>
+
+<!-- ======================= UD2 ======================= -->
+<div class="part"><div class="kicker">Theorie · UD2</div><h2>Virtual Memory</h2><p>Page Faults, Thrashing, Working Set, Policies, Replacement-Algorithmen, Fallstudien.</p></div>
+
+<section class="topic" id="v-vm">
+  <h2><span class="num">2.1</span>Was ist Virtual Memory?</h2>
+  <div class="grid2">
+    <div class="card"><h4>Definition</h4><p>Prozesse <b>laufen, ohne vollständig im MM</b> zu sein, und dürfen <b>größer als der MM</b> sein. Entkoppelt virtual/physical address space, Disk = Erweiterung des MM. Basis: <b>locality</b>. Gesteuert vom <b>OS</b> mit <b>Hardware-Support</b>.</p></div>
+    <div class="card"><h4>Advantages</h4><ol><li>Transparente Transfers Disk ⇔ MM</li><li>Max. Prozessgröße = virtual address space + Disk</li><li>Höherer <b>degree of multiprogramming</b></li><li>Weniger I/O (nur Benötigtes)</li></ol></div>
+    <div class="card"><h4>Hardware requirements</h4><ul><li><b>MMU</b> (page map table management unit)</li><li>Bits: <b>presence</b> · <b>modification (dirty)</b> · <b>reference</b></li><li><b>Auxiliary storage</b> (swap / Datei)</li><li><b>Unterbrechbare Instruktionen</b>: Neustart nach PF</li></ul></div>
+  </div>
+</section>
+
+<section class="topic" id="v-pf">
+  <h2><span class="num">2.2</span>Ablauf eines Page Fault</h2>
+  <div class="widget">
+    <header><span class="tag">Animation</span>Page Fault in 6 Schritten</header>
+    <div class="body">
+      <figure class="svgfig" id="pf-fig">
+        <svg viewBox="0 0 760 290" role="img" aria-label="Page fault Ablauf">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z"/></marker>
+            <marker id="ahon" class="on" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z"/></marker>
+          </defs>
+          <g class="box" data-b="cpu"><rect x="20" y="50" width="130" height="58" rx="6"/><text x="34" y="75">CPU / Prozess</text><text x="34" y="95" class="small">referenziert Seite</text></g>
+          <g class="box" data-b="mmu"><rect x="230" y="50" width="130" height="58" rx="6"/><text x="244" y="75">MMU (HW)</text><text x="244" y="95" class="small">presence bit?</text></g>
+          <g class="box" data-b="pmt"><rect x="230" y="190" width="130" height="58" rx="6"/><text x="244" y="215">PMT</text><text x="244" y="235" class="small">frame · P · M · R</text></g>
+          <g class="box" data-b="os"><rect x="430" y="50" width="130" height="58" rx="6"/><text x="444" y="75">OS (Kernel)</text><text x="444" y="95" class="small">PF-Handler</text></g>
+          <g class="box" data-b="ram"><rect x="430" y="190" width="130" height="58" rx="6"/><text x="444" y="215">Main Memory</text><text x="444" y="235" class="small">frames</text></g>
+          <g class="box" data-b="disk"><rect x="620" y="190" width="125" height="58" rx="6"/><text x="634" y="215">Disk / Swap</text><text x="634" y="235" class="small">auxiliary storage</text></g>
+          <path class="arr" data-a="1" d="M150 79 H226"/><text class="lbl alabel" data-a="1" x="160" y="70">Referenz</text>
+          <path class="arr" data-a="1" d="M295 108 V186"/><text class="lbl alabel" data-a="1" x="300" y="150">P = 0</text>
+          <path class="arr" data-a="1" d="M360 79 H426"/><text class="lbl alabel" data-a="1" x="372" y="70">TRAP</text>
+          <path class="arr" data-a="3" d="M495 108 V186"/><text class="lbl alabel" data-a="3" x="500" y="150">Frame/Opfer</text>
+          <path class="arr" data-a="3" d="M560 205 H616"/><text class="lbl alabel" data-a="3" x="562" y="198">out</text>
+          <path class="arr" data-a="4" d="M620 233 H564"/><text class="lbl alabel" data-a="4" x="575" y="262">in</text>
+          <path class="arr" data-a="5" d="M440 108 L362 196"/><text class="lbl alabel" data-a="5" x="384" y="140">P=1, frame</text>
+          <path class="arr" data-a="6" d="M495 50 V22 H85 V46"/><text class="lbl alabel" data-a="6" x="200" y="16">Instruktion neu starten</text>
+        </svg>
+      </figure>
+      <div class="controls" style="margin-top:8px">
+        <button class="btn" id="pf-prev" type="button">◀ Zurück</button>
+        <button class="btn primary" id="pf-next" type="button">Weiter ▶</button>
+        <span class="mono" id="pf-count"></span>
+      </div>
+      <div class="explain" id="pf-text"></div>
+    </div>
+  </div>
+  <div class="split2">
+    <div class="card"><h4>Was dynamic loading teuer macht</h4><ol><li><b>Context changes</b></li><li><b>Page out</b> einer modifizierten Seite</li><li><b>Page in</b> der referenzierten Seite</li></ol><p>Währenddessen ist der Prozess <b>blocked</b>.</p><p class="note">PF-Rate sinkt normalerweise mit mehr frames – <b>Ausnahme: Belady's anomaly</b> bei FIFO.</p></div>
+    <div class="widget" style="margin:0">
+      <header><span class="tag">Rechner</span>EAT mit Page Faults</header>
+      <div class="body">
+        <div class="controls">
+          <label class="field">m RAM (ns)<input id="eatpf-m" type="number" value="100" min="1"></label>
+          <label class="field">t_PF (ms)<input id="eatpf-t" type="number" value="8" min="0" step="0.1"></label>
+          <label class="field">PF-Rate p<input id="eatpf-p" class="w-m" value="0.001"></label>
+          <label class="field">max. Verlangsamung (%)<input id="eatpf-x" type="number" value="10" min="1"></label>
+        </div>
+        <div id="eatpf-out"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="v-pager">
+  <h2><span class="num">2.3</span>Pagers</h2>
+  <p>Teil des OS, der Seiten Disk ⇔ MM bewegt; wird <b>mit dem gemappten Objekt erzeugt und zerstört</b>.</p>
+  <table class="t"><tr><th>Pager</th><th>Für</th><th>Beispiel</th></tr>
+    <tr><td><b>File pager</b></td><td>Objekte mit Abbild im Dateisystem</td><td><b>mmap</b>, <b>exec</b></td></tr>
+    <tr><td><b>Anonymous / swap pager</b></td><td>Objekte <i>ohne</i> Dateiabbild (heap, stack)</td><td><b>swap area</b></td></tr>
+    <tr><td><b>Device pager</b></td><td>Gerätespeicher (nicht Disk)</td><td><b>frame buffer</b></td></tr></table>
+</section>
+
+<section class="topic" id="v-thrash">
+  <h2><span class="num">2.4</span>Thrashing, Working Set, PFF</h2>
+  <div class="widget">
+    <header><span class="tag">Visualisierung</span>Thrashing-Kurve <span class="sub">CPU-Auslastung vs. degree of multiprogramming</span></header>
+    <div class="body">
+      <div class="controls"><label class="field">Degree of multiprogramming: <span id="th-v">8</span><input id="th-d" type="range" min="1" max="24" value="8"></label></div>
+      <div id="th-chart"></div>
+      <div class="explain" id="th-text"></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Teufelskreis</h4><p>zu wenige frames → ständig PFs → CPU wartet → OS sieht niedrige Auslastung → <b>erhöht Multiprogramming</b> → noch mehr PFs.</p></div>
+    <div class="card"><h4>Solutions</h4><ol><li>Degree of multiprogramming <b>reduzieren</b></li><li><b>Local replacement</b> verwenden</li><li>Jedem Prozess so viele frames, wie er braucht: <b>working set model</b>, <b>PFF</b></li></ol></div>
+  </div>
+  <div class="widget">
+    <header><span class="tag">Rechner</span>Working Set WS(t, Δ)</header>
+    <div class="body">
+      <div class="controls">
+        <label class="field" style="flex:1;min-width:260px">Referenzfolge<input id="ws-refs" value="2 6 1 5 7 7 7 7 5 1 6 2 3 4 1 2 3 4 4 4 3 4 3 4 4 4 1 3 2 3"></label>
+        <label class="field">Fenster Δ<input id="ws-delta" type="number" value="10" min="1"></label>
+        <label class="field">Zeitpunkt t: <span id="ws-tv"></span><input id="ws-t" type="range" min="1" max="30" value="10"></label>
+      </div>
+      <div class="btnrow" style="margin-bottom:8px"><button class="btn small" type="button" id="ws-slide">Folien-Beispiel (… 1 2 1 5 7 7 7 5 1, Δ=5)</button></div>
+      <div id="ws-out"></div>
+    </div>
+  </div>
+  <div class="split2">
+    <div class="card"><h4>Working set model</h4><p>Menge der Seiten, die im Fenster <b>Δ</b> referenziert wurden. Basiert auf locality, erlaubt hohe degrees of multiprogramming. Regel: <b>Σ WS &gt; frames ⇒ Prozess suspendieren</b>.</p></div>
+    <div class="widget" style="margin:0">
+      <header><span class="tag">Regler</span>Page Fault Frequency</header>
+      <div class="body">
+        <div class="controls"><label class="field">PF-Rate eines Prozesses: <span id="pff-v"></span><input id="pff-r" type="range" min="0" max="100" value="55"></label></div>
+        <div id="pff-out"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="v-policy">
+  <h2><span class="num">2.5</span>Memory-Management-Policies</h2>
+  <p>Ziel: <b>PF-Prozentsatz minimieren</b>, bei minimalem overhead und maximaler MM-Nutzung.</p>
+  <div class="tablewrap"><table class="t"><tr><th>Policy</th><th>Frage</th><th>Optionen</th></tr>
+    <tr><td><b>Assignment</b></td><td>Wie viel MM pro Prozess?</td><td>fixed / variable · scope global / local · free space management</td></tr>
+    <tr><td><b>Placement</b></td><td>Wo im MM?</td><td>first/next/best/worst fit – <b>nur bei segmentation</b>; bei paging <b>irrelevant</b></td></tr>
+    <tr><td><b>Fetching</b></td><td>Wann/welche Seiten laden?</td><td><b>on-demand</b> · <b>prefetch</b> (anticipatory, swap prefetch)</td></tr>
+    <tr><td><b>Replacement</b></td><td>Welche Seite raus?</td><td>Optimal, FIFO, LRU, LRU-Approximationen (global clock, 2nd chance, NFU)</td></tr></table></div>
+  <div class="split2">
+    <div>
+      <h4>Fixed vs. variable assignment</h4>
+      <p><b>Fixed</b>: frames beim initial loading nach Prozesstyp. <b>Variable</b>: ändert sich, über <b>working set</b> oder <b>PFF</b>.</p>
+      <table class="t"><tr><th></th><th>Global</th><th>Local</th></tr>
+        <tr><td><b>Kandidaten</b></td><td>alle frames</td><td>nur frames des PF-Prozesses</td></tr>
+        <tr><td><b>Vorteil</b></td><td>bessere MM-Nutzung</td><td>PF-Anzahl deterministischer</td></tr>
+        <tr><td><b>Nachteil</b></td><td><b>Thrashing</b></td><td>mehr overhead</td></tr>
+        <tr><td><b>Beispiel</b></td><td><b>Unix, Linux</b></td><td><b>VMS, Windows</b></td></tr></table>
+    </div>
+    <div>
+      <h4>Free space management</h4>
+      <p><b>Bitmap</b> · <b>Linked lists</b> (Windows) · <b>Buddy system</b> (Linux, Unix)</p>
+      <h4>Fetching</h4>
+      <table class="t"><tr><th>On-demand</th><th>Prefetch</th></tr><tr><td>lädt nur bei Referenz; minimaler overhead</td><td>lädt nach Vorhersage; gut bei sequentiellem Zugriff</td></tr></table>
+    </div>
+  </div>
+  <div class="widget">
+    <header><span class="tag">Simulator</span>Buddy system <span class="sub">1024 KiB, Blöcke 2ᵏ, Mindestgröße 32 KiB</span></header>
+    <div class="body">
+      <div class="controls">
+        <label class="field">Anfrage (KiB)<input id="bd-size" type="number" value="70" min="1" max="1024"></label>
+        <button class="btn primary" id="bd-alloc" type="button">Anfordern</button>
+        <button class="btn" id="bd-demo" type="button">Beispiel Schritt ▶</button>
+        <button class="btn" id="bd-reset" type="button">Zurücksetzen</button>
+      </div>
+      <div id="bd-bar"></div>
+      <div class="btnrow" id="bd-free" style="margin:8px 0"></div>
+      <div class="explain" id="bd-log"></div>
+      <p class="muted">Aufrunden auf 2ᵏ → <b>internal fragmentation</b>. Freigeben: ist der Buddy (Adresse XOR Größe) frei und gleich groß → <b>coalesce</b>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="v-repl">
+  <h2><span class="num">2.6</span>Replacement-Algorithmen</h2>
+  <div class="grid3">
+    <div class="card"><h4>Optimal (OPT)</h4><p>Seite raus, die <b>am längsten nicht mehr</b> gebraucht wird. <span class="ok">✓</span> niedrigste Rate, Benchmark. <span class="bad">✗</span> nicht implementierbar.</p></div>
+    <div class="card"><h4>FIFO</h4><p>Seite raus, die <b>am längsten im MM</b> ist. <span class="ok">✓</span> einfach. <span class="bad">✗</span> schlecht, <b>Belady's anomaly</b>.</p></div>
+    <div class="card"><h4>LRU</h4><p>Seite raus, die <b>am längsten nicht benutzt</b> wurde. <span class="bad">✗</span> teuer (Zeitstempel bei jedem Zugriff). <b>Stack algorithm</b> → kein Belady.</p></div>
+  </div>
+  <p>Kriterien: <b>low overhead</b>, <b>kein Tuning</b>, <b>gute LRU-Approximation</b>. <b>Reference string</b>: aufeinanderfolgende Zugriffe auf dieselbe Seite = <b>eine</b> Referenz.</p>
+  <div class="widget">
+    <header><span class="tag">Simulator</span>Reference string Schritt für Schritt</header>
+    <div class="body">
+      <div class="controls">
+        <label class="field" style="flex:1;min-width:240px">Reference string<input id="rp-refs" value="1 2 3 4 1 2 5 1 2 3 4 5"></label>
+        <label class="field">Frames<input id="rp-f" type="number" value="3" min="1" max="10"></label>
+        <label class="field">Algorithmus<select id="rp-alg"><option value="FIFO">FIFO</option><option value="LRU">LRU</option><option value="OPT">OPT</option><option value="SC">FIFO 2nd chance</option></select></label>
+      </div>
+      <div class="controls">
+        <label class="field inline"><input type="checkbox" id="rp-dedup" checked> Direkte Wiederholungen zusammenfassen</label>
+        <label class="field inline"><input type="checkbox" id="rp-r1"> 2nd chance: R=1 beim Laden (wie im Lab)</label>
+        <button class="btn small" type="button" id="rp-belady">Folien-Beispiel</button>
+        <button class="btn small" type="button" id="rp-rand">Zufällig</button>
+      </div>
+      <div class="controls">
+        <button class="btn" id="rp-first" type="button">⏮</button>
+        <button class="btn" id="rp-prev" type="button">◀ Schritt</button>
+        <button class="btn primary" id="rp-next" type="button">Schritt ▶</button>
+        <button class="btn" id="rp-all" type="button">Alles ⏭</button>
+        <span class="mono" id="rp-pos"></span>
+      </div>
+      <div class="tablewrap" id="rp-table"></div>
+      <div class="explain" id="rp-explain"></div>
+      <div id="rp-sum"></div>
+      <h4>PFs in Abhängigkeit der Frame-Anzahl (gleicher String)</h4>
+      <div id="rp-chart"></div>
+    </div>
+  </div>
+  <p class="tip">Folien-String mit FIFO: <b>3 frames → 9 PFs, 4 frames → 10 PFs</b> = Belady's anomaly. OPT 7/6, LRU 10/8. FIFO = älteste <i>geladene</i> Seite, LRU = am längsten <i>nicht benutzte</i>.</p>
+</section>
+
+<section class="topic" id="v-approx">
+  <h2><span class="num">2.7</span>LRU-Approximationen</h2>
+  <div class="grid3">
+    <div class="card"><h4>Global clock (4.3 BSD)</h4><p>Circular list + R-Bit. Laden: R←0. Referenz: R←1. <b>Periodisch</b> setzt ein rotierender Zeiger R←0. PF: R=0 → ersetzen, R=1 → R←0, weiter.</p></div>
+    <div class="card"><h4>FIFO 2nd chance</h4><p>FIFO-Queue: R=1 → R←0, ans Ende; R=0 → ersetzen. <span class="ok">✓</span> wenig overhead. <span class="bad">✗</span> alle R=1 → <b>degeneriert zu FIFO</b>.</p><p class="muted">Unterschied zum clock: R-Bits nur beim PF-Durchlauf gelöscht, nicht periodisch.</p></div>
+    <div class="card"><h4>NFU + aging</h4><p>Timer-Interrupt: R=1 → counter++, dann alle R←0. PF: kleinster counter raus. Problem: alte Vielnutzer bleiben. <b>Aging</b>: counter &gt;&gt; 1, R ins <b>MSB</b>.</p></div>
+  </div>
+  <div class="widget">
+    <header><span class="tag">Simulator</span>NFU vs. Aging (8-bit counter)</header>
+    <div class="body">
+      <p class="muted">R-Bits der Seiten setzen, dann Clock-Tick. Oder das Tanenbaum-Beispiel abspielen.</p>
+      <div class="btnrow" id="ag-rbits" style="margin-bottom:8px"></div>
+      <div class="controls">
+        <button class="btn primary" id="ag-tick" type="button">Clock-Tick</button>
+        <button class="btn" id="ag-demo" type="button">Tanenbaum-Beispiel Tick ▶</button>
+        <button class="btn" id="ag-reset" type="button">Zurücksetzen</button>
+      </div>
+      <div class="tablewrap" id="ag-table"></div>
+      <div class="explain" id="ag-text"></div>
+    </div>
+  </div>
+  <div class="widget">
+    <header><span class="tag">Simulator</span>Linux page aging (kswapd)</header>
+    <div class="body">
+      <p class="muted">Start <b>age = 3</b> · Zugriff <b>+3, max 20</b> · kswapd-Lauf: unbenutzt <b>−1</b> · Opfer = niedrigstes age.</p>
+      <div class="btnrow" id="la-pages" style="margin-bottom:8px"></div>
+      <div class="controls"><button class="btn primary" id="la-run" type="button">kswapd läuft (1 s)</button><button class="btn" id="la-reset" type="button">Zurücksetzen</button></div>
+      <div class="tablewrap" id="la-table"></div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="v-cases">
+  <h2><span class="num">2.8</span>Fallstudien</h2>
+  <h3>Mach 3.0 · FIFO 2nd chance mit drei Queues</h3>
+  <div class="lanes">
+    <div class="lane"><b>Free pages (frames)</b><div class="q"><span>F7</span><span>F2</span><span>F9</span><span class="muted">mit 0 initialisiert, für PFs</span></div></div>
+    <div class="lane"><b>Active pages</b><div class="q"><span>P3</span><span>P8</span><span>P1</span><span>P5</span><span class="muted">= working set</span></div></div>
+    <div class="lane"><b>Inactive pages</b><div class="q"><span>P4</span><span>P6</span><span class="muted">Buffer nicht referenzierter Seiten</span></div></div>
+  </div>
+  <p><b>pageout daemon</b>: verschiebt active → inactive, wenn freie frames unter einen <b>threshold</b> fallen.</p>
+  <h3>Windows 2000</h3>
+  <div class="split2">
+    <div>
+      <ul>
+        <li><b>Clustering</b>: bei PF mehrere zusammenhängende Seiten. Desktop: <b>8 code</b>, <b>4 data</b>, <b>8 Rest</b>.</li>
+        <li><b>WS management</b>: <b>variable assignment, local scope</b>; Start mit minimum WS; WS <b>50–345 pages</b>; WS wächst bei PFs.</li>
+      </ul>
+      <table class="t compact"><tr><th>Zustand</th><th>Bedeutung</th></tr>
+        <tr><td><b>Error</b></td><td>physisch defekt</td></tr>
+        <tr><td><b>Free</b></td><td>frei, erst nach Nullen vergeben</td></tr>
+        <tr><td><b>Empty / Zeroed</b></td><td>mit 0 initialisiert</td></tr>
+        <tr><td><b>Active</b></td><td>in einem WS oder gesperrt</td></tr>
+        <tr><td><b>Transition</b></td><td>wird von Disk befüllt (collided PFs)</td></tr>
+        <tr><td><b>Standby</b></td><td>nicht mehr im WS, Daten noch da, PMT zeigt drauf</td></tr>
+        <tr><td><b>Modified</b></td><td>muss auf Disk gesichert werden</td></tr>
+        <tr><td><b>Modified, can't save yet</b></td><td>wartet (metadata)</td></tr></table>
+    </div>
+    <figure class="svgfig">
+      <svg viewBox="0 0 760 330" role="img" aria-label="W2K Frame-Zustände">
+        <defs><marker id="ahw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z"/></marker></defs>
+        <g class="box"><rect x="20" y="30" width="140" height="44" rx="6"/><text x="34" y="57">Transition</text></g>
+        <g class="box"><rect x="600" y="30" width="140" height="44" rx="6"/><text x="614" y="57">Free</text></g>
+        <g class="box on"><rect x="20" y="140" width="140" height="44" rx="6"/><text x="34" y="167">Active</text></g>
+        <g class="box"><rect x="310" y="140" width="140" height="44" rx="6"/><text x="324" y="167">Standby</text></g>
+        <g class="box"><rect x="600" y="140" width="140" height="44" rx="6"/><text x="614" y="167">Zeroed (Empty)</text></g>
+        <g class="box dim"><rect x="20" y="255" width="140" height="44" rx="6"/><text x="34" y="282">Error (bad)</text></g>
+        <g class="box"><rect x="310" y="255" width="140" height="44" rx="6"/><text x="324" y="282">Modified</text></g>
+        <g class="box"><rect x="600" y="255" width="140" height="44" rx="6"/><text x="614" y="275">Modified,</text><text x="614" y="291" class="small">can't save yet</text></g>
+        <path class="arr solid" d="M600 50 H164" marker-end="url(#ahw)"/><text class="lbl" x="250" y="44">Page-In startet (PF)</text>
+        <path class="arr" d="M600 162 H578 V56"/><text class="lbl" x="482" y="112">auch aus Zeroed</text>
+        <path class="arr solid" d="M90 74 V136" marker-end="url(#ahw)"/><text class="lbl" x="96" y="110">fertig</text>
+        <path class="arr solid" d="M160 152 H306" marker-end="url(#ahw)"/><text class="lbl" x="180" y="146">aus WS (clean)</text>
+        <path class="arr" d="M310 174 H164" marker-end="url(#ahw)"/><text class="lbl" x="196" y="196">soft fault</text>
+        <path class="arr solid" d="M140 184 L320 252" marker-end="url(#ahw)"/><text class="lbl" x="150" y="234">aus WS (dirty)</text>
+        <path class="arr" d="M312 265 L120 186" marker-end="url(#ahw)"/>
+        <path class="arr solid" d="M380 255 V188" marker-end="url(#ahw)"/><text class="lbl" x="386" y="226">modified page writer</text>
+        <path class="arr solid" d="M450 150 L600 64" marker-end="url(#ahw)"/><text class="lbl" x="500" y="96">Frame gebraucht</text>
+        <path class="arr solid" d="M670 74 V136" marker-end="url(#ahw)"/><text class="lbl" x="676" y="110">zero thread</text>
+        <path class="arr solid" d="M450 277 H596" marker-end="url(#ahw)"/><text class="lbl" x="470" y="270">wartet</text>
+      </svg>
+      <figcaption class="muted">Durchgezogen = normaler Weg, gestrichelt = soft fault / Nebenweg. Soft fault: Standby/Modified → Active ohne Disk-I/O.</figcaption>
+    </figure>
+  </div>
+  <h3>Linux</h3>
+  <div class="tablewrap"><div class="fieldbar" style="max-width:640px"><div class="f0" style="flex:3"><b>page directory</b>global</div><div class="f1" style="flex:3"><b>middle directory</b>x86-32: Größe 1</div><div class="f2" style="flex:3"><b>page table</b></div><div class="f3" style="flex:4"><b>offset</b></div></div></div>
+  <ul>
+    <li><b>Three-level page table</b>, jede Tabelle = 1 page. Für <b>Alpha 64 bit</b> entworfen; auf x86-32 middle directory = 1 → faktisch 2 Ebenen. Heute 4–5 Ebenen auf x86-64.</li>
+    <li>Frame assignment: <b>buddy system</b>. Replacement scope: <b>global</b>.</li>
+    <li><b>kswapd</b> prüft <b>jede Sekunde</b> freie frames; LRU-Approximation mit <b>aging</b> (siehe Simulator 2.7).</li>
+    <li>Modifizierte Seite → Disk, PMT-Eintrag <b>invalid</b> + Info zur Wiederherstellung, frame in free list. Unmodifiziert → einfach frei. Genug gewonnen → Daemon schläft.</li>
+  </ul>
+</section>
+
+<!-- ======================= LAB 2 ======================= -->
+<div class="part"><div class="kicker">Lab 2</div><h2>Virtual memory &amp; replacement algorithms</h2><p>Den Simulator <code>sim_paging</code> nachbauen: MMU, Page-Fault-Handler, Random, LRU, FIFO, FIFO 2nd chance, Optimal.</p></div>
+
+<section class="topic" id="l-hwos">
+  <h2><span class="num">L1</span>Hardware vs. Betriebssystem</h2>
+  <div class="hwos">
+    <div class="col hw">
+      <h4><span class="pill hw">HW</span>MMU (Hardware)</h4>
+      <div class="fn">sim_mmu(S, vaddr, op)<small>page = vaddr / pagsz, offset = vaddr % pagsz · illegal? → numillegalrefs++, return ~0U · present? sonst Trap · paddr = frame·pagsz + offset</small></div>
+      <div class="fn">reference_page(S, page, op)<small>R/W zählen · W → modified = 1 · LRU: timestamp = clock++ · 2nd chance: referenced = 1</small></div>
+      <p class="muted">Kennt nur die <b>Seitentabelle</b> <code>pgt[]</code>.</p>
+    </div>
+    <div class="mid">TRAP<br>(page fault)<br>──▶</div>
+    <div class="col os">
+      <h4><span class="pill os">OS</span>Page-Fault-Handler (Betriebssystem)</h4>
+      <div class="fn">handle_page_fault(S, vaddr)<small>numpagefaults++ · freier Frame aus listfree? sonst Policy + Mechanismus</small></div>
+      <div class="fn">occupy_free_frame(S, frame, page)<small>pgt: present, frame, modified = 0 · frt.page · FIFO: in listoccupied einfügen</small></div>
+      <div class="fn">choose_page_to_be_replaced(S) <b>· POLICY</b><small>welcher Frame raus? Random / LRU / FIFO / 2nd chance / Optimal</small></div>
+      <div class="fn">replace_page(S, victim, page) <b>· MECHANISMUS</b><small>modified → „Page dump to disc“ · alte Seite present = 0 · neue eintragen</small></div>
+      <p class="muted">Verwaltet zusätzlich die <b>Frame-Tabelle</b> <code>frt[]</code> (MMU kennt sie nicht).</p>
+    </div>
+  </div>
+  <p class="tip"><b>Policy vs. Mechanism</b>: <i>welche</i> Seite raus = choose_page_to_be_replaced; <i>wie</i> ersetzen = replace_page. Nur die Policy ändert sich zwischen den Programmen.</p>
+</section>
+
+<section class="topic" id="l-data">
+  <h2><span class="num">L2</span>Datenstrukturen &amp; zirkuläre Listen</h2>
+  <div class="grid3">
+    <div class="card"><h4>spage · S->pgt[]</h4><table class="t compact"><tr><td><code>present</code></td><td>liegt in Frame</td></tr><tr><td><code>frame</code></td><td>Frame-Nummer</td></tr><tr><td><code>modified</code></td><td>dirty → beim Ersetzen auf Disk</td></tr><tr><td><code>referenced</code></td><td>R-Bit (2nd chance)</td></tr><tr><td><code>timestamp</code></td><td>letzte Referenz (LRU)</td></tr></table></div>
+    <div class="card"><h4>sframe · S->frt[] (nur OS)</h4><table class="t compact"><tr><td><code>page</code></td><td>Seite im Frame</td></tr><tr><td><code>next</code></td><td>nächster Frame in der zirkulären Liste</td></tr></table><p>Ohne frt müsste das OS die ganze Seitentabelle durchsuchen.</p></div>
+    <div class="card"><h4>ssystem · S</h4><p class="mono" style="font-size:13px">pagsz, numpags, pgt, frt, listfree, listoccupied, clock, numrefsread, numrefswrite, numpagefaults, numillegalrefs, detailed</p></div>
+  </div>
+  <h3>Warum zeigt <code>listfree</code> auf das <i>letzte</i> Element?</h3>
+  <p>Zeiger auf das letzte gibt <b>O(1)</b> Zugriff auf das erste (<code>frt[last].next</code>) <b>und</b> O(1) Anhängen am Ende. Leer = <code>-1</code>.</p>
+  <div class="split2">
+    <div class="card"><h4>Ersten freien Frame nehmen</h4>
+      <p class="muted">vorher (listfree = F3)</p>
+      <div class="chain"><span class="node first"><span class="badge">first</span>F0</span><span class="arrowtxt">→</span><span class="node">F1</span><span class="arrowtxt">→</span><span class="node">F2</span><span class="arrowtxt">→</span><span class="node last"><span class="badge">last = listfree</span>F3</span><span class="arrowtxt">↩ F0</span></div>
+      <pre class="code">last  = S->listfree;          <span class="c">// F3</span>
+frame = S->frt[last].next;    <span class="c">// F0 = erstes</span>
+if (frame == last) S->listfree = -1;    <span class="c">// war einziges</span>
+else S->frt[last].next = S->frt[frame].next; <span class="c">// F3 → F1</span></pre>
+      <p class="muted">nachher</p>
+      <div class="chain"><span class="node first"><span class="badge">first</span>F1</span><span class="arrowtxt">→</span><span class="node">F2</span><span class="arrowtxt">→</span><span class="node last"><span class="badge">last = listfree</span>F3</span><span class="arrowtxt">↩ F1</span></div>
+    </div>
+    <div class="card"><h4>FIFO: Frame in listoccupied einfügen</h4>
+      <p class="muted">vorher (listoccupied = F1), neu: F5</p>
+      <div class="chain"><span class="node first"><span class="badge">first</span>F4</span><span class="arrowtxt">→</span><span class="node last"><span class="badge">last</span>F1</span><span class="arrowtxt">↩ F4</span></div>
+      <pre class="code">S->frt[F5].next = S->frt[S->listoccupied].next; <span class="c">// F5 → F4</span>
+S->frt[S->listoccupied].next = F5;              <span class="c">// F1 → F5</span>
+S->listoccupied = F5;                           <span class="c">// F5 = letztes</span></pre>
+      <p class="muted">nachher</p>
+      <div class="chain"><span class="node first"><span class="badge">first</span>F4</span><span class="arrowtxt">→</span><span class="node">F1</span><span class="arrowtxt">→</span><span class="node last"><span class="badge">last</span>F5</span><span class="arrowtxt">↩ F4</span></div>
+      <p><b>Opfer wählen</b> = erstes nehmen und <code>listoccupied = victim</code> setzen: der Ring dreht sich, das Opfer ist jetzt „letztes“ und bekommt die neue Seite.</p>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="l-trace">
+  <h2><span class="num">L3</span>Werkzeug gen_trace</h2>
+  <div class="split2">
+    <table class="t"><tr><th>Token</th><th>Bedeutung</th></tr>
+      <tr><td><code>R&lt;n&gt;</code> / <code>W&lt;n&gt;</code></td><td>Read / Write auf Array-Position n</td></tr>
+      <tr><td><code>T&lt;n&gt;</code></td><td>Gesamtgröße des Arrays (einmal)</td></tr>
+      <tr><td><code>C</code></td><td>Vergleich, kein Speicherzugriff</td></tr>
+      <tr><td><code>S</code> / <code>O</code></td><td>Ende: Sorted / Out of order</td></tr></table>
+    <div><p><b>ALG</b>: BUB, INS, SEL, HEA, COM, MER, QUI, QRP · <b>INIT</b>: ASC, DES, RAN</p><p><b>MER</b> braucht ein Zusatzarray gleicher Größe → MER mit 4 Elementen: <b>T8</b>.</p><ul><li><b>SEL</b>: immer ~N²</li><li><b>HEA</b>: überall schnell</li><li><b>QUI</b>: schnell bei RAN, sehr langsam bei ASC/DES (erstes Element als Pivot)</li><li><b>BUB/INS</b>: ASC trivial, DES sehr schlecht</li></ul></div>
+  </div>
+  <div class="widget">
+    <header><span class="tag">Nachbau</span>gen_trace im Browser <span class="sub">eigene Implementierung · Mechanik wie im Lab, Zählwerte können leicht abweichen</span></header>
+    <div class="body">
+      <div class="controls">
+        <label class="field">ALG<select id="gt-alg"><option>BUB</option><option>INS</option><option>SEL</option><option selected>HEA</option><option>COM</option><option>MER</option><option>QUI</option><option>QRP</option></select></label>
+        <label class="field">INIT<select id="gt-init"><option>ASC</option><option selected>DES</option><option>RAN</option></select></label>
+        <label class="field">N<input id="gt-n" type="number" value="4" min="1" max="5000"></label>
+        <label class="field">Seed (RAN/QRP)<input id="gt-seed" type="number" value="7" min="1"></label>
+        <button class="btn primary" id="gt-go" type="button">./gen_trace</button>
+        <button class="btn" id="gt-table" type="button">Ops-Tabelle N=1000 berechnen</button>
+      </div>
+      <div class="log" id="gt-out" style="height:auto;max-height:200px;white-space:pre-wrap"></div>
+      <div class="tablewrap" id="gt-tabout"></div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="l-sim">
+  <h2><span class="num">L4</span>Paging-Simulator (sim_paging)</h2>
+  <p><code>./sim_pag_&lt;alg&gt; &lt;pagesize&gt; &lt;frames&gt; &lt;ALG&gt; &lt;INIT&gt; &lt;N&gt; [D]</code> · Schrittmodus bis 4000 Referenzen, darüber nur Report.</p>
+  <div class="widget">
+    <header><span class="tag">Simulator</span>sim_pag_random · lru · fifo · fifo2ch · optimal</header>
+    <div class="body">
+      <div class="controls">
+        <label class="field">Programm<select id="sm-alg"><option value="random">sim_pag_random</option><option value="lru">sim_pag_lru</option><option value="fifo">sim_pag_fifo</option><option value="fifo2ch">sim_pag_fifo2ch</option><option value="optimal">sim_pag_optimal</option></select></label>
+        <label class="field">pagesize<input id="sm-ps" type="number" value="1" min="1"></label>
+        <label class="field">frames<input id="sm-fr" type="number" value="3" min="1" max="256"></label>
+        <label class="field">ALG<select id="sm-salg"><option>BUB</option><option>INS</option><option>SEL</option><option selected>HEA</option><option>COM</option><option>MER</option><option>QUI</option><option>QRP</option></select></label>
+        <label class="field">INIT<select id="sm-init"><option>ASC</option><option selected>DES</option><option>RAN</option></select></label>
+        <label class="field">N<input id="sm-n" type="number" value="4" min="1" max="20000"></label>
+      </div>
+      <div class="controls">
+        <label class="field inline"><input type="checkbox" id="sm-custom"> Eigene Trace verwenden</label>
+        <textarea id="sm-trace" placeholder="T8 R0 W4 R1 W5 …" style="display:none"></textarea>
+      </div>
+      <div class="btnrow" style="margin-bottom:10px">
+        <button class="btn small" type="button" data-sm="random,1,3,HEA,DES,4">Lab-Test: random 1 3 HEA DES 4</button>
+        <button class="btn small" type="button" data-sm="optimal,1,1,BUB,RAN,2">optimal 1 1 BUB RAN 2</button>
+        <button class="btn small" type="button" data-sm="fifo2ch,2,3,INS,DES,6">fifo2ch 2 3 INS DES 6</button>
+        <button class="btn small" type="button" data-sm="lru,16,3,HEA,DES,100">Table 1: 16 3 HEA DES 100</button>
+        <button class="btn small" type="button" data-sm="fifo,16,8,MER,DES,1000">16 8 MER DES 1000</button>
+      </div>
+      <div class="controls">
+        <button class="btn primary" id="sm-load" type="button">Laden / Reset</button>
+        <button class="btn" id="sm-back" type="button">◀ Schritt</button>
+        <button class="btn" id="sm-step" type="button">Schritt ▶</button>
+        <button class="btn" id="sm-pf" type="button">bis nächster PF ⏩</button>
+        <button class="btn" id="sm-run" type="button">Alles ausführen ⏭</button>
+        <button class="btn" id="sm-cmp" type="button">Alle 5 vergleichen</button>
+        <span class="mono" id="sm-pos"></span>
+      </div>
+      <div class="kv" id="sm-kv"></div>
+      <div class="split2">
+        <div>
+          <h4>Aktuelle Referenz</h4>
+          <div class="explain mono" id="sm-cur"></div>
+          <h4>Ausgabe (Modus D)</h4>
+          <div class="log" id="sm-log" aria-live="polite"></div>
+        </div>
+        <div>
+          <h4>Listen</h4>
+          <div><b class="mono">listfree</b><div class="chain" id="sm-lfree"></div></div>
+          <div id="sm-locc-wrap"><b class="mono">listoccupied</b><div class="chain" id="sm-locc"></div></div>
+          <h4>FRAMES TABLE</h4>
+          <div class="tablewrap" id="sm-frt"></div>
+        </div>
+      </div>
+      <h4>PAGES TABLE</h4>
+      <div class="tablewrap" id="sm-pgt" style="max-height:360px;overflow:auto"></div>
+      <h4>Report</h4>
+      <div class="report" id="sm-report"></div>
+      <div id="sm-cmpout"></div>
+    </div>
+  </div>
+  <div class="card">
+    <h4>Was jedes Programm ändert (Lab-Aufgaben)</h4>
+    <table class="t compact"><tr><th>Programm</th><th>reference_page</th><th>occupy_free_frame</th><th>choose_page_to_be_replaced</th><th>Report</th></tr>
+      <tr><td><b>random</b></td><td>R/W zählen, W → modified</td><td>Tabellen setzen</td><td><code>myrandom(numframes)</code></td><td>GENERAL · PAGES · FRAMES · REPLACEMENT</td></tr>
+      <tr><td><b>lru</b></td><td><code>timestamp = clock++</code>, Overflow-Warnung</td><td>wie random</td><td>sequentielle Suche: kleinster timestamp</td><td>Spalte clock − timestamp, min/max timestamp</td></tr>
+      <tr><td><b>fifo</b></td><td>wie random</td><td>in listoccupied einfügen</td><td>erstes nehmen, <code>listoccupied = victim</code></td><td>Liste der belegten Frames</td></tr>
+      <tr><td><b>fifo2ch</b></td><td><code>referenced = 1</code></td><td>wie fifo</td><td>R=1 → R=0, weiterrücken; erste mit R=0</td><td>R-Bit je Frame</td></tr>
+      <tr><td><b>optimal</b></td><td colspan="3">gegeben: lädt die ganze Trace vorab („cheating“), ersetzt die Seite mit der spätesten nächsten Nutzung</td><td>will take n operations / won't be used anymore</td></tr></table>
+  </div>
+</section>
+
+<section class="topic" id="l-code">
+  <h2><span class="num">L5</span>Code-Lückentext</h2>
+  <p>Lücken ausfüllen, dann prüfen. Leerzeichen sind egal.</p>
+  <div id="code-blocks"></div>
+</section>
+
+<section class="topic" id="l-ws">
+  <h2><span class="num">L6</span>calculate_ws – Working Set schätzen</h2>
+  <p><code>./calculate_ws &lt;elems_per_page&gt; &lt;ops_per_interval&gt; &lt;ALG&gt; &lt;INIT&gt; &lt;N&gt;</code> zählt pro Intervall die <b>verschiedenen referenzierten Seiten</b> (hier: Intervall = Anzahl R/W-Zugriffe).</p>
+  <div class="widget">
+    <header><span class="tag">Nachbau</span>Working-Set-Verlauf zweier Algorithmen</header>
+    <div class="body">
+      <div class="controls">
+        <label class="field">elems/page<input id="cw-epp" type="number" value="16" min="1"></label>
+        <label class="field">ops/interval<input id="cw-opi" type="number" value="100000" min="10"></label>
+        <label class="field">N<input id="cw-n" type="number" value="1000" min="4" max="5000"></label>
+        <label class="field">Kurve A<select id="cw-a"><option>BUB</option><option>INS</option><option>SEL</option><option>HEA</option><option>COM</option><option>MER</option><option>QUI</option><option>QRP</option></select></label>
+        <label class="field">INIT A<select id="cw-ia"><option>ASC</option><option>DES</option><option selected>RAN</option></select></label>
+        <label class="field">Kurve B<select id="cw-b"><option value="">–</option><option>BUB</option><option selected>INS</option><option>SEL</option><option>HEA</option><option>COM</option><option>MER</option><option>QUI</option><option>QRP</option></select></label>
+        <label class="field">INIT B<select id="cw-ib"><option>ASC</option><option>DES</option><option selected>RAN</option></select></label>
+        <button class="btn primary" id="cw-go" type="button">Berechnen</button>
+      </div>
+      <div class="btnrow" style="margin-bottom:8px">
+        <button class="btn small" type="button" data-cw="16,100000,1000,BUB,RAN,INS,RAN">Aufgabe: BUB vs. INS</button>
+        <button class="btn small" type="button" data-cw="16,2000,1000,MER,RAN,,RAN">Mergesort-Peak</button>
+        <button class="btn small" type="button" data-cw="16,2000,1000,QRP,RAN,QUI,RAN">QRP vs. QUI</button>
+      </div>
+      <div id="cw-chart"></div>
+      <div class="explain" id="cw-text"></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Interpretation</h4><p><b>Kleines WS</b> → Seiten bleiben im RAM → wenige Faults. <b>Großes WS</b> → Seiten werden verdrängt und wieder gebraucht → viele PFs.</p></div>
+    <div class="card"><h4>Mergesort-Grafik</h4><p>Anfangs-<b>Peak</b> (ganzes Array ins Temp kopieren) → klein (Paare, 4er) → wächst → letzter Merge greift aufs ganze Array → wieder Peak-Niveau.</p></div>
+  </div>
+  <p class="muted">gnuplot: <code>plot "ws_qrp.txt" using 1:3 title "QRP" with lines</code> · Befehle in Datei, <code>pause -1 "Press ENTER"</code> · EPS mit <code>set terminal postscript</code> + <code>set out "x.eps"</code>.</p>
+</section>
+
+<section class="topic" id="l-table">
+  <h2><span class="num">L7</span>Table 1 – Page Faults (Referenzwerte aus dem Lab)</h2>
+  <div class="tablewrap" id="t1"></div>
+  <ul>
+    <li><b>Optimal</b> immer am besten (Untergrenze).</li>
+    <li><b>LRU</b> meist am nächsten an Optimal; <b>FIFO2nd</b> zwischen FIFO und LRU (Approximation).</li>
+    <li><b>Random</b> meist am schlechtesten, bei nur 3 Frames kaum Unterschied.</li>
+    <li><b>Mehr Frames → relativ weniger Faults.</b></li>
+  </ul>
+  <p class="muted">Balken pro Zeile relativ zum Maximum; Minimum der Zeile <b><u>fett + unterstrichen</u></b>.</p>
+</section>
+
+<section class="topic" id="l-qa">
+  <h2><span class="num">L8</span>Typische Testfragen zum Lab</h2>
+  <details class="qa"><summary>Was macht die Hardware, was das OS?</summary><p><b>HW (MMU)</b>: Adressübersetzung, Gültigkeitsprüfung, Present-Check, Modified/Referenced/Timestamp setzen, Page-Fault-Trap. <b>OS</b>: Fault behandeln, freie Frames (Frame-Tabelle), Opfer wählen, Seite laden, dirty Seite zurückschreiben.</p></details>
+  <details class="qa"><summary>Wozu das modified-Bit?</summary><p>Nur dirty Seiten müssen beim Ersetzen auf Disk geschrieben werden („page dumps“).</p></details>
+  <details class="qa"><summary>Wozu die Frame-Tabelle?</summary><p>Freie Frames schnell finden und Frame → Seite zuordnen, ohne die ganze Seitentabelle zu durchsuchen.</p></details>
+  <details class="qa"><summary>Warum zirkuläre Liste mit Zeiger aufs letzte Element?</summary><p>O(1) Zugriff aufs erste (<code>last.next</code>) und O(1) Anhängen am Ende.</p></details>
+  <details class="qa"><summary>Rückgabe bei illegaler Adresse?</summary><p><code>~0U</code> (alle Bits 1), <code>numillegalrefs++</code>.</p></details>
+  <details class="qa"><summary>Probleme von LRU?</summary><p>Uhr-Überlauf, teure Suche O(frames), Hardware-Aufwand pro Zugriff → Approximation durch 2nd chance.</p></details>
+  <details class="qa"><summary>Warum terminiert die 2nd-chance-Schleife immer?</summary><p>Jeder Durchlauf löscht R-Bits. Spätestens nach einer Runde sind alle 0 → verhält sich wie FIFO.</p></details>
+  <details class="qa"><summary>Warum ist Optimal nicht realisierbar und trotzdem im Lab?</summary><p>Braucht die Zukunft. Simulator lädt die ganze Trace vorab („cheating“) und liefert die <b>ideale Untergrenze</b> zum Vergleich.</p></details>
+  <details class="qa"><summary>Warum T8 bei MER mit 4 Elementen?</summary><p>Mergesort braucht ein Zusatzarray gleicher Größe.</p></details>
+  <details class="qa"><summary>Was erwartet der Random-Test 1 3 HEA DES 4 D?</summary><p><b>20 Reads, 17 Writes, 7 Page Faults, 2 Page dumps</b> (laut Lab-Anleitung, mit dem Original-gen_trace).</p></details>
+</section>
+
+<!-- ======================= TRAINER ======================= -->
+<div class="part"><div class="kicker">Prüfungstrainer</div><h2>Selbst rechnen &amp; testen</h2><p>Jede Aufgabe wird neu gewürfelt. Antwort eintragen, prüfen, Lösung mit Rechenweg ansehen.</p></div>
+
+<section class="topic" id="p-rechnen">
+  <h2>Rechenaufgaben</h2>
+  <div class="grid2" id="ex-grid"></div>
+</section>
+
+<section class="topic" id="p-quiz">
+  <h2>Konzept-Quiz</h2>
+  <p>Stand: <b id="quiz-score">0 / 0</b> <button class="btn small" id="quiz-reset" type="button">Neu mischen</button></p>
+  <div id="quiz"></div>
+</section>
+
+<section class="topic" id="p-fallen">
+  <h2>Top-Fallen vor der Prüfung</h2>
+  <ol>
+    <li><b>Internal ↔ external</b>: paging = internal, segmentation/MVT = external.</li>
+    <li><b>Segmentation</b>: limit-Check <b>vor</b> der Addition; base <b>+</b> d. Paging: f <b>‖</b> d.</li>
+    <li><b>Pentium</b>: selector 16 bit (13 + 1 + 2), offset 32 bit; linear ≠ physical.</li>
+    <li><b>x86-64</b>: 48 bit genutzt, Bits 48–63 = Bit 47.</li>
+    <li><b>Belady</b> nur bei FIFO, nicht bei OPT/LRU (stack algorithms).</li>
+    <li>Reference string: <b>direkte Wiederholungen zählen einmal</b>.</li>
+    <li><b>Global</b> → thrashing-Risiko (Unix/Linux); <b>local</b> → overhead (VMS/Windows).</li>
+    <li><b>ASLR</b> hilft gegen buffer overflow, <b>nicht</b> gegen format string.</li>
+    <li><b>Placement</b> ist bei paging irrelevant.</li>
+    <li><b>TLB eviction</b> macht auf x86 die Hardware; OS invalidiert nur.</li>
+    <li>Lab: <code>listfree</code> zeigt aufs <b>letzte</b>, erstes = <code>frt[last].next</code>; leer = <code>-1</code>.</li>
+    <li>Lab: <b>MMU = sim_mmu + reference_page</b>; alles andere OS.</li>
+  </ol>
+</section>
+
+<footer>Grundlage: deine Zusammenfassung UD1/UD2 und das Lab-2-Cheatsheet (UAH, ATC-SOL). gen_trace und calculate_ws sind im Browser nachgebaut; ihre Zählwerte können vom Original abweichen, Table 1 zeigt die Originalwerte.</footer>
+</main>
+</div>

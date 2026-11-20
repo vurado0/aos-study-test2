@@ -1,0 +1,24 @@
+AOS · Speicherverwaltung & Virtual Memory	AOS · Memory Management & Virtual Memory	AOS · Zarządzanie pamięcią i Virtual Memory
+LRU-Approximationen	LRU approximations	Aproksymacje LRU
+§ LRU-Approximationen	§ LRU approximations	§ Aproksymacje LRU
+Memory-Management-Policies	Memory management policies	Polityki zarządzania pamięcią
+PML§-Index (dez)	PML§ index (dec)	Indeks PML§ (dec)
+Limit-Check: d < limit ? § < § →	Limit check: d < limit ? § < § →	Limit check: d < limit ? § < § →
+Contiguous partitioning & Gap-Allocation	Contiguous partitioning & gap allocation	Contiguous partitioning i gap allocation
+§ Gap-Allocation (MVT)	§ Gap allocation (MVT)	§ Gap allocation (MVT)
+Optimal, FIFO, LRU, LRU-Approximationen (global clock, §nd chance, NFU)	Optimal, FIFO, LRU, LRU approximations (global clock, §nd chance, NFU)	Optimal, FIFO, LRU, aproksymacje LRU (global clock, §nd chance, NFU)
+Descriptor (§ Byte)	Descriptor (§ bytes)	Descriptor (§ bajtów)
+Entry size (Byte)	Entry size (bytes)	Entry size (bajty)
+Page size (Byte)	Page size (bytes)	Page size (bajty)
+Hardware-Support	hardware support	wsparciem hardware
+max. Verlangsamung (%)	max. slowdown (%)	maks. spowolnienie (%)
+offset d (dez/hex)	offset d (dec/hex)	offset d (dec/hex)
+page p (dez)	page p (dec)	page p (dec)
+§ Multilevel & Adressformat	§ Multilevel & address format	§ Multilevel i format adresu
+§ Rest	§ other	§ reszta
+§ Byte	§ bytes	§ bajtów
+→ § · § = § Byte	→ § · § = § bytes	→ § · § = § bajtów
+§ pages à § B · § frames	§ pages of § B · § frames	§ pages po § B · § frames
+Memory hierarchy, Locality, Fragmentation	Memory hierarchy, locality, fragmentation	Memory hierarchy, locality, fragmentation
+§ Locality & Fragmentation	§ Locality & fragmentation	§ Locality i fragmentation
+Knuth (§)	Knuth (§)	Knuth (§)
